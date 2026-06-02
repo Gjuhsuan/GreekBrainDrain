@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python preprocess.py)",
+      "Bash(python fix_chord.py)",
+      "Bash(node -e ' *)",
+      "Bash(python -c ' *)",
+      "Bash(python fix_institutions.py)",
+      "Bash(python \"对接得到的数据/fix_institutions.py\")",
+      "Bash(python fix_inst.py)",
+      "Bash(python -c \"from pathlib import Path; print\\(repr\\(str\\(Path\\('source_info.tsv'\\).resolve\\(\\)\\)\\)\\)\")",
+      "Bash(python -c \"import sys; print\\(repr\\(sys.argv[0]\\)\\); import os; print\\(repr\\(os.getcwd\\(\\)\\)\\)\")"
+    ]
+  }
+}

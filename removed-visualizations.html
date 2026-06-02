@@ -1,0 +1,53 @@
+<!--
+  暂时从主可视化任务中移出的可视化模块。
+  保留原始 section 结构，后续如需恢复，可复制回 index.html 并重新引入对应脚本。
+  对应脚本：js/chord.js, js/spider.js, js/bump.js, js/packing.js
+-->
+
+<!-- 合著弦图 -->
+<section id="coauthorship" class="story-section">
+  <div class="text-column">
+    <h3>全球合作网络</h3>
+    <p>论文合作者是衡量科学国际化的重要维度。我们统计了所有包含至少一位希腊科学家的论文（来自 paper_to_authors 表），提取每篇论文中不同国家机构之间的合作配对。当一篇论文的作者来自两个以上国家时，所有两两国家组合都被计入合作。</p>
+    <p>在约 224 万篇论文中，34.5% 的论文涉及至少两个不同国家的机构合作。下方弦图中，外环每个弧段代表一个国家，弧段长度与该国参与的国际合作论文总数成正比。弦的粗细表示两国之间有多少篇合著论文。</p>
+  </div>
+  <div class="viz-wide" id="viz-chord">
+    <svg id="chord-svg" viewBox="0 0 800 800" role="img" aria-label="希腊科学家国际合作弦图"></svg>
+  </div>
+</section>
+
+<!-- 雷达图 -->
+<section id="radar-chart" class="story-section">
+  <div class="text-column">
+    <h3>五维学术能力雷达对比</h3>
+    <p>将 5 项核心学术指标放在同一张雷达图上，可以直观比较本土与海外科学家在不同维度上的相对优劣势。<span class="n-greece">蓝色区域</span>为希腊本土科学家的均值，<span class="n-abroad">橙色区域</span>为海外科学家。轴距中心越远代表指标越高。</p>
+    <p>两组在论文数和 h 指数上差距不大，但在总被引次数上，<strong>海外科学家的均值（927）是本土（530）的 1.75 倍</strong>。自引率方面两组基本相同，排除了"海外科学家靠自引拉高数据"的可能性。</p>
+  </div>
+  <div class="viz-wide" id="viz-spider">
+    <svg id="spider-svg" viewBox="0 0 600 520" role="img" aria-label="希腊vs海外五维学术能力雷达图"></svg>
+  </div>
+</section>
+
+<!-- Bump Chart -->
+<section id="bump-chart" class="story-section">
+  <div class="text-column">
+    <h3>精英层级的分领域差异</h3>
+    <p>前面的百分位金字塔展示了整体趋势——层级越高流失越重。但如果分领域看，不同的学科呈现出不同的流失曲线。这张 Bump 图中每条线代表一个学科大类，从左到右百分位层级逐渐升高。所有领域的外流比例都随层级上升而增加，但上升的斜率和绝对值差异很大。</p>
+    <p>生物医学研究（Biomedical Research）、工程学（Engineering）和信息通信技术（ICT）的曲线最为陡峭——在顶尖层级中，这些领域的海外科学家占据了绝对多数。</p>
+  </div>
+  <div class="viz-wide" id="viz-bump">
+    <svg id="bump-svg" viewBox="0 0 960 520" role="img" aria-label="各学科在不同百分位层级的海外占比变化"></svg>
+  </div>
+</section>
+
+<!-- 圆形填充 -->
+<section id="packing-chart" class="story-section alt-bg">
+  <div class="text-column">
+    <h3>子领域全局图</h3>
+    <p>这张圆形填充图将 174 个 Science Metrix 子领域按科学家总数映射为气泡大小，颜色代表海外占比（蓝色表示本土更多，红色表示海外更多）。每个气泡是一个子领域，气泡越大代表该领域希腊科学家越多。将鼠标悬停在气泡上可以看到具体数据。</p>
+    <p>从图中可以快速识别：蓝色大泡（本土强势领域，集中在图左上方）和红色大泡（海外强势领域，集中在图右下方）各自聚集的位置。</p>
+  </div>
+  <div class="viz-wide" id="viz-packing">
+    <svg id="packing-svg" viewBox="0 0 960 800" role="img" aria-label="174个子领域的气泡填充图"></svg>
+  </div>
+</section>

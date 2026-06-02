@@ -1,0 +1,16 @@
+{
+  "greece": {
+    "first_pct": 23.9,
+    "middle_pct": 55.0,
+    "last_pct": 21.0,
+    "corresponding_pct": 11.0,
+    "total": 1751057
+  },
+  "abroad": {
+    "first_pct": 6.0,
+    "middle_pct": 88.6,
+    "last_pct": 5.4,
+    "corresponding_pct": 2.8,
+    "total": 38481420
+  }
+}

@@ -1,0 +1,212 @@
+[
+  {
+    "institution": "Greece",
+    "total_authors": 20,
+    "left_authors": 18,
+    "stayed_authors": 2,
+    "drain_rate": 90.0
+  },
+  {
+    "institution": "Greece",
+    "total_authors": 26,
+    "left_authors": 23,
+    "stayed_authors": 3,
+    "drain_rate": 88.5
+  },
+  {
+    "institution": "Greece",
+    "total_authors": 119,
+    "left_authors": 103,
+    "stayed_authors": 16,
+    "drain_rate": 86.6
+  },
+  {
+    "institution": "Greece",
+    "total_authors": 20,
+    "left_authors": 17,
+    "stayed_authors": 3,
+    "drain_rate": 85.0
+  },
+  {
+    "institution": "Greece",
+    "total_authors": 48,
+    "left_authors": 40,
+    "stayed_authors": 8,
+    "drain_rate": 83.3
+  },
+  {
+    "institution": "Greece",
+    "total_authors": 74,
+    "left_authors": 61,
+    "stayed_authors": 13,
+    "drain_rate": 82.4
+  },
+  {
+    "institution": "Greece",
+    "total_authors": 148,
+    "left_authors": 122,
+    "stayed_authors": 26,
+    "drain_rate": 82.4
+  },
+  {
+    "institution": "Greece",
+    "total_authors": 131,
+    "left_authors": 106,
+    "stayed_authors": 25,
+    "drain_rate": 80.9
+  },
+  {
+    "institution": "Greece",
+    "total_authors": 51,
+    "left_authors": 41,
+    "stayed_authors": 10,
+    "drain_rate": 80.4
+  },
+  {
+    "institution": "Greece",
+    "total_authors": 23,
+    "left_authors": 18,
+    "stayed_authors": 5,
+    "drain_rate": 78.3
+  },
+  {
+    "institution": "Greece",
+    "total_authors": 41,
+    "left_authors": 32,
+    "stayed_authors": 9,
+    "drain_rate": 78.0
+  },
+  {
+    "institution": "Greece",
+    "total_authors": 89,
+    "left_authors": 69,
+    "stayed_authors": 20,
+    "drain_rate": 77.5
+  },
+  {
+    "institution": "Greece",
+    "total_authors": 151,
+    "left_authors": 116,
+    "stayed_authors": 35,
+    "drain_rate": 76.8
+  },
+  {
+    "institution": "Greece",
+    "total_authors": 21,
+    "left_authors": 16,
+    "stayed_authors": 5,
+    "drain_rate": 76.2
+  },
+  {
+    "institution": "Greece",
+    "total_authors": 738,
+    "left_authors": 554,
+    "stayed_authors": 184,
+    "drain_rate": 75.1
+  },
+  {
+    "institution": "Greece",
+    "total_authors": 20,
+    "left_authors": 15,
+    "stayed_authors": 5,
+    "drain_rate": 75.0
+  },
+  {
+    "institution": "Greece",
+    "total_authors": 37,
+    "left_authors": 27,
+    "stayed_authors": 10,
+    "drain_rate": 73.0
+  },
+  {
+    "institution": "Greece",
+    "total_authors": 190,
+    "left_authors": 138,
+    "stayed_authors": 52,
+    "drain_rate": 72.6
+  },
+  {
+    "institution": "Greece",
+    "total_authors": 255,
+    "left_authors": 185,
+    "stayed_authors": 70,
+    "drain_rate": 72.5
+  },
+  {
+    "institution": "Greece",
+    "total_authors": 296,
+    "left_authors": 214,
+    "stayed_authors": 82,
+    "drain_rate": 72.3
+  },
+  {
+    "institution": "Greece",
+    "total_authors": 39,
+    "left_authors": 28,
+    "stayed_authors": 11,
+    "drain_rate": 71.8
+  },
+  {
+    "institution": "Greece",
+    "total_authors": 53,
+    "left_authors": 38,
+    "stayed_authors": 15,
+    "drain_rate": 71.7
+  },
+  {
+    "institution": "Greece",
+    "total_authors": 1000,
+    "left_authors": 706,
+    "stayed_authors": 294,
+    "drain_rate": 70.6
+  },
+  {
+    "institution": "Greece",
+    "total_authors": 255,
+    "left_authors": 180,
+    "stayed_authors": 75,
+    "drain_rate": 70.6
+  },
+  {
+    "institution": "Greece",
+    "total_authors": 121,
+    "left_authors": 85,
+    "stayed_authors": 36,
+    "drain_rate": 70.2
+  },
+  {
+    "institution": "Greece",
+    "total_authors": 97,
+    "left_authors": 67,
+    "stayed_authors": 30,
+    "drain_rate": 69.1
+  },
+  {
+    "institution": "Greece",
+    "total_authors": 48,
+    "left_authors": 33,
+    "stayed_authors": 15,
+    "drain_rate": 68.8
+  },
+  {
+    "institution": "Greece",
+    "total_authors": 178,
+    "left_authors": 122,
+    "stayed_authors": 56,
+    "drain_rate": 68.5
+  },
+  {
+    "institution": "Greece",
+    "total_authors": 76,
+    "left_authors": 52,
+    "stayed_authors": 24,
+    "drain_rate": 68.4
+  },
+  {
+    "institution": "Greece",
+    "total_authors": 41,
+    "left_authors": 28,
+    "stayed_authors": 13,
+    "drain_rate": 68.3
+  }
+]

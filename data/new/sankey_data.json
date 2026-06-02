@@ -1,0 +1,256 @@
+{
+  "description": "Greek scientist migration flows: Greece first foreign destination",
+  "total_migrants": 21208,
+  "flows": [
+    {
+      "source": "希腊",
+      "target": "United States",
+      "value": 6542
+    },
+    {
+      "source": "希腊",
+      "target": "United Kingdom",
+      "value": 4459
+    },
+    {
+      "source": "希腊",
+      "target": "Germany",
+      "value": 1602
+    },
+    {
+      "source": "希腊",
+      "target": "France",
+      "value": 1133
+    },
+    {
+      "source": "希腊",
+      "target": "Cyprus",
+      "value": 662
+    },
+    {
+      "source": "希腊",
+      "target": "Italy",
+      "value": 614
+    },
+    {
+      "source": "希腊",
+      "target": "Switzerland",
+      "value": 590
+    },
+    {
+      "source": "希腊",
+      "target": "The Netherlands",
+      "value": 544
+    },
+    {
+      "source": "希腊",
+      "target": "Canada",
+      "value": 430
+    },
+    {
+      "source": "希腊",
+      "target": "Australia",
+      "value": 386
+    },
+    {
+      "source": "希腊",
+      "target": "Belgium",
+      "value": 372
+    },
+    {
+      "source": "希腊",
+      "target": "Spain",
+      "value": 355
+    },
+    {
+      "source": "希腊",
+      "target": "Sweden",
+      "value": 336
+    },
+    {
+      "source": "希腊",
+      "target": "Norway",
+      "value": 269
+    },
+    {
+      "source": "希腊",
+      "target": "China",
+      "value": 171
+    },
+    {
+      "source": "希腊",
+      "target": "Czechia",
+      "value": 168
+    },
+    {
+      "source": "希腊",
+      "target": "Denmark",
+      "value": 164
+    },
+    {
+      "source": "希腊",
+      "target": "Austria",
+      "value": 158
+    },
+    {
+      "source": "希腊",
+      "target": "Bulgaria",
+      "value": 139
+    },
+    {
+      "source": "希腊",
+      "target": "Russia",
+      "value": 126
+    },
+    {
+      "source": "希腊",
+      "target": "India",
+      "value": 122
+    },
+    {
+      "source": "希腊",
+      "target": "Japan",
+      "value": 114
+    },
+    {
+      "source": "希腊",
+      "target": "Poland",
+      "value": 102
+    },
+    {
+      "source": "希腊",
+      "target": "Finland",
+      "value": 99
+    },
+    {
+      "source": "希腊",
+      "target": "Ireland",
+      "value": 97
+    },
+    {
+      "source": "希腊",
+      "target": "Ecuador",
+      "value": 78
+    },
+    {
+      "source": "希腊",
+      "target": "Egypt",
+      "value": 73
+    },
+    {
+      "source": "希腊",
+      "target": "Portugal",
+      "value": 70
+    },
+    {
+      "source": "希腊",
+      "target": "Israel",
+      "value": 61
+    },
+    {
+      "source": "希腊",
+      "target": "Romania",
+      "value": 58
+    },
+    {
+      "source": "希腊",
+      "target": "Türkiye",
+      "value": 56
+    },
+    {
+      "source": "希腊",
+      "target": "Brazil",
+      "value": 55
+    },
+    {
+      "source": "希腊",
+      "target": "Hungary",
+      "value": 54
+    },
+    {
+      "source": "希腊",
+      "target": "Kuwait",
+      "value": 54
+    },
+    {
+      "source": "希腊",
+      "target": "Montenegro",
+      "value": 48
+    },
+    {
+      "source": "希腊",
+      "target": "Qatar",
+      "value": 44
+    },
+    {
+      "source": "希腊",
+      "target": "South Africa",
+      "value": 43
+    },
+    {
+      "source": "希腊",
+      "target": "Slovakia",
+      "value": 43
+    },
+    {
+      "source": "希腊",
+      "target": "Luxembourg",
+      "value": 38
+    },
+    {
+      "source": "希腊",
+      "target": "Saudi Arabia",
+      "value": 37
+    },
+    {
+      "source": "希腊",
+      "target": "United Arab Emirates",
+      "value": 34
+    },
+    {
+      "source": "希腊",
+      "target": "South Korea",
+      "value": 29
+    },
+    {
+      "source": "希腊",
+      "target": "Hong Kong",
+      "value": 28
+    },
+    {
+      "source": "希腊",
+      "target": "Serbia",
+      "value": 27
+    },
+    {
+      "source": "希腊",
+      "target": "Singapore",
+      "value": 26
+    },
+    {
+      "source": "希腊",
+      "target": "Taiwan",
+      "value": 24
+    },
+    {
+      "source": "希腊",
+      "target": "Slovenia",
+      "value": 24
+    },
+    {
+      "source": "希腊",
+      "target": "Pakistan",
+      "value": 24
+    },
+    {
+      "source": "希腊",
+      "target": "Iran",
+      "value": 24
+    },
+    {
+      "source": "希腊",
+      "target": "Mexico",
+      "value": 23
+    }
+  ]
+}
