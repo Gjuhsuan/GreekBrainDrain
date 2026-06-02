@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=20260602-15">
+  <link rel="stylesheet" href="css/style.css?v=20260602-sidebar">
   <script src="https://d3js.org/d3.v7.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/d3-sankey@0.12.3/dist/d3-sankey.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
@@ -15,14 +15,26 @@
 <body>
 
 <nav class="site-nav" aria-label="页面导航">
-  <a class="site-nav-brand" href="#opening">希腊人才流失</a>
+  <a class="site-nav-brand" href="#opening">希腊<br>人才流失</a>
   <div class="site-nav-links">
-    <a href="#opening" data-nav-section="opening">开篇</a>
-    <a href="#global-map" data-nav-section="scale">规模</a>
-    <a href="#disciplines" data-nav-section="disciplines">学科</a>
-    <a href="#elite-drain" data-nav-section="elite">顶尖人才</a>
-    <a href="#migration-flows" data-nav-section="network">流动网络</a>
-    <a href="#conclusion" data-nav-section="conclusion">结论</a>
+    <a href="#opening" data-nav-section="opening">
+      <span class="nav-icon">●</span>开篇
+    </a>
+    <a href="#global-map" data-nav-section="scale">
+      <span class="nav-icon">●</span>规模
+    </a>
+    <a href="#disciplines" data-nav-section="disciplines">
+      <span class="nav-icon">●</span>学科
+    </a>
+    <a href="#elite-drain" data-nav-section="elite">
+      <span class="nav-icon">●</span>顶尖人才
+    </a>
+    <a href="#migration-flows" data-nav-section="network">
+      <span class="nav-icon">●</span>流动网络
+    </a>
+    <a href="#conclusion" data-nav-section="conclusion">
+      <span class="nav-icon">●</span>结论
+    </a>
   </div>
   <div class="site-progress" aria-hidden="true"><span id="reading-progress"></span></div>
 </nav>
@@ -415,7 +427,7 @@
 <script src="js/institutions.js"></script>
 <script src="js/bubbles.js?v=20260602-1"></script>
 <script src="js/marimekko.js"></script>
-<script src="js/main.js?v=20260602-3"></script>
+<script src="js/main.js?v=20260602-sidebar"></script>
 
 </body>
 </html>

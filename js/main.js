@@ -89,7 +89,8 @@
 
   function getSectionFromScroll() {
     var current = allSections[0] ? allSections[0].id : null;
-    var offset = window.innerWidth < 768 ? 110 : 84;
+    /* On mobile the nav is a top bar (92px scroll-margin), on desktop it's a sidebar */
+    var offset = window.innerWidth < 768 ? 110 : 64;
 
     allSections.forEach(function (section) {
       var rect = section.getBoundingClientRect();
