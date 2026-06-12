@@ -58,8 +58,7 @@
   /* ──────────────────────────────────────────
      2b. Site Navigation + Reading Progress
      ────────────────────────────────────────── */
-  var navLinks = document.querySelectorAll(".site-nav-links a[data-nav-section]");
-  var progressBar = document.getElementById("reading-progress");
+  var navLinks = document.querySelectorAll("#top-nav .nav-links a[data-nav-section]");
   var backToTop = document.getElementById("back-to-top");
   var ticking = false;
 
@@ -89,8 +88,7 @@
 
   function getSectionFromScroll() {
     var current = allSections[0] ? allSections[0].id : null;
-    /* On mobile the nav is a top bar (92px scroll-margin), on desktop it's a sidebar */
-    var offset = window.innerWidth < 768 ? 110 : 64;
+    var offset = 72;  /* top nav height + padding */
 
     allSections.forEach(function (section) {
       var rect = section.getBoundingClientRect();
@@ -102,13 +100,6 @@
     return current;
   }
 
-  function updateProgress() {
-    if (!progressBar) return;
-    var maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-    var ratio = maxScroll > 0 ? window.scrollY / maxScroll : 0;
-    progressBar.style.width = Math.max(0, Math.min(100, ratio * 100)) + "%";
-  }
-
   function updateBackToTop() {
     if (!backToTop) return;
     backToTop.classList.toggle("visible", window.scrollY > 560);
@@ -117,7 +108,6 @@
   function updateNavState() {
     var sectionId = getSectionFromScroll();
     setActiveNav(sectionGroups[sectionId] || "opening");
-    updateProgress();
     updateBackToTop();
     ticking = false;
   }

@@ -1,797 +1,484 @@
 /* ═══════════════════════════════════════════
-   butterfly.js — Section 4: Discipline Asymmetry (Diverging Bar Chart)
+   butterfly.js — Dumbbell chart + circle pack
    Greek Brain Drain · Data Visualization Project
    ═══════════════════════════════════════════ */
 
 (function () {
   "use strict";
 
-  // ── Configuration ──
-  var MARGIN = { top: 40, right: 100, bottom: 20, left: 100 };
-  var ROW_HEIGHT = 24;          // 20px bar + 4px gap
-  var SVG_W = 960;
-  var ANIM_DURATION = 800;
+  var MARGIN_BASE = { top: 16, right: 80, bottom: 60 };
+  var CHART_H = 560;  /* fixed chart area height — rows distributed via band scale */
+  var ANIM_DURATION = 700;
+  var CHAR_W = 7.2;  /* approximate pixel width per Chinese char at 12px */
+  var allData = [], showAll = false, currentField = "all", searchTerm = "", selectedKey = null;
+  var level = "field";  /* "field" (default) | "subfield" — which hierarchy to show in dumbbell */
 
-  // ── State ──
-  var allData = [];
-  var showAll = false;
-  var currentField = "all";
-  var searchTerm = "";
-  var rendered = false;
-  var selectedKey = null;
-
-  // ── Initialize (with retry on fetch failure) ──
   function initButterfly() {
     loadData("subfields.json").then(function (data) {
       allData = data;
       populateFieldSelect(data);
-      renderButterfly();
-      renderDisciplinePack(getFilteredData());
+      renderDumbbell();
+      renderDisciplinePack(data);  /* BUBBLE CHART */
       setupControls();
-      rendered = true;
     }).catch(function (err) {
-      console.warn("butterfly.js: data load failed, retrying in 1s —", err.message);
+      console.warn("butterfly.js:", err.message);
       setTimeout(initButterfly, 1000);
     });
   }
   observeSection("disciplines", initButterfly);
 
-  // ── Populate field dropdown ──
-  function populateFieldSelect(data) {
-    var select = d3.select("#bf-field-select");
-    var fields = [];
+  /* ── Aggregate subfield data to field level ── */
+  function aggregateByField(data) {
+    var fieldMap = {};
     data.forEach(function (d) {
-      if (fields.indexOf(d.field) === -1) {
-        fields.push(d.field);
+      if (!fieldMap[d.field]) {
+        fieldMap[d.field] = { subfield: d.field, field: d.field, greece: 0, abroad: 0 };
       }
+      fieldMap[d.field].greece += d.greece;
+      fieldMap[d.field].abroad += d.abroad;
     });
-    fields.sort();
-
-    select.selectAll("option.field-opt")
-      .data(fields)
-      .join("option")
-      .attr("class", "field-opt")
-      .attr("value", function (d) { return d; })
-      .text(function (d) { return d; });
+    var fields = Object.values(fieldMap);
+    fields.forEach(function (f) {
+      var g = Math.max(1, f.greece);
+      var a = Math.max(1, f.abroad);
+      f.ratio = f.greece / Math.max(1, f.greece + f.abroad);
+      f.log_ratio = Math.log2(g / a);
+    });
+    fields.sort(function (a, b) { return (b.greece + b.abroad) - (a.greece + a.abroad); });
+    return fields;
   }
 
-  // ── Get filtered + sorted data ──
+  /* ── Get field list for dropdown ── */
+  function getFieldList(data) {
+    var fields = [];
+    data.forEach(function (d) { if (fields.indexOf(d.field) === -1) fields.push(d.field); });
+    fields.sort();
+    return fields;
+  }
+
+  function populateFieldSelect(data) {
+    var select = d3.select("#bf-field-select");
+    var fields = getFieldList(data);
+    select.selectAll("option").remove();
+    select.append("option")
+      .attr("value", "all")
+      .text("全部学科大类");
+    fields.forEach(function (f) {
+      select.append("option")
+        .attr("value", f)
+        .text(f);
+    });
+    select.property("value", "all");
+  }
+
+  /* ── Get data for the dumbbell chart ── */
   function getFilteredData() {
-    var filtered = allData;
-
-    // Exclude pairs where both groups are tiny.
-    filtered = filtered.filter(function (d) {
-      return Math.max(d.greece || 0, d.abroad || 0) >= 5;
-    });
-
-    // Field filter
-    if (currentField !== "all") {
-      filtered = filtered.filter(function (d) { return d.field === currentField; });
+    if (level === "field") {
+      /* ── Field level ── */
+      var fields = aggregateByField(allData);
+      if (searchTerm) {
+        var s = searchTerm.toLowerCase();
+        fields = fields.filter(function (d) { return d.field.toLowerCase().indexOf(s) !== -1; });
+      }
+      return fields;
     }
 
-    // Sort by absolute log_ratio descending (most imbalanced first)
-    filtered = filtered.slice().sort(function (a, b) {
-      return Math.abs(b.log_ratio) - Math.abs(a.log_ratio);
-    });
-
-    // Top N cutoff
-    if (!showAll) {
-      filtered = filtered.slice(0, 30);
+    /* ── Subfield level ── */
+    var filtered = allData.filter(function (d) { return Math.max(d.greece || 0, d.abroad || 0) >= 5; });
+    if (currentField !== "all") filtered = filtered.filter(function (d) { return d.field === currentField; });
+    if (searchTerm) {
+      var q = searchTerm.toLowerCase();
+      filtered = filtered.filter(function (d) { return d.subfield.toLowerCase().indexOf(q) !== -1; });
     }
-
+    filtered = filtered.slice().sort(function (a, b) { return (b.greece + b.abroad) - (a.greece + a.abroad); });
+    if (!showAll) filtered = filtered.slice(0, 30);
     return filtered;
   }
 
-  // ── Main render ──
-  function renderButterfly() {
+  function rowKey(d) { return d.subfield + "|" + d.field; }
+
+  /* ═══════════════════════════════════════════
+     Dumbbell chart
+     ═══════════════════════════════════════════ */
+  function renderDumbbell() {
     var data = getFilteredData();
     var svg = d3.select("#butterfly-svg");
     svg.selectAll("*").remove();
 
-    // Dynamic SVG height
-    var totalH = MARGIN.top + data.length * ROW_HEIGHT + MARGIN.bottom;
-    svg.attr("viewBox", "0 0 " + SVG_W + " " + totalH);
+    var isFieldLevel = (level === "field");
+    var labelKey = isFieldLevel ? "field" : "subfield";
+    var n = data.length;
+
+    /* Dynamic left margin: fit the longest label name */
+    var maxLabelLen = d3.max(data, function (d) { return d[labelKey].length; }) || 10;
+    var margin = Object.assign({}, MARGIN_BASE);
+    margin.left = Math.max(100, Math.round(maxLabelLen * CHAR_W) + 48);
+
+    var vbW = 900;
+    var totalH = margin.top + CHART_H + margin.bottom;
+    svg.attr("viewBox", "0 0 " + vbW + " " + totalH);
     svg.attr("preserveAspectRatio", "xMidYMin meet");
 
-    var innerW = SVG_W - MARGIN.left - MARGIN.right;
-    var centerX = SVG_W / 2;
-    var halfW = innerW / 2;
+    var innerW = vbW - margin.left - margin.right;
+    var g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    // Scales
-    var maxVal = d3.max(data, function (d) {
-      return Math.max(d.greece, d.abroad);
+    /* ── Y scale: band scale distributes rows across fixed chart height ── */
+    var yScale = d3.scaleBand()
+      .domain(d3.range(n))
+      .range([0, CHART_H])
+      .paddingInner(0.25)
+      .paddingOuter(0.1);
+    var bandH = yScale.bandwidth();
+
+    /* ── X scale ── */
+    var maxVal = d3.max(data, function (d) { return Math.max(d.greece, d.abroad); });
+    var x = d3.scaleLinear().domain([0, maxVal || 1]).range([0, innerW]).nice();
+
+    /* ── Vertical grid lines ── */
+    var xTicks = x.ticks(6);
+    xTicks.forEach(function (t) {
+      g.append("line")
+        .attr("x1", x(t)).attr("x2", x(t))
+        .attr("y1", 0).attr("y2", CHART_H)
+        .attr("stroke", "#dde0e4").attr("stroke-width", 1);
+    });
+    g.append("line")
+      .attr("x1", 0).attr("x2", innerW).attr("y1", 0).attr("y2", 0)
+      .attr("stroke", "#d0d4d8").attr("stroke-width", 1);
+
+    data.forEach(function (d, i) {
+      var y = yScale(i);
+      var yCenter = y + bandH / 2;
+      var gVal = d.greece, aVal = d.abroad;
+      var gx = x(gVal), ax = x(aVal);
+      var abroadBigger = aVal >= gVal;
+
+      /* Row background */
+      g.append("rect")
+        .attr("x", 0).attr("y", y)
+        .attr("width", innerW).attr("height", bandH)
+        .attr("fill", i % 2 === 0 ? "transparent" : "#fafafa").attr("rx", 2);
+
+      /* Dumbbell line */
+      g.append("line")
+        .attr("x1", gx).attr("x2", ax)
+        .attr("y1", yCenter).attr("y2", yCenter)
+        .attr("stroke", abroadBigger ? COLORS.abroadLight : COLORS.greeceLight)
+        .attr("stroke-width", 2).attr("stroke-linecap", "round");
+
+      /* Greece dot */
+      g.append("circle")
+        .attr("cx", 0).attr("cy", yCenter).attr("r", 5.5)
+        .attr("fill", COLORS.greece).attr("stroke", "#fff").attr("stroke-width", 2)
+        .transition().duration(ANIM_DURATION).delay(i * 20)
+        .attr("cx", gx);
+
+      /* Abroad dot */
+      g.append("circle")
+        .attr("cx", 0).attr("cy", yCenter).attr("r", 5.5)
+        .attr("fill", COLORS.abroad).attr("stroke", "#fff").attr("stroke-width", 2)
+        .transition().duration(ANIM_DURATION).delay(i * 20)
+        .attr("cx", ax);
+
+      /* Label */
+      var labelFontWeight = isFieldLevel ? "600" : "400";
+      g.append("text")
+        .attr("x", -24).attr("y", yCenter)
+        .attr("text-anchor", "end").attr("dominant-baseline", "central")
+        .attr("fill", selectedKey === rowKey(d) ? COLORS.highlight : COLORS.text)
+        .attr("font-size", isFieldLevel ? "13px" : "12px")
+        .attr("font-family", "Inter, sans-serif")
+        .attr("font-weight", labelFontWeight)
+        .text(d[labelKey]);
+
+      /* Number labels: bigger side gets the number on the OUTSIDE */
+      var grcBigger = gVal >= aVal;
+      g.append("text")
+        .attr("x", grcBigger ? gx + 8 : gx - 8).attr("y", yCenter)
+        .attr("text-anchor", grcBigger ? "start" : "end").attr("dominant-baseline", "central")
+        .attr("fill", COLORS.greece).attr("font-size", "10px").attr("font-weight", "700")
+        .attr("font-family", "Inter, sans-serif").text(gVal > 0 ? fmtNum(gVal) : "");
+
+      g.append("text")
+        .attr("x", grcBigger ? ax - 8 : ax + 8).attr("y", yCenter)
+        .attr("text-anchor", grcBigger ? "end" : "start").attr("dominant-baseline", "central")
+        .attr("fill", COLORS.abroad).attr("font-size", "10px").attr("font-weight", "700")
+        .attr("font-family", "Inter, sans-serif").text(aVal > 0 ? fmtNum(aVal) : "");
     });
 
-    var xScale = d3.scaleLinear()
-      .domain([0, maxVal || 1])
-      .range([0, halfW])
-      .nice();
-
-    // ── Chart group ──
-    var chart = svg.append("g").attr("class", "butterfly-chart");
-
-    // ── Center axis line ──
-    chart.append("line")
-      .attr("class", "center-line")
-      .attr("x1", centerX)
-      .attr("y1", MARGIN.top - 10)
-      .attr("x2", centerX)
-      .attr("y2", MARGIN.top + data.length * ROW_HEIGHT + 10)
-      .attr("stroke", "#CCCCCC")
-      .attr("stroke-width", 1.5);
-
-    // ── Row groups ──
-    var rows = chart.selectAll(".bf-row")
-      .data(data, function (d) { return d.subfield + "|" + d.field; })
-      .join("g")
-      .attr("class", "bf-row")
-      .attr("data-key", function (d) { return rowKey(d); })
-      .attr("transform", function (d, i) {
-        return "translate(0," + (MARGIN.top + i * ROW_HEIGHT) + ")";
-      })
-      .on("click", function (event, d) {
-        selectDiscipline(rowKey(d));
-      });
-
-    // ── Greece bars (left) ──
-    rows.append("rect")
-      .attr("class", "bf-bar-greece")
-      .attr("x", function (d) { return centerX - xScale(d.greece); })
-      .attr("y", 2)
-      .attr("height", 20)
-      .attr("fill", COLORS.greece)
-      .attr("width", 0)
-      .attr("opacity", 0.85)
-      .attr("rx", 3)
+    /* ── Hover zones ── */
+    g.selectAll(".hover-zone").data(data).enter().append("rect")
+      .attr("x", 0)
+      .attr("y", function (d, i) { return yScale(i); })
+      .attr("width", innerW)
+      .attr("height", function (d, i) { return yScale.bandwidth(); })
+      .attr("fill", "transparent")
       .on("mouseenter", function (event, d) {
-        d3.select(this).attr("opacity", 1);
+        var total = d.greece + d.abroad || 1;
+        var pct = d.abroad / total * 100;
+        var title = isFieldLevel ? d.field : d.subfield;
+        var subtitle = isFieldLevel ? "" : (" &nbsp;|&nbsp; 学科: " + d.field);
         showTooltip(
-          "<strong>" + truncate(d.subfield, 40) + "</strong><br>" +
-          "大类: " + d.field + "<br>" +
-          "希腊: " + fmtNum(d.greece) + "<br>" +
-          "海外: " + fmtNum(d.abroad) + "<br>" +
-          formatRatioText(d)
+          "<strong>" + title + "</strong><br>" +
+          "<span style='color:" + COLORS.greece + ";'>希腊: " + fmtNum(d.greece) + "</span> / " +
+          "<span style='color:" + COLORS.abroad + ";'>海外: " + fmtNum(d.abroad) + "</span><br>" +
+          "海外占比: " + fmtPct(pct, 1) + subtitle
         );
+        moveTooltip(event);
       })
-      .on("mousemove", moveTooltip)
-      .on("mouseleave", function () {
-        d3.select(this).attr("opacity", 0.85);
-        hideTooltip();
-      })
-      .transition()
-      .delay(function (_, i) { return i * 10; })
-      .duration(ANIM_DURATION)
-      .ease(d3.easeCubicOut)
-      .attr("width", function (d) { return xScale(d.greece); });
+      .on("mousemove", function (event) { moveTooltip(event); })
+      .on("mouseleave", function () { hideTooltip(); });
 
-    // ── Abroad bars (right) ──
-    rows.append("rect")
-      .attr("class", "bf-bar-abroad")
-      .attr("x", centerX)
-      .attr("y", 2)
-      .attr("height", 20)
-      .attr("fill", COLORS.abroad)
-      .attr("width", 0)
-      .attr("opacity", 0.85)
-      .attr("rx", 3)
-      .on("mouseenter", function (event, d) {
-        d3.select(this).attr("opacity", 1);
-        showTooltip(
-          "<strong>" + truncate(d.subfield, 40) + "</strong><br>" +
-          "大类: " + d.field + "<br>" +
-          "希腊: " + fmtNum(d.greece) + "<br>" +
-          "海外: " + fmtNum(d.abroad) + "<br>" +
-          formatRatioText(d)
-        );
-      })
-      .on("mousemove", moveTooltip)
-      .on("mouseleave", function () {
-        d3.select(this).attr("opacity", 0.85);
-        hideTooltip();
-      })
-      .transition()
-      .delay(function (_, i) { return i * 10; })
-      .duration(ANIM_DURATION)
-      .ease(d3.easeCubicOut)
-      .attr("width", function (d) { return xScale(d.abroad); });
+    /* ── Legend (below chart area) ── */
+    var legendY = CHART_H + 14;
+    g.append("circle").attr("cx", 6).attr("cy", legendY).attr("r", 5).attr("fill", COLORS.greece);
+    g.append("text").attr("x", 16).attr("y", legendY + 3).attr("fill", COLORS.textSecondary).attr("font-size", "11px").attr("font-family", "Inter, sans-serif").text("希腊本土");
+    g.append("circle").attr("cx", 80).attr("cy", legendY).attr("r", 5).attr("fill", COLORS.abroad);
+    g.append("text").attr("x", 90).attr("y", legendY + 3).attr("fill", COLORS.textSecondary).attr("font-size", "11px").attr("font-family", "Inter, sans-serif").text("海外");
 
-    // ── Subfield name labels (center) ──
-    rows.append("text")
-      .attr("class", "bf-label-center")
-      .attr("x", centerX)
-      .attr("y", 13)
-      .attr("text-anchor", "middle")
-      .attr("dominant-baseline", "central")
-      .attr("fill", COLORS.text)
-      .attr("font-size", "12px")
-      .attr("font-family", "Inter, sans-serif")
-      .text(function (d) { return truncate(d.subfield, 35); });
-
-    // ── Greece number labels (left side, right-aligned) ──
-    rows.append("text")
-      .attr("class", "bf-label-greece")
-      .attr("x", function (d) { return greeceLabelX(d, xScale, centerX); })
-      .attr("y", 13)
-      .attr("text-anchor", "end")
-      .attr("dominant-baseline", "central")
-      .attr("fill", COLORS.greece)
-      .attr("font-size", "11px")
-      .attr("font-family", "Inter, sans-serif")
-      .attr("font-weight", "500")
-      .attr("opacity", 0)
-      .transition()
-      .delay(function (_, i) { return i * 10 + ANIM_DURATION; })
-      .duration(300)
-      .attr("opacity", 1)
-      .text(function (d) { return fmtNum(d.greece); });
-
-    // ── Abroad number labels (right side, left-aligned) ──
-    rows.append("text")
-      .attr("class", "bf-label-abroad")
-      .attr("x", function (d) { return abroadLabelX(d, xScale, centerX); })
-      .attr("y", 13)
-      .attr("text-anchor", "start")
-      .attr("dominant-baseline", "central")
-      .attr("fill", COLORS.abroad)
-      .attr("font-size", "11px")
-      .attr("font-family", "Inter, sans-serif")
-      .attr("font-weight", "500")
-      .attr("opacity", 0)
-      .transition()
-      .delay(function (_, i) { return i * 10 + ANIM_DURATION; })
-      .duration(300)
-      .attr("opacity", 1)
-      .text(function (d) { return fmtNum(d.abroad); });
-
-    // ── Group headers ──
-    svg.append("text")
-      .attr("x", centerX - halfW / 2)
-      .attr("y", 20)
-      .text("希腊本土更多")
-      .attr("text-anchor", "middle")
-      .attr("fill", COLORS.greece)
-      .attr("font-size", "12px")
-      .attr("font-family", "Inter, sans-serif")
-      .attr("font-weight", "600");
-
-    svg.append("text")
-      .attr("x", centerX + halfW / 2)
-      .attr("y", 20)
-      .text("海外更多")
-      .attr("text-anchor", "middle")
-      .attr("fill", COLORS.abroad)
-      .attr("font-size", "12px")
-      .attr("font-family", "Inter, sans-serif")
-      .attr("font-weight", "600");
-
-    // ── Apply search filter if active ──
-    if (searchTerm) {
-      applySearchFilter();
-    }
-    applySelection();
-  }
-
-  // ── Re-render with transitions (for field filter / toggle) ──
-  function updateButterfly() {
-    var data = getFilteredData();
-    var svg = d3.select("#butterfly-svg");
-    renderDisciplinePack(data);
-
-    // Update viewBox
-    var totalH = MARGIN.top + data.length * ROW_HEIGHT + MARGIN.bottom;
-    svg.transition().duration(600).attr("viewBox", "0 0 " + SVG_W + " " + totalH);
-
-    var innerW = SVG_W - MARGIN.left - MARGIN.right;
-    var centerX = SVG_W / 2;
-    var halfW = innerW / 2;
-
-    var maxVal = d3.max(data, function (d) {
-      return Math.max(d.greece, d.abroad);
+    /* ── X axis ── */
+    var xAxisY = CHART_H + 30;
+    g.append("line").attr("x1", 0).attr("x2", innerW).attr("y1", xAxisY).attr("y2", xAxisY)
+      .attr("stroke", COLORS.grid).attr("stroke-width", 1);
+    xTicks.forEach(function (t) {
+      g.append("text").attr("x", x(t)).attr("y", xAxisY + 14)
+        .attr("text-anchor", "middle").attr("fill", COLORS.textLight).attr("font-size", "9px")
+        .attr("font-family", "Inter, sans-serif").text(fmtNum(t));
     });
 
-    var xScale = d3.scaleLinear()
-      .domain([0, maxVal || 1])
-      .range([0, halfW])
-      .nice();
-
-    var chart = svg.select(".butterfly-chart");
-    if (chart.empty()) { renderButterfly(); return; }
-
-    // Update center line
-    chart.select(".center-line")
-      .transition().duration(600)
-      .attr("y2", MARGIN.top + data.length * ROW_HEIGHT + 10);
-
-    // Data join
-    var rows = chart.selectAll(".bf-row")
-      .data(data, function (d) { return d.subfield + "|" + d.field; });
-
-    // Exit
-    rows.exit()
-      .transition().duration(600)
-      .attr("opacity", 0)
-      .remove();
-
-    // Enter
-    var rowsEnter = rows.enter().append("g")
-      .attr("class", "bf-row")
-      .attr("data-key", function (d) { return rowKey(d); })
-      .attr("opacity", 0);
-
-    // Greece bars (enter)
-    rowsEnter.append("rect")
-      .attr("class", "bf-bar-greece")
-      .attr("x", function (d) { return centerX - xScale(d.greece); })
-      .attr("y", 2)
-      .attr("height", 20)
-      .attr("fill", COLORS.greece)
-      .attr("width", 0)
-      .attr("opacity", 0.85)
-      .attr("rx", 3)
-      .on("mouseenter", onBarMouseEnter)
-      .on("mousemove", moveTooltip)
-      .on("mouseleave", onBarMouseLeave);
-
-    // Abroad bars (enter)
-    rowsEnter.append("rect")
-      .attr("class", "bf-bar-abroad")
-      .attr("x", centerX)
-      .attr("y", 2)
-      .attr("height", 20)
-      .attr("fill", COLORS.abroad)
-      .attr("width", 0)
-      .attr("opacity", 0.85)
-      .attr("rx", 3)
-      .on("mouseenter", onBarMouseEnter)
-      .on("mousemove", moveTooltip)
-      .on("mouseleave", onBarMouseLeave);
-
-    // Center labels (enter)
-    rowsEnter.append("text")
-      .attr("class", "bf-label-center")
-      .attr("x", centerX)
-      .attr("y", 13)
+    /* ── Level indicator label below axis ── */
+    g.append("text")
+      .attr("x", innerW / 2).attr("y", xAxisY + 34)
       .attr("text-anchor", "middle")
-      .attr("dominant-baseline", "central")
-      .attr("fill", COLORS.text)
-      .attr("font-size", "12px")
+      .attr("fill", COLORS.textLight)
+      .attr("font-size", "10px")
       .attr("font-family", "Inter, sans-serif")
-      .text(function (d) { return truncate(d.subfield, 35); });
-
-    // Greece number labels (enter)
-    rowsEnter.append("text")
-      .attr("class", "bf-label-greece")
-      .attr("x", function (d) { return greeceLabelX(d, xScale, centerX); })
-      .attr("y", 13)
-      .attr("text-anchor", "end")
-      .attr("dominant-baseline", "central")
-      .attr("fill", COLORS.greece)
-      .attr("font-size", "11px")
-      .attr("font-family", "Inter, sans-serif")
-      .attr("font-weight", "500")
-      .text(function (d) { return fmtNum(d.greece); });
-
-    // Abroad number labels (enter)
-    rowsEnter.append("text")
-      .attr("class", "bf-label-abroad")
-      .attr("x", function (d) { return abroadLabelX(d, xScale, centerX); })
-      .attr("y", 13)
-      .attr("text-anchor", "start")
-      .attr("dominant-baseline", "central")
-      .attr("fill", COLORS.abroad)
-      .attr("font-size", "11px")
-      .attr("font-family", "Inter, sans-serif")
-      .attr("font-weight", "500")
-      .text(function (d) { return fmtNum(d.abroad); });
-
-    // Merge + update positions
-    var rowsAll = rowsEnter.merge(rows);
-
-    rowsAll.transition().duration(600)
-      .attr("opacity", 1)
-      .attr("transform", function (d, i) {
-        return "translate(0," + (MARGIN.top + i * ROW_HEIGHT) + ")";
-      });
-
-    rowsAll
-      .attr("data-key", function (d) { return rowKey(d); })
-      .on("click", function (event, d) {
-        selectDiscipline(rowKey(d));
-      });
-
-    // Update Greece bars
-    rowsAll.select(".bf-bar-greece")
-      .transition().duration(600)
-      .attr("x", function (d) { return centerX - xScale(d.greece); })
-      .attr("width", function (d) { return xScale(d.greece); });
-
-    // Update Abroad bars
-    rowsAll.select(".bf-bar-abroad")
-      .transition().duration(600)
-      .attr("width", function (d) { return xScale(d.abroad); });
-
-    // Update Greece labels
-    rowsAll.select(".bf-label-greece")
-      .transition().duration(600)
-      .attr("x", function (d) { return greeceLabelX(d, xScale, centerX); })
-      .text(function (d) { return fmtNum(d.greece); });
-
-    // Update Abroad labels
-    rowsAll.select(".bf-label-abroad")
-      .transition().duration(600)
-      .attr("x", function (d) { return abroadLabelX(d, xScale, centerX); })
-      .text(function (d) { return fmtNum(d.abroad); });
-
-    // Apply search filter
-    if (searchTerm) {
-      applySearchFilter();
-    }
-    applySelection();
+      .attr("font-style", "italic")
+      .text(isFieldLevel ? "— 学科大类 —" : "— " + currentField + " 子领域 —");
   }
 
-  function renderDisciplinePack(data) {
+  /* ═══════════════════════════════════════════
+     BUBBLE CHART — circle pack (disabled, keep for future use)
+     Always shows field-level aggregation.
+     ═══════════════════════════════════════════ */
+  function renderDisciplinePack(allSubfieldData) {
+    return; /* BUBBLE CHART disabled — remove this line to re-enable */
     var svg = d3.select("#discipline-pack-svg");
-    if (svg.empty()) return;
-
-    var w = 420;
-    var h = Math.max(420, Math.min(760, 150 + data.length * 5));
-    var legendSpace = 72;
-    svg.attr("viewBox", "0 0 " + w + " " + h);
     svg.selectAll("*").remove();
 
-    var nodes = data.map(function (d) {
-      var total = d.greece + d.abroad;
-      return {
-        key: rowKey(d),
-        subfield: d.subfield,
-        field: d.field,
-        greece: d.greece,
-        abroad: d.abroad,
-        value: total,
-        abroadPct: total > 0 ? d.abroad / total * 100 : 0
-      };
-    }).filter(function (d) { return d.value > 0; });
+    var vbW = 420, vbH = 600;
+    svg.attr("viewBox", "0 0 " + vbW + " " + vbH);
+    svg.attr("preserveAspectRatio", "xMidYMid meet");
 
+    /* Aggregate from the FULL dataset, not the filtered one */
+    var fieldMap = {};
+    allSubfieldData.forEach(function (d) {
+      if (!fieldMap[d.field]) fieldMap[d.field] = { field: d.field, total: 0, abroad: 0, count: 0 };
+      fieldMap[d.field].total += d.greece + d.abroad;
+      fieldMap[d.field].abroad += d.abroad;
+      fieldMap[d.field].count += 1;
+    });
+    var fields = Object.values(fieldMap).map(function (f) {
+      f.abroadPct = f.total > 0 ? f.abroad / f.total * 100 : 0;
+      return f;
+    });
+
+    /* ── Drop-shadow filter ── */
+    var defs = svg.append("defs");
+    var filter = defs.append("filter")
+      .attr("id", "pack-shadow")
+      .attr("x", "-20%").attr("y", "-20%")
+      .attr("width", "140%").attr("height", "140%");
+    filter.append("feDropShadow")
+      .attr("dx", 1.5).attr("dy", 2)
+      .attr("stdDeviation", 3)
+      .attr("flood-color", "#000")
+      .attr("flood-opacity", 0.18);
+
+    /* ── Pack layout ── */
+    var packData = { children: fields.map(function (f) { return { value: f.total, data: f }; }) };
+    var pack = d3.pack().size([vbW - 30, vbH - 30]).padding(6);
+    var root = d3.hierarchy(packData).sum(function (d) { return d.value; });
+    var nodes = pack(root).leaves();
+
+    /* ── Color scale: abroad %   color gradient ── */
+    var minPct = d3.min(fields, function (f) { return f.abroadPct; }) || 0;
+    var maxPct = d3.max(fields, function (f) { return f.abroadPct; }) || 100;
     var color = d3.scaleLinear()
-      .domain([0, 20, 40, 50, 60, 80, 100])
-      .range([COLORS.greece, "#4E86AA", "#8FA0BC", "#B9A7C8", "#C99CB1", "#DE7A6D", COLORS.abroad])
-      .interpolate(d3.interpolateRgb.gamma(2.2));
+      .domain([minPct, 35, 50, 65, maxPct])
+      .range([COLORS.greece, COLORS.greeceLight, "#d4b9a0", COLORS.abroadLight, COLORS.abroad])
+      .interpolate(d3.interpolateRgb);
 
-    var root = d3.hierarchy({ children: nodes })
-      .sum(function (d) { return d.value; });
+    var g = svg.append("g").attr("transform", "translate(15,15)");
 
-    d3.pack()
-      .size([w - 20, h - 54 - legendSpace])
-      .padding(3)(root);
-
-    var g = svg.append("g").attr("transform", "translate(10,42)");
-
-    var circles = g.selectAll(".discipline-circle")
-      .data(root.leaves(), function (d) { return d.data.key; })
-      .join("circle")
-        .attr("class", "discipline-circle")
-        .attr("data-key", function (d) { return d.data.key; })
-        .attr("cx", function (d) { return d.x; })
-        .attr("cy", function (d) { return d.y; })
-        .attr("r", 0)
-        .attr("fill", function (d) { return color(d.data.abroadPct); })
-        .attr("stroke", "#fff")
-        .attr("stroke-width", 1.2)
-        .attr("opacity", 0.9)
-        .on("mouseenter", function (event, d) {
-          showTooltip(
-            "<strong>" + truncate(d.data.subfield, 40) + "</strong><br>" +
-            "大类: " + d.data.field + "<br>" +
-            "科学家: " + fmtNum(d.data.value) + "<br>" +
-            "希腊: " + fmtNum(d.data.greece) + "<br>" +
-            "海外: " + fmtNum(d.data.abroad) + "<br>" +
-            "海外占比: " + fmtPct(d.data.abroadPct, 1)
-          );
-          moveTooltip(event);
-        })
-        .on("mousemove", moveTooltip)
-        .on("mouseleave", hideTooltip)
-        .on("click", function (event, d) {
-          selectDiscipline(d.data.key);
-        });
-
-    circles.transition()
-      .duration(600)
-      .ease(d3.easeCubicOut)
+    /* ── Draw circles ── */
+    var circles = g.selectAll("circle").data(nodes).enter().append("circle")
+      .attr("cx", function (d) { return d.x; }).attr("cy", function (d) { return d.y; })
+      .attr("r", 0)
+      .attr("fill", function (d) { return color(d.data.data.abroadPct); })
+      .attr("stroke", "#fff").attr("stroke-width", 2)
+      .attr("filter", "url(#pack-shadow)")
+      .attr("cursor", "pointer")
+      .style("transition", "transform 0.2s ease")
+      .on("mouseenter", function (event, d) {
+        d3.select(this)
+          .attr("stroke-width", 3.5)
+          .attr("stroke", COLORS.highlight);
+        var f = d.data.data;
+        showTooltip(
+          "<strong>" + f.field + "</strong><br>" +
+          "科学家总数: " + fmtNum(f.total) + "<br>" +
+          "<span style='color:" + COLORS.abroad + ";'>海外占比: " + fmtPct(f.abroadPct, 1) + "</span><br>" +
+          "子领域数: " + f.count
+        );
+        moveTooltip(event);
+      })
+      .on("mousemove", function (event) { moveTooltip(event); })
+      .on("mouseleave", function () {
+        d3.select(this)
+          .attr("stroke-width", 2)
+          .attr("stroke", "#fff");
+        hideTooltip();
+      })
+      .on("click", function (event, d) {
+        /* Drill down: set subfield level for the clicked field */
+        level = "subfield";
+        currentField = d.data.data.field;
+        showAll = false;
+        searchTerm = "";
+        d3.select("#bf-field-select").property("value", currentField);
+        d3.select("#bf-search").property("value", "");
+        updateToggleVisibility();
+        updateSearchPlaceholder();
+        renderDumbbell();
+        /* BUBBLE CHART: re-render pack with highlight */
+        renderDisciplinePack(allData);
+      })
+      .transition().duration(700).delay(function (d, i) { return i * 50; })
       .attr("r", function (d) { return d.r; });
 
-    g.selectAll(".discipline-circle-label")
-      .data(root.leaves(), function (d) { return d.data.key; })
-      .join("text")
-        .attr("class", "discipline-circle-label")
-        .attr("x", function (d) { return d.x; })
-        .attr("y", function (d) {
-          var lines = circleLabelLines(d);
-          var fontSize = circleLabelFontSize(d);
-          return d.y - (lines.length - 1) * fontSize * 0.48;
-        })
-        .attr("text-anchor", "middle")
-        .attr("fill", "#fff")
+    /* ── Transition end: add labels ── */
+    setTimeout(function () {
+      /* Field name labels (inside) */
+      g.selectAll("text.field-label").data(nodes).enter().append("text")
+        .attr("class", "field-label")
+        .attr("x", function (d) { return d.x; }).attr("y", function (d) { return d.y - 4; })
+        .attr("text-anchor", "middle").attr("dominant-baseline", "central")
+        .attr("fill", "#fff").attr("font-size", "11px")
         .attr("font-family", "Inter, sans-serif")
-        .attr("font-size", function (d) { return circleLabelFontSize(d); })
-        .attr("font-weight", "600")
+        .attr("font-weight", "700")
         .attr("pointer-events", "none")
-        .each(function (d) {
-          var text = d3.select(this);
-          var lines = circleLabelLines(d);
-          var fontSize = circleLabelFontSize(d);
-          text.selectAll("tspan")
-            .data(lines)
-            .join("tspan")
-              .attr("x", d.x)
-              .attr("dy", function (_, i) { return i === 0 ? 0 : fontSize * 1.05; })
-              .text(function (line) { return line; });
-        });
+        .attr("opacity", function (d) { return d.r > 28 ? 1 : 0; })
+        .text(function (d) { return d.data.data.field; });
 
-    var legendW = 240;
-    var legendH = 10;
-    var legendX = (w - legendW) / 2;
-    var legendY = h - 44;
-    var defs = svg.append("defs");
-    var gradient = defs.append("linearGradient")
-      .attr("id", "discipline-pack-gradient")
-      .attr("x1", "0%")
-      .attr("x2", "100%")
-      .attr("y1", "0%")
-      .attr("y2", "0%");
-    [
-      [0, 0],
-      [20, 20],
-      [40, 40],
-      [50, 50],
-      [60, 60],
-      [80, 80],
-      [100, 100]
-    ].forEach(function (stop) {
-      gradient.append("stop")
-        .attr("offset", stop[0] + "%")
-        .attr("stop-color", color(stop[1]));
-    });
+      /* Abroad % labels (below field name, inside) */
+      g.selectAll("text.pct-label").data(nodes).enter().append("text")
+        .attr("class", "pct-label")
+        .attr("x", function (d) { return d.x; }).attr("y", function (d) { return d.y + 12; })
+        .attr("text-anchor", "middle").attr("dominant-baseline", "central")
+        .attr("fill", "rgba(255,255,255,0.85)").attr("font-size", "10px")
+        .attr("font-family", "Inter, sans-serif")
+        .attr("font-weight", "400")
+        .attr("pointer-events", "none")
+        .attr("opacity", function (d) { return d.r > 32 ? 1 : 0; })
+        .text(function (d) { return fmtPct(d.data.data.abroadPct, 1) + " 海外"; });
+    }, 750);
 
-    var legend = svg.append("g").attr("transform", "translate(" + legendX + "," + legendY + ")");
-    legend.append("rect")
-      .attr("width", legendW)
-      .attr("height", legendH)
-      .attr("fill", "url(#discipline-pack-gradient)")
-      .attr("rx", 2);
-    legend.append("text")
-      .attr("x", 0)
-      .attr("y", 24)
-      .attr("fill", COLORS.greece)
-      .attr("font-family", "Inter, sans-serif")
-      .attr("font-size", "10px")
-      .text("本土更多");
-    legend.append("text")
-      .attr("x", legendW / 2)
-      .attr("y", 24)
-      .attr("text-anchor", "middle")
-      .attr("fill", COLORS.textSecondary)
-      .attr("font-family", "Inter, sans-serif")
-      .attr("font-size", "10px")
-      .text("接近均衡");
-    legend.append("text")
-      .attr("x", legendW)
-      .attr("y", 24)
+    /* ── Color legend ── */
+    var legendY = vbH - 18;
+    var legendX = 18;
+    var legendW = vbW - 36;
+    var legendG = svg.append("g").attr("transform", "translate(" + legendX + "," + legendY + ")");
+
+    var defsGrad = svg.append("defs");
+    var gradient = defsGrad.append("linearGradient")
+      .attr("id", "pack-color-gradient")
+      .attr("x1", "0%").attr("y1", "0%")
+      .attr("x2", "100%").attr("y2", "0%");
+    gradient.append("stop").attr("offset", "0%").attr("stop-color", COLORS.greece);
+    gradient.append("stop").attr("offset", "50%").attr("stop-color", COLORS.greeceLight);
+    gradient.append("stop").attr("offset", "100%").attr("stop-color", COLORS.abroadLight);
+
+    legendG.append("rect")
+      .attr("width", legendW).attr("height", 8)
+      .attr("rx", 4)
+      .attr("fill", "url(#pack-color-gradient)");
+
+    legendG.append("text")
+      .attr("x", 0).attr("y", -6)
+      .attr("fill", COLORS.greece).attr("font-size", "9px")
+      .attr("font-family", "Inter, sans-serif").attr("font-weight", "600")
+      .text("低流失");
+    legendG.append("text")
+      .attr("x", legendW).attr("y", -6)
       .attr("text-anchor", "end")
-      .attr("fill", COLORS.abroad)
+      .attr("fill", COLORS.abroadLight).attr("font-size", "9px")
+      .attr("font-family", "Inter, sans-serif").attr("font-weight", "600")
+      .text("高流失");
+    legendG.append("text")
+      .attr("x", legendW / 2).attr("y", 20)
+      .attr("text-anchor", "middle")
+      .attr("fill", COLORS.textLight).attr("font-size", "9px")
       .attr("font-family", "Inter, sans-serif")
-      .attr("font-size", "10px")
-      .text("海外更多");
-
-    applySelection();
+      .text("气泡大小 = 科学家总数  颜色 = 海外流失比例  点击可下钻");
   }
 
-  function selectDiscipline(key) {
-    selectedKey = selectedKey === key ? null : key;
-    applySelection();
-  }
-
-  function applySelection() {
-    if (!selectedKey) {
-      d3.selectAll(".bf-row").classed("is-selected", false);
-      d3.selectAll(".bf-row rect")
-        .attr("opacity", 0.86)
-        .attr("height", 20)
-        .attr("y", 2);
-      d3.selectAll(".bf-row text")
-        .attr("font-weight", "500");
-      d3.selectAll(".discipline-circle")
-        .attr("opacity", 0.9)
-        .attr("stroke", "#fff")
-        .attr("stroke-width", 1.2)
-        .attr("r", function (d) { return d.r; });
-      return;
+  /* ═══════════════════════════════════════════
+     Controls
+     ═══════════════════════════════════════════ */
+  function updateToggleVisibility() {
+    var btn = d3.select("#bf-toggle");
+    if (level === "field") {
+      btn.style("display", "none");
+    } else {
+      btn.style("display", null);
+      btn.text(showAll ? "显示前 30 项" : "显示全部项");
     }
-
-    d3.selectAll(".bf-row").classed("is-selected", function (d) {
-      return selectedKey && rowKey(d) === selectedKey;
-    });
-
-    d3.selectAll(".bf-row rect")
-      .transition()
-      .duration(180)
-      .attr("opacity", function () {
-        var row = d3.select(this.parentNode).datum();
-        return selectedKey && rowKey(row) !== selectedKey ? 0.28 : 0.9;
-      })
-      .attr("height", function () {
-        var row = d3.select(this.parentNode).datum();
-        return selectedKey && rowKey(row) === selectedKey ? 24 : 20;
-      })
-      .attr("y", function () {
-        var row = d3.select(this.parentNode).datum();
-        return selectedKey && rowKey(row) === selectedKey ? 0 : 2;
-      });
-
-    d3.selectAll(".bf-row text")
-      .transition()
-      .duration(180)
-      .attr("font-weight", function () {
-        var row = d3.select(this.parentNode).datum();
-        return selectedKey && rowKey(row) === selectedKey ? "700" : "500";
-      });
-
-    d3.selectAll(".discipline-circle")
-      .transition()
-      .duration(180)
-      .attr("opacity", function (d) {
-        return selectedKey && d.data.key !== selectedKey ? 0.25 : 0.92;
-      })
-      .attr("stroke", function (d) {
-        return selectedKey && d.data.key === selectedKey ? COLORS.highlight : "#fff";
-      })
-      .attr("stroke-width", function (d) {
-        return selectedKey && d.data.key === selectedKey ? 3 : 1.2;
-      })
-      .attr("r", function (d) {
-        return selectedKey && d.data.key === selectedKey ? d.r * 1.22 : d.r;
-      });
   }
 
-  // ── Tooltip handlers ──
-  function onBarMouseEnter(event, d) {
-    d3.select(this).attr("opacity", 1);
-    showTooltip(
-      "<strong>" + truncate(d.subfield, 40) + "</strong><br>" +
-      "大类: " + d.field + "<br>" +
-      "希腊: " + fmtNum(d.greece) + "<br>" +
-      "海外: " + fmtNum(d.abroad) + "<br>" +
-      formatRatioText(d)
-    );
+  function updateSearchPlaceholder() {
+    d3.select("#bf-search").attr("placeholder",
+      level === "field" ? "搜索学科大类..." : "搜索子领域...");
   }
 
-  function onBarMouseLeave() {
-    d3.select(this).attr("opacity", 0.85);
-    hideTooltip();
-  }
-
-  // ── Search filter (opacity-based) ──
-  function applySearchFilter() {
-    var term = searchTerm.toLowerCase().trim();
-    d3.selectAll(".bf-row").each(function (d) {
-      var match = !term || d.subfield.toLowerCase().indexOf(term) !== -1;
-      d3.select(this)
-        .transition().duration(300)
-        .attr("opacity", match ? 1 : 0.15);
-    });
-  }
-
-  // ── Helper: format ratio text for tooltips ──
-  // data.ratio is greece/abroad; we display abroad/greece
-  function formatRatioText(d) {
-    if (d.greece === 0 && d.abroad === 0) return "无数据";
-    if (d.greece === 0) return "海外 " + fmtNum(d.abroad) + " 人，本土无";
-    if (d.abroad === 0) return "本土 " + fmtNum(d.greece) + " 人，海外无";
-    var abrGrc = d.abroad / d.greece;
-    if (abrGrc >= 1) return "海外是本土的 " + abrGrc.toFixed(1) + " 倍";
-    return "本土是海外的 " + (d.greece / d.abroad).toFixed(1) + " 倍";
-  }
-
-  // ── Helper: truncate string ──
-  function truncate(str, maxLen) {
-    if (!str) return "";
-    if (str.length <= maxLen) return str;
-    return str.substring(0, maxLen - 1) + "…";
-  }
-
-  function rowKey(d) {
-    return d.subfield + "|" + d.field;
-  }
-
-  function circleLabelFontSize(d) {
-    return Math.max(3.2, Math.min(10, d.r / 3.1));
-  }
-
-  function circleLabelLines(d) {
-    var fontSize = circleLabelFontSize(d);
-    var maxChars = Math.max(1, Math.floor((d.r * 1.45) / fontSize));
-    var maxLines = Math.max(1, Math.min(3, Math.floor((d.r * 1.45) / (fontSize * 1.05))));
-    var source = d.data.subfield || "";
-    var normalized = source.replace(/&/g, " & ").replace(/\s+/g, " ").trim();
-    var words = normalized.split(" ");
-    var lines = [];
-    var current = "";
-
-    words.forEach(function (word) {
-      if (!word) return;
-      if (word.length > maxChars) {
-        if (current) {
-          lines.push(current);
-          current = "";
-        }
-        for (var i = 0; i < word.length && lines.length < maxLines; i += maxChars) {
-          lines.push(word.slice(i, i + maxChars));
-        }
-        return;
-      }
-      var candidate = current ? current + " " + word : word;
-      if (candidate.length <= maxChars) {
-        current = candidate;
-      } else {
-        if (current) lines.push(current);
-        current = word;
-      }
-    });
-    if (current && lines.length < maxLines) lines.push(current);
-    if (!lines.length) lines.push(source.slice(0, maxChars));
-    if (lines.length > maxLines) lines = lines.slice(0, maxLines);
-
-    var used = lines.join(" ").length;
-    if (used < source.length && lines.length) {
-      var last = lines.length - 1;
-      if (lines[last].length >= maxChars) {
-        lines[last] = lines[last].slice(0, Math.max(1, maxChars - 1)) + ".";
-      } else {
-        lines[last] += ".";
-      }
-    }
-    return lines;
-  }
-
-  function labelHalfWidth(d) {
-    return truncate(d.subfield, 35).length * 3.6 + 8;
-  }
-
-  function greeceLabelX(d, xScale, centerX) {
-    var barOuterX = centerX - xScale(d.greece) - 8;
-    var textOuterX = centerX - labelHalfWidth(d) - 8;
-    return Math.min(barOuterX, textOuterX);
-  }
-
-  function abroadLabelX(d, xScale, centerX) {
-    var barOuterX = centerX + xScale(d.abroad) + 8;
-    var textOuterX = centerX + labelHalfWidth(d) + 8;
-    return Math.max(barOuterX, textOuterX);
-  }
-
-  // ── Set up control event listeners ──
   function setupControls() {
-    // Set initial button text
-    d3.select("#bf-toggle").text("显示全部 " + allData.length + " 项");
-
-    // Field select
+    /* ── Field select dropdown ── */
     d3.select("#bf-field-select").on("change", function () {
-      currentField = this.value;
-      updateButterfly();
+      var val = this.value;
+      if (val === "all") {
+        /* Back to field-level view */
+        level = "field";
+        currentField = "all";
+        showAll = false;
+      } else {
+        /* Drill into subfield view for the selected field */
+        level = "subfield";
+        currentField = val;
+        showAll = false;
+      }
+      searchTerm = "";
+      d3.select("#bf-search").property("value", "");
+      updateToggleVisibility();
+      updateSearchPlaceholder();
+      renderDumbbell();
+      renderDisciplinePack(allData); /* BUBBLE CHART */
     });
 
-    // Search input
+    /* ── Search input ── */
     d3.select("#bf-search").on("keyup", function () {
       searchTerm = this.value;
-      applySearchFilter();
+      renderDumbbell();
     });
 
-    // Toggle button
+    /* ── Toggle button (show top 30 / show all, subfield mode only) ── */
     d3.select("#bf-toggle").on("click", function () {
       showAll = !showAll;
-      d3.select(this).text(showAll ? "显示前 30 项" : "显示全部 " + allData.length + " 项");
-      updateButterfly();
+      d3.select(this).text(showAll ? "显示前 30 项" : "显示全部项");
+      renderDumbbell();
     });
-  }
 
+    /* Initial visibility */
+    updateToggleVisibility();
+    updateSearchPlaceholder();
+  }
 })();

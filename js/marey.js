@@ -6,8 +6,8 @@
 (function () {
   "use strict";
 
-  var SVG_W = 560;
-  var SVG_H = 560;
+  var SVG_W = 900;
+  var SVG_H = 500;
   var MARGIN = { top: 54, right: 58, bottom: 72, left: 58 };
   var ANIM_DURATION = 550;
 
@@ -193,7 +193,7 @@
       .attr("x", innerW / 2)
       .attr("y", innerH + 54)
       .attr("text-anchor", "middle")
-      .text("首次发表年份");
+      .text("科学家首次发表论文的年份");
 
     g.append("text")
       .attr("class", "axis-label")
@@ -209,7 +209,7 @@
       .attr("x", innerH / 2)
       .attr("y", -innerW - 44)
       .attr("text-anchor", "middle")
-      .text("海外比例");
+      .text("海外科学家比例");
   }
 
   function drawBars(g, data, x, groupX, yCount, innerH) {

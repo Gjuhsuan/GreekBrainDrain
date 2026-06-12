@@ -1,313 +1,200 @@
 /* ═══════════════════════════════════════════
-   heatmap.js — Section 5: Percentile Pyramid
+   heatmap.js — Percentile stacked bar chart
+   Multi-metric: c_ns | cpp_ns | h19_ns
+   First load: animate from 0. Switches: smooth transition.
    Greek Brain Drain · Data Visualization Project
    ═══════════════════════════════════════════ */
 
 (function () {
+  "use strict";
+
+  var currentMetric = "c_ns";
+  var allPercentileData = null;
   var initialized = false;
 
-  function initHeatmap() {
-    if (initialized) return;
-    initialized = true;
+  /* ── Shared layout constants ── */
+  var vbW = 960, vbH = 370;
+  var margin = { top: 24, right: 60, bottom: 38, left: 90 };
+  var innerW = vbW - margin.left - margin.right;
+  var innerH = vbH - margin.top - margin.bottom;
+  var x = d3.scaleLinear().domain([0, 100]).range([0, innerW]);
 
-    var svg = d3.select("#percentile-svg");
-    if (svg.empty()) return;
+  function renderBars(metricKey) {
+    var svg = d3.select("#percentile-bar-svg");
+    if (svg.empty() || !allPercentileData) return;
 
-    var viewBox = svg.attr("viewBox");
-    var vbParts = viewBox ? viewBox.split(" ").map(Number) : [0, 0, 960, 400];
-    var vbW = vbParts[2] || 960;
-    var vbH = vbParts[3] || 400;
+    var data = allPercentileData[metricKey];
+    if (!data) return;
 
-    var margin = { top: 30, right: 200, bottom: 50, left: 100 };
-    var innerW = vbW - margin.left - margin.right;
-    var innerH = vbH - margin.top - margin.bottom;
-    var centerX = innerW / 2;   /* central axis — bars extend left/right from here */
+    var tiers = data.map(function (d) { return d.tier; });
+    var y = d3.scaleBand().domain(tiers).range([0, innerH]).padding(0.18);
 
-    /* ── Chart group ── */
-    var g = svg.append("g")
-      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    if (!initialized) {
+      /* ── FIRST RENDER: build everything, animate from 0 ── */
+      svg.attr("viewBox", "0 0 " + vbW + " " + vbH);
 
-    /* ── Load data ── */
-    loadData("percentiles.json").then(function (data) {
-      /* data: [{tier, tier_value, greece, abroad, total}, ...] 8 tiers, already sorted */
+      var g = svg.append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-      /* X scale: each tier uses the same 100% width, so the visual focus is
-         the changing share rather than the shrinking sample size. */
-      var xScale = d3.scaleLinear()
-        .domain([0, 100])
-        .range([0, innerW * 0.48]);
+      /* 50% dashed line */
+      g.append("line").attr("class", "pct-line")
+        .attr("x1", x(50)).attr("x2", x(50)).attr("y1", 0).attr("y2", innerH)
+        .attr("stroke", "#bbb").attr("stroke-width", 1).attr("stroke-dasharray", "4 3");
 
-      /* Y scale: band by tier, bottom-to-top (前50% bottom, 前0.1% top) */
-      var tiers = data.map(function (d) { return d.tier; });
-      /* data is already [前50% … 前0.1%] — reverse for Y=bottom to Y=top */
-      var yScale = d3.scaleBand()
-        .domain(tiers.slice().reverse())
-        .range([innerH, 0])
-        .padding(0.18);
+      /* Tier groups */
+      var bars = g.selectAll(".pbar").data(data).enter().append("g")
+        .attr("class", "pbar");
 
-      /* ── 50/50 reference line ── */
-      g.append("line")
-        .attr("class", "grid-line")
-        .attr("x1", centerX)
-        .attr("x2", centerX)
-        .attr("y1", 0)
-        .attr("y2", innerH)
-        .attr("stroke", "#999999")
-        .attr("stroke-width", 1.5)
-        .attr("stroke-dasharray", "4 4");
-
-      g.append("text")
-        .attr("x", centerX)
-        .attr("y", -8)
-        .attr("text-anchor", "middle")
-        .attr("fill", "#999999")
-        .attr("font-family", "Inter, Helvetica Neue, PingFang SC, sans-serif")
-        .attr("font-size", "12px")
-        .text("50/50 线");
-
-      /* ── Y-axis tier labels (left side) ── */
-      g.selectAll(".tier-label")
-        .data(data)
-        .enter()
-        .append("text")
-        .attr("class", "tier-label")
-        .attr("x", -10)
-        .attr("y", function (d) { return (yScale(d.tier) || 0) + (yScale.bandwidth() || 0) / 2; })
-        .attr("text-anchor", "middle")
-        .attr("dominant-baseline", "central")
-        .attr("fill", "#666666")
-        .attr("font-family", "Inter, Helvetica Neue, PingFang SC, sans-serif")
-        .attr("font-size", "14px")
+      /* Tier label */
+      bars.append("text").attr("class", "pbar-label")
+        .attr("x", -8).attr("y", function (d) { return y(d.tier) + y.bandwidth() / 2; })
+        .attr("text-anchor", "end").attr("dominant-baseline", "central")
+        .attr("fill", COLORS.text).attr("font-size", "13px")
+        .attr("font-family", "Inter, sans-serif").attr("font-weight", "600")
         .text(function (d) { return d.tier; });
 
-      /* ── Bars (with entry animation) ──
-         Greece: from centerX to the left
-         Abroad: from centerX to the right */
+      /* Greece rect */
+      bars.append("rect").attr("class", "greece-rect")
+        .attr("x", 0).attr("y", function (d) { return y(d.tier); })
+        .attr("width", 0).attr("height", y.bandwidth())
+        .attr("fill", COLORS.greece).attr("rx", 2)
+        .transition().duration(800).delay(function (d, i) { return i * 80; })
+        .attr("width", function (d) { return x(d.greece / d.total * 100); });
 
-      /* Greece bars (left side, blue) */
-      var greeceGroup = g.selectAll(".bar-greece")
-        .data(data)
-        .enter()
-        .append("rect")
-        .attr("class", "bar-greece")
-        .attr("x", centerX)                           /* start at centerX (for animation) */
-        .attr("y", function (d) { return yScale(d.tier); })
-        .attr("height", yScale.bandwidth())
-        .attr("fill", COLORS.greece)
-        .attr("opacity", 0.88)
-        .attr("rx", 2)
-        .attr("width", 0)                              /* start at 0 for animation */
-        .transition()
-        .duration(800)
-        .ease(d3.easeCubicOut)
-        .attr("x", function (d) {
-          var pct = d.greece / d.total * 100;
-          return centerX - xScale(pct);
-        })
-        .attr("width", function (d) {
-          var pct = d.greece / d.total * 100;
-          return xScale(pct);
-        });
+      /* Abroad rect */
+      bars.append("rect").attr("class", "abroad-rect")
+        .attr("x", 0).attr("y", function (d) { return y(d.tier); })
+        .attr("width", 0).attr("height", y.bandwidth())
+        .attr("fill", COLORS.abroad).attr("rx", 2)
+        .transition().duration(800).delay(function (d, i) { return i * 80; })
+        .attr("x", function (d) { return x(d.greece / d.total * 100); })
+        .attr("width", function (d) { return x(d.abroad / d.total * 100); });
 
-      /* Abroad bars (right side, orange) */
-      var abroadGroup = g.selectAll(".bar-abroad")
-        .data(data)
-        .enter()
-        .append("rect")
-        .attr("class", "bar-abroad")
-        .attr("x", centerX)                           /* start at centerX */
-        .attr("y", function (d) { return yScale(d.tier); })
-        .attr("height", yScale.bandwidth())
-        .attr("fill", COLORS.abroad)
-        .attr("opacity", 0.88)
-        .attr("rx", 2)
-        .attr("width", 0)
-        .transition()
-        .duration(800)
-        .ease(d3.easeCubicOut)
-        .attr("x", centerX)
-        .attr("width", function (d) {
-          var pct = d.abroad / d.total * 100;
-          return xScale(pct);
-        });
-
-      /* ── Percentage labels inside bars ── */
-      g.selectAll(".label-greece")
-        .data(data)
-        .enter()
-        .append("text")
-        .attr("class", "label-greece")
-        .attr("x", centerX)
-        .attr("y", function (d) { return yScale(d.tier) + yScale.bandwidth() / 2; })
-        .attr("text-anchor", "end")
+      /* Greece % label */
+      bars.append("text").attr("class", "greece-pct")
+        .attr("y", function (d) { return y(d.tier) + y.bandwidth() / 2; })
         .attr("dominant-baseline", "central")
-        .attr("fill", "#FFFFFF")
-        .attr("font-family", "Inter, Helvetica Neue, PingFang SC, sans-serif")
-        .attr("font-size", "12px")
-        .attr("font-weight", "bold")
+        .attr("font-size", "12px").attr("font-family", "Inter, sans-serif").attr("font-weight", "700")
         .attr("opacity", 0)
-        .transition()
-        .delay(800)
-        .duration(300)
+        .transition().duration(800).delay(function (d, i) { return i * 80; })
         .attr("opacity", 1)
-        .attrTween("x", function (d) {
-          var pct = d.greece / d.total * 100;
-          var targetX = centerX - xScale(pct) / 2;
-          return d3.interpolate(centerX, targetX);
-        })
-        .text(function (d) {
-          var pct = d.greece / d.total * 100;
-          return (pct >= 5) ? fmtPct(pct, 0) : "";
-        });
+        .attr("x", function (d) { var w = x(d.greece / d.total * 100); return w > 30 ? w / 2 : w + 4; })
+        .attr("text-anchor", function (d) { return x(d.greece / d.total * 100) > 30 ? "middle" : "start"; })
+        .attr("fill", function (d) { return x(d.greece / d.total * 100) > 30 ? "#fff" : COLORS.greece; })
+        .text(function (d) { var p = d.greece / d.total * 100; return p >= 6 ? fmtPct(p, 0) : ""; });
 
-      g.selectAll(".label-abroad")
-        .data(data)
-        .enter()
-        .append("text")
-        .attr("class", "label-abroad")
-        .attr("x", centerX)
-        .attr("y", function (d) { return yScale(d.tier) + yScale.bandwidth() / 2; })
-        .attr("text-anchor", "middle")
+      /* Abroad % label */
+      bars.append("text").attr("class", "abroad-pct")
+        .attr("y", function (d) { return y(d.tier) + y.bandwidth() / 2; })
         .attr("dominant-baseline", "central")
-        .attr("fill", "#FFFFFF")
-        .attr("font-family", "Inter, Helvetica Neue, PingFang SC, sans-serif")
-        .attr("font-size", "12px")
-        .attr("font-weight", "bold")
+        .attr("font-size", "12px").attr("font-family", "Inter, sans-serif").attr("font-weight", "700")
         .attr("opacity", 0)
-        .transition()
-        .delay(800)
-        .duration(300)
+        .transition().duration(800).delay(function (d, i) { return i * 80; })
         .attr("opacity", 1)
-        .attrTween("x", function (d) {
-          var pct = d.abroad / d.total * 100;
-          var targetX = centerX + xScale(pct) / 2;
-          return d3.interpolate(centerX, targetX);
-        })
-        .text(function (d) {
-          var pct = d.abroad / d.total * 100;
-          return (pct >= 5) ? fmtPct(pct, 0) : "";
-        });
+        .attr("x", function (d) { var left = x(d.greece / d.total * 100); var w = x(d.abroad / d.total * 100); return w > 30 ? left + w / 2 : left + w + 4; })
+        .attr("text-anchor", function (d) { return x(d.abroad / d.total * 100) > 30 ? "middle" : "start"; })
+        .attr("fill", function (d) { return x(d.abroad / d.total * 100) > 30 ? "#fff" : COLORS.abroad; })
+        .text(function (d) { var p = d.abroad / d.total * 100; return p >= 6 ? fmtPct(p, 0) : ""; });
 
-      /* ── Annotation for top 0.1% ── */
-      var topTier = data[data.length - 1];   /* 前0.1% */
-      var topY = yScale(topTier.tier) + yScale.bandwidth() / 2;
-      var topAbroadPct = topTier.abroad / topTier.total * 100;
-      var annotationX = centerX + xScale(topAbroadPct) + 12;
-
-      /* Minimum offset so annotation has breathing room */
-      if (annotationX < centerX + 10) annotationX = centerX + 14;
-
-      /* Arrow stem */
-      g.append("line")
-        .attr("x1", centerX + xScale(topAbroadPct) + 4)
-        .attr("y1", topY)
-        .attr("x2", annotationX)
-        .attr("y2", topY)
-        .attr("stroke", COLORS.abroad)
-        .attr("stroke-width", 1.5)
-        .attr("opacity", 0)
-        .transition()
-        .delay(1000)
-        .duration(400)
-        .attr("opacity", 1);
-
-      /* Annotation text background (subtle box) */
-      g.append("rect")
-        .attr("x", annotationX + 4)
-        .attr("y", topY - 18)
-        .attr("width", 150)
-        .attr("height", 36)
-        .attr("rx", 4)
-        .attr("fill", "#FFF8F0")
-        .attr("stroke", COLORS.abroadLight)
-        .attr("stroke-width", 1)
-        .attr("opacity", 0)
-        .transition()
-        .delay(1000)
-        .duration(400)
-        .attr("opacity", 1);
-
-      /* Annotation text */
-      g.append("text")
-        .attr("x", annotationX + 10)
-        .attr("y", topY - 2)
-        .attr("fill", COLORS.abroad)
-        .attr("font-family", "Inter, Helvetica Neue, PingFang SC, sans-serif")
-        .attr("font-size", "11.5px")
-        .attr("font-weight", "600")
-        .attr("opacity", 0)
-        .transition()
-        .delay(1000)
-        .duration(400)
-        .attr("opacity", 1)
-        .text("海外占 86%，仅 15 人留在希腊");
-
-      /* ── Sample-size labels ── */
-      g.selectAll(".tier-total")
-        .data(data)
-        .enter()
-        .append("text")
-        .attr("class", "tier-total")
-        .attr("x", centerX + xScale(100) + 14)
-        .attr("y", function (d) { return yScale(d.tier) + yScale.bandwidth() / 2; })
-        .attr("dominant-baseline", "central")
-        .attr("fill", COLORS.textLight)
-        .attr("font-family", "Inter, Helvetica Neue, PingFang SC, sans-serif")
-        .attr("font-size", "12px")
-        .attr("opacity", 0)
-        .transition()
-        .delay(800)
-        .duration(300)
-        .attr("opacity", 1)
-        .text(function (d) { return "n=" + fmtNum(d.total); });
-
-      /* ── Hover areas (invisible rects over each tier row) ── */
-      g.selectAll(".hover-zone")
-        .data(data)
-        .enter()
-        .append("rect")
-        .attr("class", "hover-zone")
-        .attr("x", 0)
-        .attr("y", function (d) { return yScale(d.tier); })
-        .attr("width", innerW)
-        .attr("height", yScale.bandwidth())
+      /* Hover zones */
+      bars.append("rect").attr("class", "pbar-hover")
+        .attr("x", 0).attr("y", function (d) { return y(d.tier); })
+        .attr("width", innerW).attr("height", y.bandwidth())
         .attr("fill", "transparent")
         .on("mouseenter", function (event, d) {
-          var greecePct = d.greece / d.total * 100;
-          var abroadPct = d.abroad / d.total * 100;
+          var gp = d.greece / d.total * 100, ap = d.abroad / d.total * 100;
           showTooltip(
             "<div style='font-weight:700;margin-bottom:4px;'>" + d.tier + "</div>" +
-            "<div style='color:" + COLORS.greece + ";'>希腊本土：" + fmtNum(d.greece) + " 人（" + fmtPct(greecePct, 1) + "）</div>" +
-            "<div style='color:" + COLORS.abroad + ";'>海外：" + fmtNum(d.abroad) + " 人（" + fmtPct(abroadPct, 1) + "）</div>" +
+            "<div style='color:" + COLORS.greece + ";'>希腊本土：" + fmtNum(d.greece) + " 人（" + fmtPct(gp, 1) + "）</div>" +
+            "<div style='color:" + COLORS.abroad + ";'>海外：" + fmtNum(d.abroad) + " 人（" + fmtPct(ap, 1) + "）</div>" +
             "<div style='color:#999;margin-top:2px;'>合计：" + fmtNum(d.total) + " 人</div>"
           );
           moveTooltip(event);
-
-          /* Highlight this row's bars */
-          g.selectAll(".bar-greece")
-            .transition().duration(150)
-            .attr("opacity", function (bar) { return bar === d ? 1 : 0.35; });
-          g.selectAll(".bar-abroad")
-            .transition().duration(150)
-            .attr("opacity", function (bar) { return bar === d ? 1 : 0.35; });
         })
-        .on("mousemove", function (event) {
-          moveTooltip(event);
-        })
-        .on("mouseleave", function () {
-          hideTooltip();
-          g.selectAll(".bar-greece")
-            .transition().duration(150)
-            .attr("opacity", 0.88);
-          g.selectAll(".bar-abroad")
-            .transition().duration(150)
-            .attr("opacity", 0.88);
-        });
+        .on("mousemove", function (event) { moveTooltip(event); })
+        .on("mouseleave", function () { hideTooltip(); });
 
-    }); /* end loadData */
+      /* X axis ticks */
+      var tickG = g.append("g").attr("class", "x-ticks");
+      [0, 25, 50, 75, 100].forEach(function (t) {
+        tickG.append("text")
+          .attr("x", x(t)).attr("y", innerH + 16)
+          .attr("text-anchor", "middle")
+          .attr("fill", COLORS.textLight).attr("font-size", "11px")
+          .attr("font-family", "Inter, sans-serif").text(t + "%");
+      });
+
+      /* Legend */
+      var ly = innerH + 28;
+      var legendG = g.append("g").attr("class", "legend-g");
+      legendG.append("rect").attr("x", 0).attr("y", ly).attr("width", 10).attr("height", 10).attr("fill", COLORS.greece).attr("rx", 2);
+      legendG.append("text").attr("x", 14).attr("y", ly + 9).attr("fill", COLORS.textSecondary).attr("font-size", "13px").attr("font-family", "Inter, sans-serif").text("希腊");
+      legendG.append("rect").attr("x", 72).attr("y", ly).attr("width", 12).attr("height", 12).attr("fill", COLORS.abroad).attr("rx", 2);
+      legendG.append("text").attr("x", 88).attr("y", ly + 9).attr("fill", COLORS.textSecondary).attr("font-size", "13px").attr("font-family", "Inter, sans-serif").text("海外");
+      // Center the legend
+      var legendW = 120;
+      legendG.attr("transform", "translate(" + ((innerW - legendW) / 2) + ",0)");
+
+      initialized = true;
+
+    } else {
+      /* ── SUBSEQUENT SWITCHES: smooth transition from current state ── */
+
+      // Rebind data and transition bars
+      var bars = d3.select("#percentile-bar-svg g")
+        .selectAll(".pbar")
+        .data(data);
+
+      // Greece rect: transition width
+      bars.select(".greece-rect")
+        .transition().duration(600).delay(function (d, i) { return i * 30; })
+        .attr("width", function (d) { return x(d.greece / d.total * 100); });
+
+      // Abroad rect: transition x + width
+      bars.select(".abroad-rect")
+        .transition().duration(600).delay(function (d, i) { return i * 30; })
+        .attr("x", function (d) { return x(d.greece / d.total * 100); })
+        .attr("width", function (d) { return x(d.abroad / d.total * 100); });
+
+      // Greece % label
+      bars.select(".greece-pct")
+        .transition().duration(600).delay(function (d, i) { return i * 30; })
+        .attr("x", function (d) { var w = x(d.greece / d.total * 100); return w > 30 ? w / 2 : w + 4; })
+        .attr("text-anchor", function (d) { return x(d.greece / d.total * 100) > 30 ? "middle" : "start"; })
+        .attr("fill", function (d) { return x(d.greece / d.total * 100) > 30 ? "#fff" : COLORS.greece; })
+        .text(function (d) { var p = d.greece / d.total * 100; return p >= 6 ? fmtPct(p, 0) : ""; });
+
+      // Abroad % label
+      bars.select(".abroad-pct")
+        .transition().duration(600).delay(function (d, i) { return i * 30; })
+        .attr("x", function (d) { var left = x(d.greece / d.total * 100); var w = x(d.abroad / d.total * 100); return w > 30 ? left + w / 2 : left + w + 4; })
+        .attr("text-anchor", function (d) { return x(d.abroad / d.total * 100) > 30 ? "middle" : "start"; })
+        .attr("fill", function (d) { return x(d.abroad / d.total * 100) > 30 ? "#fff" : COLORS.abroad; })
+        .text(function (d) { var p = d.abroad / d.total * 100; return p >= 6 ? fmtPct(p, 0) : ""; });
+    }
+
+    /* Update button states */
+    d3.selectAll("#percentile-metric-btns .metric-btn")
+      .classed("active", function () { return d3.select(this).attr("data-metric") === metricKey; });
   }
 
-  /* ── Trigger on scroll into view ── */
-  setTimeout(initHeatmap, 200);
+  function setupMetricButtons() {
+    d3.selectAll("#percentile-metric-btns .metric-btn").on("click", function () {
+      currentMetric = d3.select(this).attr("data-metric");
+      renderBars(currentMetric);
+    });
+  }
 
+  function initPercentileBars() {
+    var svg = d3.select("#percentile-bar-svg");
+    if (svg.empty()) return;
+
+    loadData("percentiles.json").then(function (data) {
+      allPercentileData = data;
+      setupMetricButtons();
+      renderBars(currentMetric);
+    });
+  }
+
+  setTimeout(initPercentileBars, 300);
 })();

@@ -1,0 +1,3786 @@
+[
+  {
+    "code": "grc",
+    "name": "Greece",
+    "scopus_total": 35116,
+    "scopus_pct_total": 55.6,
+    "scopus_pct_overseas": null,
+    "is_greece": true,
+    "institution_count": 2710,
+    "top_institutions": [
+      {
+        "name": "Aristotle University of Thessaloniki",
+        "count": 4239
+      },
+      {
+        "name": "National and Kapodistrian University of Athens",
+        "count": 3970
+      },
+      {
+        "name": "National Technical University of Athens",
+        "count": 2163
+      },
+      {
+        "name": "Panepistimion Patron",
+        "count": 1860
+      },
+      {
+        "name": "Panepistimion Ioanninon",
+        "count": 947
+      }
+    ],
+    "median_firstyr": 2002.0,
+    "median_nc9619_ns": 139.0,
+    "median_h19_ns": 6.0,
+    "median_c_ns": 1.49,
+    "flow_count": 0,
+    "active_authors": 37360,
+    "median_first_flow_year": null,
+    "year_range": [
+      1933,
+      2025
+    ]
+  },
+  {
+    "code": "usa",
+    "name": "United States",
+    "scopus_total": 9339,
+    "scopus_pct_total": 14.8,
+    "scopus_pct_overseas": 33.3,
+    "is_greece": false,
+    "institution_count": 2724,
+    "top_institutions": [
+      {
+        "name": "Harvard Medical School",
+        "count": 150
+      },
+      {
+        "name": "Massachusetts Institute of Technology",
+        "count": 108
+      },
+      {
+        "name": "Columbia University in the City of New York",
+        "count": 85
+      },
+      {
+        "name": "University of Michigan, Ann Arbor",
+        "count": 79
+      },
+      {
+        "name": "Stanford University",
+        "count": 73
+      }
+    ],
+    "median_firstyr": 1999.0,
+    "median_nc9619_ns": 252.0,
+    "median_h19_ns": 7.0,
+    "median_c_ns": 1.77,
+    "flow_count": 7430,
+    "active_authors": 21660,
+    "median_first_flow_year": 2006.0,
+    "year_range": [
+      1904,
+      2025
+    ]
+  },
+  {
+    "code": "gbr",
+    "name": "United Kingdom",
+    "scopus_total": 6165,
+    "scopus_pct_total": 9.8,
+    "scopus_pct_overseas": 22.0,
+    "is_greece": false,
+    "institution_count": 1059,
+    "top_institutions": [
+      {
+        "name": "Imperial College London",
+        "count": 373
+      },
+      {
+        "name": "University College London",
+        "count": 270
+      },
+      {
+        "name": "King's College London",
+        "count": 178
+      },
+      {
+        "name": "University of Cambridge",
+        "count": 140
+      },
+      {
+        "name": "The University of Manchester",
+        "count": 138
+      }
+    ],
+    "median_firstyr": 2006.0,
+    "median_nc9619_ns": 162.0,
+    "median_h19_ns": 6.0,
+    "median_c_ns": 1.64,
+    "flow_count": 5307,
+    "active_authors": 14129,
+    "median_first_flow_year": 2007.0,
+    "year_range": [
+      1938,
+      2025
+    ]
+  },
+  {
+    "code": "deu",
+    "name": "Germany",
+    "scopus_total": 2083,
+    "scopus_pct_total": 3.3,
+    "scopus_pct_overseas": 7.4,
+    "is_greece": false,
+    "institution_count": 648,
+    "top_institutions": [
+      {
+        "name": "Technical University of Munich",
+        "count": 58
+      },
+      {
+        "name": "Universität Heidelberg",
+        "count": 46
+      },
+      {
+        "name": "Charité – Universitätsmedizin Berlin",
+        "count": 39
+      },
+      {
+        "name": "Universität Freiburg im Breisgau",
+        "count": 36
+      },
+      {
+        "name": "University of Cologne",
+        "count": 35
+      }
+    ],
+    "median_firstyr": 2006.0,
+    "median_nc9619_ns": 141.0,
+    "median_h19_ns": 5.0,
+    "median_c_ns": 1.49,
+    "flow_count": 1815,
+    "active_authors": 6137,
+    "median_first_flow_year": 2009.0,
+    "year_range": [
+      1923,
+      2025
+    ]
+  },
+  {
+    "code": "cyp",
+    "name": "Cyprus",
+    "scopus_total": 1688,
+    "scopus_pct_total": 2.7,
+    "scopus_pct_overseas": 6.0,
+    "is_greece": false,
+    "institution_count": 227,
+    "top_institutions": [
+      {
+        "name": "University of Cyprus",
+        "count": 556
+      },
+      {
+        "name": "Cyprus University of Technology",
+        "count": 230
+      },
+      {
+        "name": "University of Nicosia",
+        "count": 119
+      },
+      {
+        "name": "Cyprus Institute of Neurology and Genetics",
+        "count": 84
+      },
+      {
+        "name": "European University Cyprus",
+        "count": 78
+      }
+    ],
+    "median_firstyr": 2006.0,
+    "median_nc9619_ns": 136.0,
+    "median_h19_ns": 6.0,
+    "median_c_ns": 1.59,
+    "flow_count": 687,
+    "active_authors": 2934,
+    "median_first_flow_year": 2014.0,
+    "year_range": [
+      1949,
+      2025
+    ]
+  },
+  {
+    "code": "aus",
+    "name": "Australia",
+    "scopus_total": 1155,
+    "scopus_pct_total": 1.8,
+    "scopus_pct_overseas": 4.1,
+    "is_greece": false,
+    "institution_count": 316,
+    "top_institutions": [
+      {
+        "name": "Monash University",
+        "count": 100
+      },
+      {
+        "name": "University of Melbourne",
+        "count": 96
+      },
+      {
+        "name": "The University of Sydney",
+        "count": 62
+      },
+      {
+        "name": "University of New South Wales (UNSW) Australia",
+        "count": 52
+      },
+      {
+        "name": "The University of Adelaide",
+        "count": 35
+      }
+    ],
+    "median_firstyr": 2001.0,
+    "median_nc9619_ns": 222.0,
+    "median_h19_ns": 7.0,
+    "median_c_ns": 1.69,
+    "flow_count": 428,
+    "active_authors": 2609,
+    "median_first_flow_year": 2011.0,
+    "year_range": [
+      1938,
+      2025
+    ]
+  },
+  {
+    "code": "fra",
+    "name": "France",
+    "scopus_total": 1141,
+    "scopus_pct_total": 1.8,
+    "scopus_pct_overseas": 4.1,
+    "is_greece": false,
+    "institution_count": 536,
+    "top_institutions": [
+      {
+        "name": "Sorbonne Universite",
+        "count": 51
+      },
+      {
+        "name": "CNRS Centre National de la Recherche Scientifique",
+        "count": 38
+      },
+      {
+        "name": "Universite Grenoble Alpes",
+        "count": 34
+      },
+      {
+        "name": "Universite Paris-Saclay",
+        "count": 34
+      },
+      {
+        "name": "Inserm",
+        "count": 24
+      }
+    ],
+    "median_firstyr": 2003.0,
+    "median_nc9619_ns": 151.0,
+    "median_h19_ns": 6.0,
+    "median_c_ns": 1.6,
+    "flow_count": 1304,
+    "active_authors": 4447,
+    "median_first_flow_year": 2007.0,
+    "year_range": [
+      1950,
+      2025
+    ]
+  },
+  {
+    "code": "can",
+    "name": "Canada",
+    "scopus_total": 1110,
+    "scopus_pct_total": 1.8,
+    "scopus_pct_overseas": 4.0,
+    "is_greece": false,
+    "institution_count": 281,
+    "top_institutions": [
+      {
+        "name": "University of Toronto",
+        "count": 142
+      },
+      {
+        "name": "McGill University",
+        "count": 79
+      },
+      {
+        "name": "The University of British Columbia",
+        "count": 38
+      },
+      {
+        "name": "Western University",
+        "count": 32
+      },
+      {
+        "name": "York University",
+        "count": 29
+      }
+    ],
+    "median_firstyr": 1999.0,
+    "median_nc9619_ns": 246.0,
+    "median_h19_ns": 7.0,
+    "median_c_ns": 1.76,
+    "flow_count": 506,
+    "active_authors": 2887,
+    "median_first_flow_year": 2004.0,
+    "year_range": [
+      1913,
+      2025
+    ]
+  },
+  {
+    "code": "che",
+    "name": "Switzerland",
+    "scopus_total": 994,
+    "scopus_pct_total": 1.6,
+    "scopus_pct_overseas": 3.5,
+    "is_greece": false,
+    "institution_count": 213,
+    "top_institutions": [
+      {
+        "name": "ETH Zürich",
+        "count": 136
+      },
+      {
+        "name": "Ecole Polytechnique Fédérale de Lausanne",
+        "count": 110
+      },
+      {
+        "name": "European Organization for Nuclear Research",
+        "count": 73
+      },
+      {
+        "name": "Hôpitaux universitaires de Genève",
+        "count": 51
+      },
+      {
+        "name": "Université de Genève",
+        "count": 50
+      }
+    ],
+    "median_firstyr": 2007.0,
+    "median_nc9619_ns": 190.0,
+    "median_h19_ns": 6.0,
+    "median_c_ns": 1.63,
+    "flow_count": 640,
+    "active_authors": 2794,
+    "median_first_flow_year": 2012.0,
+    "year_range": [
+      1923,
+      2025
+    ]
+  },
+  {
+    "code": "nld",
+    "name": "Netherlands",
+    "scopus_total": 603,
+    "scopus_pct_total": 1.0,
+    "scopus_pct_overseas": 2.1,
+    "is_greece": false,
+    "institution_count": 169,
+    "top_institutions": [
+      {
+        "name": "Technische Universiteit Eindhoven",
+        "count": 41
+      },
+      {
+        "name": "Delft University of Technology",
+        "count": 35
+      },
+      {
+        "name": "Wageningen University & Research",
+        "count": 33
+      },
+      {
+        "name": "University of Groningen",
+        "count": 31
+      },
+      {
+        "name": "Universiteit van Amsterdam",
+        "count": 30
+      }
+    ],
+    "median_firstyr": 2009.0,
+    "median_nc9619_ns": 143.0,
+    "median_h19_ns": 6.0,
+    "median_c_ns": 1.6,
+    "flow_count": 600,
+    "active_authors": 2535,
+    "median_first_flow_year": 2011.0,
+    "year_range": [
+      1964,
+      2025
+    ]
+  },
+  {
+    "code": "swe",
+    "name": "Sweden",
+    "scopus_total": 559,
+    "scopus_pct_total": 0.9,
+    "scopus_pct_overseas": 2.0,
+    "is_greece": false,
+    "institution_count": 112,
+    "top_institutions": [
+      {
+        "name": "Karolinska Institutet",
+        "count": 65
+      },
+      {
+        "name": "Karolinska University Hospital",
+        "count": 54
+      },
+      {
+        "name": "Uppsala Universitet",
+        "count": 50
+      },
+      {
+        "name": "The Royal Institute of Technology (KTH)",
+        "count": 42
+      },
+      {
+        "name": "Lunds Universitet",
+        "count": 34
+      }
+    ],
+    "median_firstyr": 2008.0,
+    "median_nc9619_ns": 147.0,
+    "median_h19_ns": 6.0,
+    "median_c_ns": 1.63,
+    "flow_count": 364,
+    "active_authors": 1494,
+    "median_first_flow_year": 2014.0,
+    "year_range": [
+      1947,
+      2025
+    ]
+  },
+  {
+    "code": "ita",
+    "name": "Italy",
+    "scopus_total": 558,
+    "scopus_pct_total": 0.9,
+    "scopus_pct_overseas": 2.0,
+    "is_greece": false,
+    "institution_count": 213,
+    "top_institutions": [
+      {
+        "name": "European Commission Joint Research Centre",
+        "count": 59
+      },
+      {
+        "name": "Alma Mater Studiorum Università di Bologna",
+        "count": 23
+      },
+      {
+        "name": "Università degli Studi di Roma La Sapienza",
+        "count": 23
+      },
+      {
+        "name": "Consiglio Nazionale delle Ricerche",
+        "count": 15
+      },
+      {
+        "name": "Università degli Studi di Padova",
+        "count": 13
+      }
+    ],
+    "median_firstyr": 2006.0,
+    "median_nc9619_ns": 158.5,
+    "median_h19_ns": 6.0,
+    "median_c_ns": 1.43,
+    "flow_count": 689,
+    "active_authors": 2895,
+    "median_first_flow_year": 2012.0,
+    "year_range": [
+      1952,
+      2025
+    ]
+  },
+  {
+    "code": "bel",
+    "name": "Belgium",
+    "scopus_total": 439,
+    "scopus_pct_total": 0.7,
+    "scopus_pct_overseas": 1.6,
+    "is_greece": false,
+    "institution_count": 110,
+    "top_institutions": [
+      {
+        "name": "KU Leuven",
+        "count": 49
+      },
+      {
+        "name": "Vrije Universiteit Brussel",
+        "count": 41
+      },
+      {
+        "name": "Université libre de Bruxelles (ULB)",
+        "count": 36
+      },
+      {
+        "name": "Universiteit Gent",
+        "count": 34
+      },
+      {
+        "name": "European Commission Joint Research Centre",
+        "count": 29
+      }
+    ],
+    "median_firstyr": 2008.0,
+    "median_nc9619_ns": 126.0,
+    "median_h19_ns": 5.0,
+    "median_c_ns": 1.49,
+    "flow_count": 427,
+    "active_authors": 1756,
+    "median_first_flow_year": 2011.0,
+    "year_range": [
+      1956,
+      2025
+    ]
+  },
+  {
+    "code": "esp",
+    "name": "Spain",
+    "scopus_total": 262,
+    "scopus_pct_total": 0.4,
+    "scopus_pct_overseas": 0.9,
+    "is_greece": false,
+    "institution_count": 122,
+    "top_institutions": [
+      {
+        "name": "Universidad Carlos III de Madrid",
+        "count": 18
+      },
+      {
+        "name": "Universitat Politècnica de Catalunya",
+        "count": 18
+      },
+      {
+        "name": "Universitat de Barcelona",
+        "count": 9
+      },
+      {
+        "name": "Barcelona Institute of Science and Technology (BIST)",
+        "count": 8
+      },
+      {
+        "name": "European Commission Joint Research Centre",
+        "count": 8
+      }
+    ],
+    "median_firstyr": 2008.0,
+    "median_nc9619_ns": 156.0,
+    "median_h19_ns": 6.0,
+    "median_c_ns": 1.59,
+    "flow_count": 389,
+    "active_authors": 1821,
+    "median_first_flow_year": 2012.0,
+    "year_range": [
+      1979,
+      2025
+    ]
+  },
+  {
+    "code": "aut",
+    "name": "Austria",
+    "scopus_total": 220,
+    "scopus_pct_total": 0.3,
+    "scopus_pct_overseas": 0.8,
+    "is_greece": false,
+    "institution_count": 72,
+    "top_institutions": [
+      {
+        "name": "Medizinische Universitat Wien",
+        "count": 37
+      },
+      {
+        "name": "Universitat Wien",
+        "count": 31
+      },
+      {
+        "name": "University of Innsbruck",
+        "count": 15
+      },
+      {
+        "name": "Technische Universitat Wien",
+        "count": 14
+      },
+      {
+        "name": "Medizinische Universität Graz",
+        "count": 9
+      }
+    ],
+    "median_firstyr": 2006.0,
+    "median_nc9619_ns": 134.0,
+    "median_h19_ns": 6.0,
+    "median_c_ns": 1.57,
+    "flow_count": 177,
+    "active_authors": 946,
+    "median_first_flow_year": 2013.0,
+    "year_range": [
+      1939,
+      2025
+    ]
+  },
+  {
+    "code": "dnk",
+    "name": "Denmark",
+    "scopus_total": 199,
+    "scopus_pct_total": 0.3,
+    "scopus_pct_overseas": 0.7,
+    "is_greece": false,
+    "institution_count": 43,
+    "top_institutions": [
+      {
+        "name": "Danmarks Tekniske Universitet",
+        "count": 63
+      },
+      {
+        "name": "Københavns Universitet",
+        "count": 29
+      },
+      {
+        "name": "Aarhus Universitet",
+        "count": 21
+      },
+      {
+        "name": "Aalborg Universitet",
+        "count": 18
+      },
+      {
+        "name": "Syddansk Universitet",
+        "count": 9
+      }
+    ],
+    "median_firstyr": 2009.0,
+    "median_nc9619_ns": 157.0,
+    "median_h19_ns": 6.0,
+    "median_c_ns": 1.62,
+    "flow_count": 170,
+    "active_authors": 775,
+    "median_first_flow_year": 2013.0,
+    "year_range": [
+      1961,
+      2025
+    ]
+  },
+  {
+    "code": "nor",
+    "name": "Norway",
+    "scopus_total": 166,
+    "scopus_pct_total": 0.3,
+    "scopus_pct_overseas": 0.6,
+    "is_greece": false,
+    "institution_count": 47,
+    "top_institutions": [
+      {
+        "name": "Norges Teknisk-Naturvitenskapelige Universitet",
+        "count": 43
+      },
+      {
+        "name": "Universitetet i Oslo",
+        "count": 31
+      },
+      {
+        "name": "Universitetet i Bergen",
+        "count": 16
+      },
+      {
+        "name": "Universitetet for miljø- og biovitenskap",
+        "count": 5
+      },
+      {
+        "name": "UiT The Arctic University of Norway",
+        "count": 5
+      }
+    ],
+    "median_firstyr": 2008.5,
+    "median_nc9619_ns": 146.5,
+    "median_h19_ns": 6.0,
+    "median_c_ns": 1.68,
+    "flow_count": 309,
+    "active_authors": 985,
+    "median_first_flow_year": 2011.0,
+    "year_range": [
+      1964,
+      2025
+    ]
+  },
+  {
+    "code": "irl",
+    "name": "Ireland",
+    "scopus_total": 144,
+    "scopus_pct_total": 0.2,
+    "scopus_pct_overseas": 0.5,
+    "is_greece": false,
+    "institution_count": 56,
+    "top_institutions": [
+      {
+        "name": "Trinity College Dublin",
+        "count": 29
+      },
+      {
+        "name": "University College Dublin",
+        "count": 24
+      },
+      {
+        "name": "Dublin City University",
+        "count": 9
+      },
+      {
+        "name": "University of Limerick",
+        "count": 8
+      },
+      {
+        "name": "National University of Ireland Galway",
+        "count": 6
+      }
+    ],
+    "median_firstyr": 2007.0,
+    "median_nc9619_ns": 121.0,
+    "median_h19_ns": 5.0,
+    "median_c_ns": 1.66,
+    "flow_count": 111,
+    "active_authors": 584,
+    "median_first_flow_year": 2012.0,
+    "year_range": [
+      1957,
+      2025
+    ]
+  },
+  {
+    "code": "zaf",
+    "name": "South Africa",
+    "scopus_total": 137,
+    "scopus_pct_total": 0.2,
+    "scopus_pct_overseas": 0.5,
+    "is_greece": false,
+    "institution_count": 53,
+    "top_institutions": [
+      {
+        "name": "University of Witwatersrand",
+        "count": 32
+      },
+      {
+        "name": "University of Cape Town",
+        "count": 14
+      },
+      {
+        "name": "Universiteit van Pretoria",
+        "count": 9
+      },
+      {
+        "name": "University of Johannesburg",
+        "count": 8
+      },
+      {
+        "name": "University of South Africa",
+        "count": 8
+      }
+    ],
+    "median_firstyr": 2000.0,
+    "median_nc9619_ns": 108.0,
+    "median_h19_ns": 5.0,
+    "median_c_ns": 1.48,
+    "flow_count": 54,
+    "active_authors": 341,
+    "median_first_flow_year": 2002.0,
+    "year_range": [
+      1951,
+      2025
+    ]
+  },
+  {
+    "code": "fin",
+    "name": "Finland",
+    "scopus_total": 88,
+    "scopus_pct_total": 0.1,
+    "scopus_pct_overseas": 0.3,
+    "is_greece": false,
+    "institution_count": 36,
+    "top_institutions": [
+      {
+        "name": "Helsingin Yliopisto",
+        "count": 16
+      },
+      {
+        "name": "Aalto University",
+        "count": 8
+      },
+      {
+        "name": "Turun yliopisto",
+        "count": 7
+      },
+      {
+        "name": "Tampereen Yliopisto",
+        "count": 7
+      },
+      {
+        "name": "Oulun Yliopisto",
+        "count": 6
+      }
+    ],
+    "median_firstyr": 2007.0,
+    "median_nc9619_ns": 188.5,
+    "median_h19_ns": 7.0,
+    "median_c_ns": 1.72,
+    "flow_count": 105,
+    "active_authors": 522,
+    "median_first_flow_year": 2013.0,
+    "year_range": [
+      1969,
+      2025
+    ]
+  },
+  {
+    "code": "are",
+    "name": "United Arab Emirates",
+    "scopus_total": 83,
+    "scopus_pct_total": 0.1,
+    "scopus_pct_overseas": 0.3,
+    "is_greece": false,
+    "institution_count": 31,
+    "top_institutions": [
+      {
+        "name": "Khalifa University of Science and Technology",
+        "count": 18
+      },
+      {
+        "name": "NYU Abu Dhabi",
+        "count": 9
+      },
+      {
+        "name": "American University of Sharjah",
+        "count": 7
+      },
+      {
+        "name": "Zayed University",
+        "count": 7
+      },
+      {
+        "name": "United Arab Emirates University",
+        "count": 5
+      }
+    ],
+    "median_firstyr": 2005.0,
+    "median_nc9619_ns": 163.0,
+    "median_h19_ns": 7.0,
+    "median_c_ns": 1.74,
+    "flow_count": 34,
+    "active_authors": 248,
+    "median_first_flow_year": 2016.0,
+    "year_range": [
+      2001,
+      2025
+    ]
+  },
+  {
+    "code": "bra",
+    "name": "Brazil",
+    "scopus_total": 62,
+    "scopus_pct_total": 0.1,
+    "scopus_pct_overseas": 0.2,
+    "is_greece": false,
+    "institution_count": 36,
+    "top_institutions": [
+      {
+        "name": "Universidade de Sao Paulo - USP",
+        "count": 11
+      },
+      {
+        "name": "Universidade Federal do Rio de Janeiro",
+        "count": 4
+      },
+      {
+        "name": "Universidade Estadual de Campinas",
+        "count": 4
+      },
+      {
+        "name": "Universidade Federal do Rio Grande do Sul",
+        "count": 3
+      },
+      {
+        "name": "Federal University of Espirito Santo",
+        "count": 2
+      }
+    ],
+    "median_firstyr": 2004.5,
+    "median_nc9619_ns": 127.5,
+    "median_h19_ns": 6.0,
+    "median_c_ns": 1.49,
+    "flow_count": 59,
+    "active_authors": 511,
+    "median_first_flow_year": 2013.0,
+    "year_range": [
+      1970,
+      2025
+    ]
+  },
+  {
+    "code": "chn",
+    "name": "China",
+    "scopus_total": 57,
+    "scopus_pct_total": 0.1,
+    "scopus_pct_overseas": 0.2,
+    "is_greece": false,
+    "institution_count": 44,
+    "top_institutions": [
+      {
+        "name": "Southern University of Science and Technology",
+        "count": 4
+      },
+      {
+        "name": "Xi'an Jiaotong-Liverpool University",
+        "count": 3
+      },
+      {
+        "name": "Tsinghua University",
+        "count": 3
+      },
+      {
+        "name": "University of Science and Technology of China",
+        "count": 3
+      },
+      {
+        "name": "Shanghai Jiao Tong University",
+        "count": 3
+      }
+    ],
+    "median_firstyr": 2006.0,
+    "median_nc9619_ns": 271.0,
+    "median_h19_ns": 8.0,
+    "median_c_ns": 1.89,
+    "flow_count": 187,
+    "active_authors": 1204,
+    "median_first_flow_year": 2014.0,
+    "year_range": [
+      1962,
+      2025
+    ]
+  },
+  {
+    "code": "cze",
+    "name": "Czech Republic",
+    "scopus_total": 56,
+    "scopus_pct_total": 0.1,
+    "scopus_pct_overseas": 0.2,
+    "is_greece": false,
+    "institution_count": 27,
+    "top_institutions": [
+      {
+        "name": "Academy of Sciences of the Czech Republic",
+        "count": 8
+      },
+      {
+        "name": "Charles University",
+        "count": 6
+      },
+      {
+        "name": "Masaryk University",
+        "count": 5
+      },
+      {
+        "name": "Ceské vysoké ucení technické v Praze",
+        "count": 4
+      },
+      {
+        "name": "Univerzita Palackého v Olomouci",
+        "count": 4
+      }
+    ],
+    "median_firstyr": 2009.0,
+    "median_nc9619_ns": 111.0,
+    "median_h19_ns": 6.0,
+    "median_c_ns": 1.65,
+    "flow_count": 182,
+    "active_authors": 746,
+    "median_first_flow_year": 2013.0,
+    "year_range": [
+      1960,
+      2025
+    ]
+  },
+  {
+    "code": "sau",
+    "name": "Saudi Arabia",
+    "scopus_total": 49,
+    "scopus_pct_total": 0.1,
+    "scopus_pct_overseas": 0.2,
+    "is_greece": false,
+    "institution_count": 19,
+    "top_institutions": [
+      {
+        "name": "King Abdullah University of Science and Technology",
+        "count": 14
+      },
+      {
+        "name": "Saudi Arabian Oil Company",
+        "count": 6
+      },
+      {
+        "name": "King Saud University",
+        "count": 6
+      },
+      {
+        "name": "King Fahd University of Petroleum and Minerals",
+        "count": 4
+      },
+      {
+        "name": "King Fahad Specialist Hospital, Dammam",
+        "count": 3
+      }
+    ],
+    "median_firstyr": 2001.0,
+    "median_nc9619_ns": 273.0,
+    "median_h19_ns": 8.0,
+    "median_c_ns": 1.89,
+    "flow_count": 39,
+    "active_authors": 238,
+    "median_first_flow_year": 2016.0,
+    "year_range": [
+      1982,
+      2025
+    ]
+  },
+  {
+    "code": "sgp",
+    "name": "Singapore",
+    "scopus_total": 46,
+    "scopus_pct_total": 0.1,
+    "scopus_pct_overseas": 0.2,
+    "is_greece": false,
+    "institution_count": 26,
+    "top_institutions": [
+      {
+        "name": "National University of Singapore",
+        "count": 8
+      },
+      {
+        "name": "Singapore University of Technology and Design",
+        "count": 5
+      },
+      {
+        "name": "Singapore-ETH Centre",
+        "count": 3
+      },
+      {
+        "name": "Yong Loo Lin School of Medicine",
+        "count": 3
+      },
+      {
+        "name": "School of Physical and Mathematical Sciences",
+        "count": 3
+      }
+    ],
+    "median_firstyr": 2005.5,
+    "median_nc9619_ns": 229.5,
+    "median_h19_ns": 7.5,
+    "median_c_ns": 1.83,
+    "flow_count": 28,
+    "active_authors": 260,
+    "median_first_flow_year": 2015.0,
+    "year_range": [
+      1979,
+      2025
+    ]
+  },
+  {
+    "code": "isr",
+    "name": "Israel",
+    "scopus_total": 43,
+    "scopus_pct_total": 0.1,
+    "scopus_pct_overseas": 0.2,
+    "is_greece": false,
+    "institution_count": 17,
+    "top_institutions": [
+      {
+        "name": "Weizmann Institute of Science Israel",
+        "count": 8
+      },
+      {
+        "name": "Technion - Israel Institute of Technology",
+        "count": 5
+      },
+      {
+        "name": "Hebrew University of Jerusalem",
+        "count": 5
+      },
+      {
+        "name": "Hadassah University Medical Centre",
+        "count": 5
+      },
+      {
+        "name": "Ben-Gurion University of the Negev",
+        "count": 4
+      }
+    ],
+    "median_firstyr": 2009.0,
+    "median_nc9619_ns": 150.0,
+    "median_h19_ns": 5.0,
+    "median_c_ns": 1.56,
+    "flow_count": 69,
+    "active_authors": 460,
+    "median_first_flow_year": 2006.0,
+    "year_range": [
+      1965,
+      2025
+    ]
+  },
+  {
+    "code": "lux",
+    "name": "Luxembourg",
+    "scopus_total": 42,
+    "scopus_pct_total": 0.1,
+    "scopus_pct_overseas": 0.1,
+    "is_greece": false,
+    "institution_count": 14,
+    "top_institutions": [
+      {
+        "name": "University of Luxembourg",
+        "count": 20
+      },
+      {
+        "name": "Luxembourg Institute of Science and Technology",
+        "count": 7
+      },
+      {
+        "name": "SES S.A.",
+        "count": 2
+      },
+      {
+        "name": "inCITES Consulting S.A.R.L.",
+        "count": 2
+      },
+      {
+        "name": "INTRASOFT International",
+        "count": 2
+      }
+    ],
+    "median_firstyr": 2008.5,
+    "median_nc9619_ns": 108.5,
+    "median_h19_ns": 5.5,
+    "median_c_ns": 1.69,
+    "flow_count": 38,
+    "active_authors": 149,
+    "median_first_flow_year": 2016.0,
+    "year_range": [
+      1981,
+      2025
+    ]
+  },
+  {
+    "code": "rus",
+    "name": "Russia",
+    "scopus_total": 41,
+    "scopus_pct_total": 0.1,
+    "scopus_pct_overseas": 0.1,
+    "is_greece": false,
+    "institution_count": 36,
+    "top_institutions": [
+      {
+        "name": "Skolkovo Institute of Science and Technology",
+        "count": 3
+      },
+      {
+        "name": "Lomonosov Moscow State University",
+        "count": 3
+      },
+      {
+        "name": "Peter the Great St. Petersburg Polytechnic University",
+        "count": 2
+      },
+      {
+        "name": "National Research University Higher School of Economics",
+        "count": 1
+      },
+      {
+        "name": "P.P.Shirshov Institute of Oceanology, Russian Academy of Sciences",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 1993.0,
+    "median_nc9619_ns": 10.0,
+    "median_h19_ns": 2.0,
+    "median_c_ns": 0.72,
+    "flow_count": 138,
+    "active_authors": 671,
+    "median_first_flow_year": 2010.0,
+    "year_range": [
+      1959,
+      2025
+    ]
+  },
+  {
+    "code": "jpn",
+    "name": "Japan",
+    "scopus_total": 39,
+    "scopus_pct_total": 0.1,
+    "scopus_pct_overseas": 0.1,
+    "is_greece": false,
+    "institution_count": 31,
+    "top_institutions": [
+      {
+        "name": "Kyoto University",
+        "count": 4
+      },
+      {
+        "name": "The University of Tokyo",
+        "count": 3
+      },
+      {
+        "name": "Kyushu University",
+        "count": 2
+      },
+      {
+        "name": "National Institute of Advanced Industrial Science and Technology",
+        "count": 2
+      },
+      {
+        "name": "University of Tsukuba",
+        "count": 2
+      }
+    ],
+    "median_firstyr": 2006.0,
+    "median_nc9619_ns": 79.0,
+    "median_h19_ns": 5.0,
+    "median_c_ns": 1.41,
+    "flow_count": 126,
+    "active_authors": 921,
+    "median_first_flow_year": 2009.0,
+    "year_range": [
+      1958,
+      2025
+    ]
+  },
+  {
+    "code": "prt",
+    "name": "Portugal",
+    "scopus_total": 37,
+    "scopus_pct_total": 0.1,
+    "scopus_pct_overseas": 0.1,
+    "is_greece": false,
+    "institution_count": 26,
+    "top_institutions": [
+      {
+        "name": "Instituto Superior Técnico",
+        "count": 5
+      },
+      {
+        "name": "Universidade do Minho",
+        "count": 5
+      },
+      {
+        "name": "Institute for Systems and Computer Engineering, Technology and Science",
+        "count": 2
+      },
+      {
+        "name": "Faculdade de Ciências, Universidade de Lisboa",
+        "count": 2
+      },
+      {
+        "name": "Universidade de Aveiro",
+        "count": 2
+      }
+    ],
+    "median_firstyr": 2006.0,
+    "median_nc9619_ns": 202.0,
+    "median_h19_ns": 6.0,
+    "median_c_ns": 1.71,
+    "flow_count": 76,
+    "active_authors": 379,
+    "median_first_flow_year": 2016.0,
+    "year_range": [
+      1956,
+      2025
+    ]
+  },
+  {
+    "code": "qat",
+    "name": "Qatar",
+    "scopus_total": 37,
+    "scopus_pct_total": 0.1,
+    "scopus_pct_overseas": 0.1,
+    "is_greece": false,
+    "institution_count": 18,
+    "top_institutions": [
+      {
+        "name": "Texas A&M University at Qatar",
+        "count": 7
+      },
+      {
+        "name": "Qatar University",
+        "count": 7
+      },
+      {
+        "name": "Weill Cornell Medicine-Qatar",
+        "count": 3
+      },
+      {
+        "name": "Qatar Computing Research Institute",
+        "count": 2
+      },
+      {
+        "name": "Hamad Medical Corporation",
+        "count": 2
+      }
+    ],
+    "median_firstyr": 2006.0,
+    "median_nc9619_ns": 255.0,
+    "median_h19_ns": 9.0,
+    "median_c_ns": 1.98,
+    "flow_count": 44,
+    "active_authors": 176,
+    "median_first_flow_year": 2016.0,
+    "year_range": [
+      1997,
+      2025
+    ]
+  },
+  {
+    "code": "pol",
+    "name": "Poland",
+    "scopus_total": 27,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.1,
+    "is_greece": false,
+    "institution_count": 22,
+    "top_institutions": [
+      {
+        "name": "Polish Academy of Sciences",
+        "count": 2
+      },
+      {
+        "name": "Medical University of Lodz",
+        "count": 2
+      },
+      {
+        "name": "Poznan University of Medical Sciences",
+        "count": 2
+      },
+      {
+        "name": "University of Warsaw",
+        "count": 2
+      },
+      {
+        "name": "Wrocław University of Science and Technology",
+        "count": 2
+      }
+    ],
+    "median_firstyr": 2008.0,
+    "median_nc9619_ns": 104.0,
+    "median_h19_ns": 6.0,
+    "median_c_ns": 1.52,
+    "flow_count": 108,
+    "active_authors": 597,
+    "median_first_flow_year": 2013.0,
+    "year_range": [
+      1956,
+      2025
+    ]
+  },
+  {
+    "code": "tur",
+    "name": "Turkey",
+    "scopus_total": 27,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.1,
+    "is_greece": false,
+    "institution_count": 15,
+    "top_institutions": [
+      {
+        "name": "Bilkent Üniversitesi",
+        "count": 5
+      },
+      {
+        "name": "Bogaziçi Üniversitesi",
+        "count": 4
+      },
+      {
+        "name": "Koç Üniversitesi",
+        "count": 3
+      },
+      {
+        "name": "Kadir Has Üniversitesi",
+        "count": 2
+      },
+      {
+        "name": "Yeditepe University",
+        "count": 2
+      }
+    ],
+    "median_firstyr": 2006.0,
+    "median_nc9619_ns": 88.0,
+    "median_h19_ns": 5.0,
+    "median_c_ns": 1.61,
+    "flow_count": 59,
+    "active_authors": 356,
+    "median_first_flow_year": 2015.0,
+    "year_range": [
+      1981,
+      2025
+    ]
+  },
+  {
+    "code": "hun",
+    "name": "Hungary",
+    "scopus_total": 22,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.1,
+    "is_greece": false,
+    "institution_count": 18,
+    "top_institutions": [
+      {
+        "name": "Közép-Európai Egyetem",
+        "count": 3
+      },
+      {
+        "name": "Semmelweis Egyetem",
+        "count": 2
+      },
+      {
+        "name": "Magyar Tudomanyos Akademia",
+        "count": 2
+      },
+      {
+        "name": "NanGenex Inc.",
+        "count": 1
+      },
+      {
+        "name": "Eötvös Loránd University",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 2002.0,
+    "median_nc9619_ns": 141.5,
+    "median_h19_ns": 5.0,
+    "median_c_ns": 1.59,
+    "flow_count": 65,
+    "active_authors": 303,
+    "median_first_flow_year": 2013.0,
+    "year_range": [
+      1961,
+      2025
+    ]
+  },
+  {
+    "code": "nzl",
+    "name": "New Zealand",
+    "scopus_total": 22,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.1,
+    "is_greece": false,
+    "institution_count": 13,
+    "top_institutions": [
+      {
+        "name": "University of Canterbury",
+        "count": 5
+      },
+      {
+        "name": "University of Auckland",
+        "count": 4
+      },
+      {
+        "name": "Victoria University of Wellington",
+        "count": 2
+      },
+      {
+        "name": "Massey University Manawatu",
+        "count": 2
+      },
+      {
+        "name": "University of Auckland Business School",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 2002.0,
+    "median_nc9619_ns": 146.5,
+    "median_h19_ns": 5.5,
+    "median_c_ns": 1.58,
+    "flow_count": 18,
+    "active_authors": 186,
+    "median_first_flow_year": 2009.0,
+    "year_range": [
+      1963,
+      2025
+    ]
+  },
+  {
+    "code": "kwt",
+    "name": "Kuwait",
+    "scopus_total": 20,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.1,
+    "is_greece": false,
+    "institution_count": 8,
+    "top_institutions": [
+      {
+        "name": "University of Kuwait",
+        "count": 10
+      },
+      {
+        "name": "American University of the Middle East",
+        "count": 4
+      },
+      {
+        "name": "College of Engineering and Petroleum Kuwait",
+        "count": 1
+      },
+      {
+        "name": "Kuwait College of Science & Technology",
+        "count": 1
+      },
+      {
+        "name": "National and Kapodistrian University of Athens",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 1996.5,
+    "median_nc9619_ns": 426.0,
+    "median_h19_ns": 12.0,
+    "median_c_ns": 2.16,
+    "flow_count": 56,
+    "active_authors": 127,
+    "median_first_flow_year": 2014.5,
+    "year_range": [
+      1959,
+      2025
+    ]
+  },
+  {
+    "code": "hkg",
+    "name": "Hong Kong",
+    "scopus_total": 19,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.1,
+    "is_greece": false,
+    "institution_count": 7,
+    "top_institutions": [
+      {
+        "name": "The University of Hong Kong",
+        "count": 7
+      },
+      {
+        "name": "Hong Kong University of Science and Technology",
+        "count": 6
+      },
+      {
+        "name": "Hong Kong Polytechnic University",
+        "count": 2
+      },
+      {
+        "name": "Prince of Wales Hospital Hong Kong",
+        "count": 1
+      },
+      {
+        "name": "Hong Kong Baptist University",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 2006.0,
+    "median_nc9619_ns": 478.0,
+    "median_h19_ns": 8.0,
+    "median_c_ns": 1.94,
+    "flow_count": 28,
+    "active_authors": 299,
+    "median_first_flow_year": 2014.0,
+    "year_range": [
+      1985,
+      2025
+    ]
+  },
+  {
+    "code": "chl",
+    "name": "Chile",
+    "scopus_total": 18,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.1,
+    "is_greece": false,
+    "institution_count": 11,
+    "top_institutions": [
+      {
+        "name": "Pontificia Universidad Católica de Chile",
+        "count": 4
+      },
+      {
+        "name": "Universidad de Chile",
+        "count": 3
+      },
+      {
+        "name": "Universidad de los Andes, Chile",
+        "count": 2
+      },
+      {
+        "name": "Pontificia Universidad Católica de Valparaíso",
+        "count": 2
+      },
+      {
+        "name": "Universidad Austral de Chile",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 2009.5,
+    "median_nc9619_ns": 138.0,
+    "median_h19_ns": 5.0,
+    "median_c_ns": 1.61,
+    "flow_count": 15,
+    "active_authors": 138,
+    "median_first_flow_year": 2016.0,
+    "year_range": [
+      1958,
+      2025
+    ]
+  },
+  {
+    "code": "kor",
+    "name": "South Korea",
+    "scopus_total": 18,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.1,
+    "is_greece": false,
+    "institution_count": 14,
+    "top_institutions": [
+      {
+        "name": "Institute for Basic Science, Daejeon",
+        "count": 3
+      },
+      {
+        "name": "Seoul National University",
+        "count": 3
+      },
+      {
+        "name": "Korea Institute for Advanced Study",
+        "count": 1
+      },
+      {
+        "name": "Kyung Hee University",
+        "count": 1
+      },
+      {
+        "name": "Samsung Electronics Co. Ltd.",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 2007.5,
+    "median_nc9619_ns": 74.5,
+    "median_h19_ns": 4.5,
+    "median_c_ns": 1.83,
+    "flow_count": 31,
+    "active_authors": 300,
+    "median_first_flow_year": 2009.0,
+    "year_range": [
+      1963,
+      2025
+    ]
+  },
+  {
+    "code": "kaz",
+    "name": "Kazakhstan",
+    "scopus_total": 16,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.1,
+    "is_greece": false,
+    "institution_count": 1,
+    "top_institutions": [
+      {
+        "name": "Nazarbayev University",
+        "count": 16
+      }
+    ],
+    "median_firstyr": 2003.0,
+    "median_nc9619_ns": 253.5,
+    "median_h19_ns": 8.5,
+    "median_c_ns": 2.16,
+    "flow_count": 10,
+    "active_authors": 68,
+    "median_first_flow_year": 2016.5,
+    "year_range": [
+      2004,
+      2025
+    ]
+  },
+  {
+    "code": "rou",
+    "name": "Romania",
+    "scopus_total": 15,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.1,
+    "is_greece": false,
+    "institution_count": 11,
+    "top_institutions": [
+      {
+        "name": "University Politehnica of Bucharest",
+        "count": 3
+      },
+      {
+        "name": "Horia Hulubei National Institute of Physics and Nuclear Engineering",
+        "count": 3
+      },
+      {
+        "name": "Simion Stoilow Institute of Mathematics",
+        "count": 1
+      },
+      {
+        "name": "Universitatea Transilvania din Brasov",
+        "count": 1
+      },
+      {
+        "name": "Universitatea de Medicina si Farmacie Grigore T. Popa din Iasi",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 2012.0,
+    "median_nc9619_ns": 45.0,
+    "median_h19_ns": 4.0,
+    "median_c_ns": 1.1,
+    "flow_count": 65,
+    "active_authors": 271,
+    "median_first_flow_year": 2012.0,
+    "year_range": [
+      1936,
+      2025
+    ]
+  },
+  {
+    "code": "mex",
+    "name": "Mexico",
+    "scopus_total": 14,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.0,
+    "is_greece": false,
+    "institution_count": 12,
+    "top_institutions": [
+      {
+        "name": "Universidad Autónoma del Estado de México",
+        "count": 2
+      },
+      {
+        "name": "Universidad Nacional Autónoma de México",
+        "count": 2
+      },
+      {
+        "name": "Instituto de Fisiologia Celular de la UNAM",
+        "count": 1
+      },
+      {
+        "name": "Keck School of Medicine of USC",
+        "count": 1
+      },
+      {
+        "name": "Instituto de Radioastronomía y Astrofísica",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 2001.0,
+    "median_nc9619_ns": 276.0,
+    "median_h19_ns": 7.5,
+    "median_c_ns": 1.82,
+    "flow_count": 23,
+    "active_authors": 341,
+    "median_first_flow_year": 2011.0,
+    "year_range": [
+      1957,
+      2025
+    ]
+  },
+  {
+    "code": "twn",
+    "name": "Taiwan",
+    "scopus_total": 14,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.0,
+    "is_greece": false,
+    "institution_count": 11,
+    "top_institutions": [
+      {
+        "name": "National Taiwan University",
+        "count": 3
+      },
+      {
+        "name": "National Center for Theoretical Sciences Taiwan",
+        "count": 2
+      },
+      {
+        "name": "National Central University Taiwan",
+        "count": 1
+      },
+      {
+        "name": "Taipei Medical University",
+        "count": 1
+      },
+      {
+        "name": "China Medical University Taichung",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 2007.5,
+    "median_nc9619_ns": 178.0,
+    "median_h19_ns": 7.0,
+    "median_c_ns": 1.49,
+    "flow_count": 28,
+    "active_authors": 201,
+    "median_first_flow_year": 2015.5,
+    "year_range": [
+      1974,
+      2025
+    ]
+  },
+  {
+    "code": "bgr",
+    "name": "Bulgaria",
+    "scopus_total": 13,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.0,
+    "is_greece": false,
+    "institution_count": 9,
+    "top_institutions": [
+      {
+        "name": "Medical University of Sofia",
+        "count": 3
+      },
+      {
+        "name": "Technical University of Sofia",
+        "count": 2
+      },
+      {
+        "name": "Sofia University St. Kliment Ohridski",
+        "count": 2
+      },
+      {
+        "name": "Institute of Biodiversity and Ecosystem Research at the Bulgarian Academy of Sciences",
+        "count": 1
+      },
+      {
+        "name": "Bulgarian Academy of Sciences",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 1999.0,
+    "median_nc9619_ns": 53.0,
+    "median_h19_ns": 3.0,
+    "median_c_ns": 1.1,
+    "flow_count": 148,
+    "active_authors": 431,
+    "median_first_flow_year": 2013.0,
+    "year_range": [
+      1966,
+      2025
+    ]
+  },
+  {
+    "code": "arg",
+    "name": "Argentina",
+    "scopus_total": 11,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.0,
+    "is_greece": false,
+    "institution_count": 11,
+    "top_institutions": [
+      {
+        "name": "Universidad Nacional del Centro de la Provincia de Buenos Aires",
+        "count": 1
+      },
+      {
+        "name": "Facultad de Ciencias Naturales y Museo, Universidad Nacional de La Plata",
+        "count": 1
+      },
+      {
+        "name": "Museo Paleontologico Egidio Feruglio",
+        "count": 1
+      },
+      {
+        "name": "Universidad Nacional del Comahue",
+        "count": 1
+      },
+      {
+        "name": "IEEE",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 1996.0,
+    "median_nc9619_ns": 60.0,
+    "median_h19_ns": 4.0,
+    "median_c_ns": 1.38,
+    "flow_count": 13,
+    "active_authors": 102,
+    "median_first_flow_year": 2015.0,
+    "year_range": [
+      1978,
+      2025
+    ]
+  },
+  {
+    "code": "srb",
+    "name": "Serbia",
+    "scopus_total": 10,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.0,
+    "is_greece": false,
+    "institution_count": 6,
+    "top_institutions": [
+      {
+        "name": "University of Belgrade",
+        "count": 4
+      },
+      {
+        "name": "Institute for Child and Youth Health Care of Vojvodina",
+        "count": 2
+      },
+      {
+        "name": "University of Novi Sad",
+        "count": 1
+      },
+      {
+        "name": "University of Novi Sad, BioSense Institute",
+        "count": 1
+      },
+      {
+        "name": "Subotica Tech - College of Applied Sciences",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 1996.5,
+    "median_nc9619_ns": 47.0,
+    "median_h19_ns": 4.5,
+    "median_c_ns": 1.27,
+    "flow_count": 31,
+    "active_authors": 131,
+    "median_first_flow_year": 2011.0,
+    "year_range": [
+      1978,
+      2025
+    ]
+  },
+  {
+    "code": "lbn",
+    "name": "Lebanon",
+    "scopus_total": 9,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.0,
+    "is_greece": false,
+    "institution_count": 5,
+    "top_institutions": [
+      {
+        "name": "American University of Beirut",
+        "count": 5
+      },
+      {
+        "name": "Lebanese Center for Policy Studies",
+        "count": 1
+      },
+      {
+        "name": "Lebanese American University",
+        "count": 1
+      },
+      {
+        "name": "Saint George Hospital University Medical Center",
+        "count": 1
+      },
+      {
+        "name": "Saint Joseph University",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 2002.0,
+    "median_nc9619_ns": 182.0,
+    "median_h19_ns": 8.0,
+    "median_c_ns": 1.81,
+    "flow_count": 5,
+    "active_authors": 69,
+    "median_first_flow_year": 1996.0,
+    "year_range": [
+      1956,
+      2025
+    ]
+  },
+  {
+    "code": "mlt",
+    "name": "Malta",
+    "scopus_total": 8,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.0,
+    "is_greece": false,
+    "institution_count": 1,
+    "top_institutions": [
+      {
+        "name": "L-Università ta' Malta",
+        "count": 8
+      }
+    ],
+    "median_firstyr": 2011.0,
+    "median_nc9619_ns": 195.0,
+    "median_h19_ns": 7.0,
+    "median_c_ns": 1.9,
+    "flow_count": 14,
+    "active_authors": 66,
+    "median_first_flow_year": 2015.0,
+    "year_range": [
+      1966,
+      2025
+    ]
+  },
+  {
+    "code": "tha",
+    "name": "Thailand",
+    "scopus_total": 7,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.0,
+    "is_greece": false,
+    "institution_count": 5,
+    "top_institutions": [
+      {
+        "name": "Chulalongkorn University",
+        "count": 3
+      },
+      {
+        "name": "Mae Fah Luang University",
+        "count": 1
+      },
+      {
+        "name": "Mahidol University",
+        "count": 1
+      },
+      {
+        "name": "Srinakharinwirot University",
+        "count": 1
+      },
+      {
+        "name": "THAI StemLife",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 2007.0,
+    "median_nc9619_ns": 122.0,
+    "median_h19_ns": 6.0,
+    "median_c_ns": 1.89,
+    "flow_count": 6,
+    "active_authors": 78,
+    "median_first_flow_year": 2012.5,
+    "year_range": [
+      1964,
+      2025
+    ]
+  },
+  {
+    "code": "ukr",
+    "name": "Ukraine",
+    "scopus_total": 7,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.0,
+    "is_greece": false,
+    "institution_count": 7,
+    "top_institutions": [
+      {
+        "name": "Kyiv National University of Trade and Economics",
+        "count": 1
+      },
+      {
+        "name": "Institute of Biomedical Engineering",
+        "count": 1
+      },
+      {
+        "name": "Palladin Institute of Biochemistry of the National Academy of Sciences of Ukraine",
+        "count": 1
+      },
+      {
+        "name": "National Academy of Sciences in Ukraine",
+        "count": 1
+      },
+      {
+        "name": "Uzhgorod National University",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 1983.0,
+    "median_nc9619_ns": 2.0,
+    "median_h19_ns": 1.0,
+    "median_c_ns": 0.44,
+    "flow_count": 11,
+    "active_authors": 96,
+    "median_first_flow_year": 2011.0,
+    "year_range": [
+      1964,
+      2025
+    ]
+  },
+  {
+    "code": "alb",
+    "name": "Albania",
+    "scopus_total": 6,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.0,
+    "is_greece": false,
+    "institution_count": 6,
+    "top_institutions": [
+      {
+        "name": "International Monetary Fund",
+        "count": 1
+      },
+      {
+        "name": "Epoka University",
+        "count": 1
+      },
+      {
+        "name": "University of Tirana",
+        "count": 1
+      },
+      {
+        "name": "Universiteti Eqrem Cabej",
+        "count": 1
+      },
+      {
+        "name": "University Hospital Centre Tirana",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 1998.0,
+    "median_nc9619_ns": 70.5,
+    "median_h19_ns": 4.5,
+    "median_c_ns": 1.14,
+    "flow_count": 9,
+    "active_authors": 38,
+    "median_first_flow_year": 2016.0,
+    "year_range": [
+      1990,
+      2025
+    ]
+  },
+  {
+    "code": "egy",
+    "name": "Egypt",
+    "scopus_total": 6,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.0,
+    "is_greece": false,
+    "institution_count": 6,
+    "top_institutions": [
+      {
+        "name": "American University in Cairo",
+        "count": 1
+      },
+      {
+        "name": "Menofia University",
+        "count": 1
+      },
+      {
+        "name": "Technical University of Berlin",
+        "count": 1
+      },
+      {
+        "name": "Orascom Construction Industries",
+        "count": 1
+      },
+      {
+        "name": "The British University in Egypt",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 2000.5,
+    "median_nc9619_ns": 160.0,
+    "median_h19_ns": 5.5,
+    "median_c_ns": 2.04,
+    "flow_count": 75,
+    "active_authors": 227,
+    "median_first_flow_year": 2012.0,
+    "year_range": [
+      1952,
+      2025
+    ]
+  },
+  {
+    "code": "est",
+    "name": "Estonia",
+    "scopus_total": 6,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.0,
+    "is_greece": false,
+    "institution_count": 3,
+    "top_institutions": [
+      {
+        "name": "Tallinna Tehnikaülikool",
+        "count": 3
+      },
+      {
+        "name": "University of Tartu",
+        "count": 2
+      },
+      {
+        "name": "AIDEAS OÜ",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 2008.5,
+    "median_nc9619_ns": 134.0,
+    "median_h19_ns": 5.0,
+    "median_c_ns": 1.61,
+    "flow_count": 6,
+    "active_authors": 60,
+    "median_first_flow_year": 2013.5,
+    "year_range": [
+      1970,
+      2025
+    ]
+  },
+  {
+    "code": "ind",
+    "name": "India",
+    "scopus_total": 6,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.0,
+    "is_greece": false,
+    "institution_count": 6,
+    "top_institutions": [
+      {
+        "name": "SRM Institute of Science and Technology",
+        "count": 1
+      },
+      {
+        "name": "National Physical Laboratory India",
+        "count": 1
+      },
+      {
+        "name": "Manipal Academy of Higher Education",
+        "count": 1
+      },
+      {
+        "name": "K L Deemed to be University",
+        "count": 1
+      },
+      {
+        "name": "Jawaharlal Institute of Postgraduate Medical Education and Research",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 2010.0,
+    "median_nc9619_ns": 57.5,
+    "median_h19_ns": 5.0,
+    "median_c_ns": 1.42,
+    "flow_count": 130,
+    "active_authors": 724,
+    "median_first_flow_year": 2012.0,
+    "year_range": [
+      1963,
+      2025
+    ]
+  },
+  {
+    "code": "ecu",
+    "name": "Ecuador",
+    "scopus_total": 5,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.0,
+    "is_greece": false,
+    "institution_count": 5,
+    "top_institutions": [
+      {
+        "name": "Institute of Higher National Studies",
+        "count": 1
+      },
+      {
+        "name": "Escuela Politécnica Nacional",
+        "count": 1
+      },
+      {
+        "name": "Universidad de las Fuerzas Armadas ESPE",
+        "count": 1
+      },
+      {
+        "name": "Universidad Nacional de Educación, Ecuador",
+        "count": 1
+      },
+      {
+        "name": "Universidad de las Americas - Ecuador",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 2003.0,
+    "median_nc9619_ns": 123.0,
+    "median_h19_ns": 5.0,
+    "median_c_ns": 1.69,
+    "flow_count": 102,
+    "active_authors": 183,
+    "median_first_flow_year": 1999.0,
+    "year_range": [
+      1970,
+      2025
+    ]
+  },
+  {
+    "code": "svn",
+    "name": "Slovenia",
+    "scopus_total": 5,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.0,
+    "is_greece": false,
+    "institution_count": 3,
+    "top_institutions": [
+      {
+        "name": "University of Ljubljana",
+        "count": 3
+      },
+      {
+        "name": "Jozef Stefan Institute",
+        "count": 1
+      },
+      {
+        "name": "Centre for Biotechnology",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 2006.0,
+    "median_nc9619_ns": 85.0,
+    "median_h19_ns": 5.0,
+    "median_c_ns": 1.36,
+    "flow_count": 26,
+    "active_authors": 122,
+    "median_first_flow_year": 2011.5,
+    "year_range": [
+      1979,
+      2025
+    ]
+  },
+  {
+    "code": "bhr",
+    "name": "Bahrain",
+    "scopus_total": 4,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.0,
+    "is_greece": false,
+    "institution_count": 2,
+    "top_institutions": [
+      {
+        "name": "Bahrain Polytechnic",
+        "count": 3
+      },
+      {
+        "name": "Bahrain Institute for Pearls & Gemstones (DANAT)",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 2006.0,
+    "median_nc9619_ns": 28.0,
+    "median_h19_ns": 2.5,
+    "median_c_ns": 0.82,
+    "flow_count": 5,
+    "active_authors": 24,
+    "median_first_flow_year": 2018.0,
+    "year_range": [
+      1988,
+      2024
+    ]
+  },
+  {
+    "code": "hrv",
+    "name": "Croatia",
+    "scopus_total": 4,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.0,
+    "is_greece": false,
+    "institution_count": 2,
+    "top_institutions": [
+      {
+        "name": "Institute Ruder Boskovic",
+        "count": 3
+      },
+      {
+        "name": "Zavod za stomatološku protetiku",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 1995.5,
+    "median_nc9619_ns": 154.0,
+    "median_h19_ns": 6.5,
+    "median_c_ns": 1.5,
+    "flow_count": 16,
+    "active_authors": 103,
+    "median_first_flow_year": 2018.0,
+    "year_range": [
+      1961,
+      2025
+    ]
+  },
+  {
+    "code": "idn",
+    "name": "Indonesia",
+    "scopus_total": 4,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.0,
+    "is_greece": false,
+    "institution_count": 4,
+    "top_institutions": [
+      {
+        "name": "Pfizer Inc.",
+        "count": 1
+      },
+      {
+        "name": "Universitas Padjadjaran",
+        "count": 1
+      },
+      {
+        "name": "FAO",
+        "count": 1
+      },
+      {
+        "name": "Universitas Airlangga",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 2010.5,
+    "median_nc9619_ns": 80.5,
+    "median_h19_ns": 3.0,
+    "median_c_ns": 0.86,
+    "flow_count": 2,
+    "active_authors": 52,
+    "median_first_flow_year": 2019.0,
+    "year_range": [
+      1970,
+      2025
+    ]
+  },
+  {
+    "code": "isl",
+    "name": "Iceland",
+    "scopus_total": 4,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.0,
+    "is_greece": false,
+    "institution_count": 3,
+    "top_institutions": [
+      {
+        "name": "deCODE genetics",
+        "count": 2
+      },
+      {
+        "name": "Haskoli Islands",
+        "count": 1
+      },
+      {
+        "name": "Reykjavik University",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 2002.5,
+    "median_nc9619_ns": 647.5,
+    "median_h19_ns": 6.5,
+    "median_c_ns": 1.7,
+    "flow_count": 2,
+    "active_authors": 32,
+    "median_first_flow_year": 2010.5,
+    "year_range": [
+      2001,
+      2025
+    ]
+  },
+  {
+    "code": "ltu",
+    "name": "Lithuania",
+    "scopus_total": 4,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.0,
+    "is_greece": false,
+    "institution_count": 3,
+    "top_institutions": [
+      {
+        "name": "Vilniaus universitetas",
+        "count": 2
+      },
+      {
+        "name": "Vilniaus Gedimino Technikos Universitetas",
+        "count": 1
+      },
+      {
+        "name": "Kauno kolegija",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 1999.5,
+    "median_nc9619_ns": 249.5,
+    "median_h19_ns": 6.5,
+    "median_c_ns": 1.54,
+    "flow_count": 8,
+    "active_authors": 51,
+    "median_first_flow_year": 2017.0,
+    "year_range": [
+      1994,
+      2025
+    ]
+  },
+  {
+    "code": "mkd",
+    "name": "North Macedonia",
+    "scopus_total": 4,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.0,
+    "is_greece": false,
+    "institution_count": 4,
+    "top_institutions": [
+      {
+        "name": "University of Macedonia",
+        "count": 1
+      },
+      {
+        "name": "SS Cyril and Methodius University",
+        "count": 1
+      },
+      {
+        "name": "SS Cyril and Methodius University Faculty of Medicine",
+        "count": 1
+      },
+      {
+        "name": "AGENCY FOR ELECTRONIC COMMUNICATIONS",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 1997.0,
+    "median_nc9619_ns": 73.5,
+    "median_h19_ns": 3.5,
+    "median_c_ns": 1.17,
+    "flow_count": 3,
+    "active_authors": 31,
+    "median_first_flow_year": 2013.0,
+    "year_range": [
+      1983,
+      2025
+    ]
+  },
+  {
+    "code": "omn",
+    "name": "Oman",
+    "scopus_total": 4,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.0,
+    "is_greece": false,
+    "institution_count": 4,
+    "top_institutions": [
+      {
+        "name": "Military Technological College",
+        "count": 1
+      },
+      {
+        "name": "German University of Technology in Oman",
+        "count": 1
+      },
+      {
+        "name": "College of Science Oman",
+        "count": 1
+      },
+      {
+        "name": "Sultan Qaboos University",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 2001.5,
+    "median_nc9619_ns": 180.5,
+    "median_h19_ns": 6.0,
+    "median_c_ns": 1.49,
+    "flow_count": 6,
+    "active_authors": 28,
+    "median_first_flow_year": 2014.0,
+    "year_range": [
+      1998,
+      2025
+    ]
+  },
+  {
+    "code": "svk",
+    "name": "Slovakia",
+    "scopus_total": 3,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.0,
+    "is_greece": false,
+    "institution_count": 3,
+    "top_institutions": [
+      {
+        "name": "Comenius University Medical School",
+        "count": 1
+      },
+      {
+        "name": "Comenius University",
+        "count": 1
+      },
+      {
+        "name": "Slovak University of Technology in Bratislava",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 2009.0,
+    "median_nc9619_ns": 46.0,
+    "median_h19_ns": 4.0,
+    "median_c_ns": 1.28,
+    "flow_count": 75,
+    "active_authors": 249,
+    "median_first_flow_year": 2010.0,
+    "year_range": [
+      1956,
+      2025
+    ]
+  },
+  {
+    "code": "cri",
+    "name": "Costa Rica",
+    "scopus_total": 2,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.0,
+    "is_greece": false,
+    "institution_count": 2,
+    "top_institutions": [
+      {
+        "name": "Ministry of Health",
+        "count": 1
+      },
+      {
+        "name": "National and Kapodistrian University of Athens",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 1999.5,
+    "median_nc9619_ns": 48.0,
+    "median_h19_ns": 4.0,
+    "median_c_ns": 1.08,
+    "flow_count": 0,
+    "active_authors": 7,
+    "median_first_flow_year": null,
+    "year_range": [
+      1993,
+      2023
+    ]
+  },
+  {
+    "code": "cub",
+    "name": "Cuba",
+    "scopus_total": 2,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.0,
+    "is_greece": false,
+    "institution_count": 2,
+    "top_institutions": [
+      {
+        "name": "Laboratorio Central de Farmacología “Dr. Francisco Morón Rodriguez In Memorian”",
+        "count": 1
+      },
+      {
+        "name": "Facultad de Ciencias Médicas Dr. Salvador Allende",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 2005.5,
+    "median_nc9619_ns": 73.5,
+    "median_h19_ns": 3.5,
+    "median_c_ns": 0.82,
+    "flow_count": 1,
+    "active_authors": 10,
+    "median_first_flow_year": 2014.0,
+    "year_range": [
+      1974,
+      2024
+    ]
+  },
+  {
+    "code": "eth",
+    "name": "Ethiopia",
+    "scopus_total": 2,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.0,
+    "is_greece": false,
+    "institution_count": 2,
+    "top_institutions": [
+      {
+        "name": "Horn of Africa",
+        "count": 1
+      },
+      {
+        "name": "Addis Ababa University",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 1974.0,
+    "median_nc9619_ns": 422.0,
+    "median_h19_ns": 11.0,
+    "median_c_ns": 2.42,
+    "flow_count": 5,
+    "active_authors": 20,
+    "median_first_flow_year": 2012.0,
+    "year_range": [
+      1966,
+      2025
+    ]
+  },
+  {
+    "code": "irq",
+    "name": "Iraq",
+    "scopus_total": 2,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.0,
+    "is_greece": false,
+    "institution_count": 2,
+    "top_institutions": [
+      {
+        "name": "American University of Iraq-Sulaimani",
+        "count": 1
+      },
+      {
+        "name": "American University of Iraq",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 1996.5,
+    "median_nc9619_ns": 34.0,
+    "median_h19_ns": 3.0,
+    "median_c_ns": 1.68,
+    "flow_count": 0,
+    "active_authors": 26,
+    "median_first_flow_year": null,
+    "year_range": [
+      2010,
+      2023
+    ]
+  },
+  {
+    "code": "kgz",
+    "name": "Kyrgyzstan",
+    "scopus_total": 2,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.0,
+    "is_greece": false,
+    "institution_count": 2,
+    "top_institutions": [
+      {
+        "name": "American University of Central Asia",
+        "count": 1
+      },
+      {
+        "name": "University of Central Asia",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 2010.0,
+    "median_nc9619_ns": 14.5,
+    "median_h19_ns": 2.5,
+    "median_c_ns": 1.08,
+    "flow_count": 0,
+    "active_authors": 3,
+    "median_first_flow_year": null,
+    "year_range": [
+      2016,
+      2021
+    ]
+  },
+  {
+    "code": "mar",
+    "name": "Morocco",
+    "scopus_total": 2,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.0,
+    "is_greece": false,
+    "institution_count": 2,
+    "top_institutions": [
+      {
+        "name": "Mohammed VI Polytechnic University",
+        "count": 1
+      },
+      {
+        "name": "International Center for Agricultural Research in the Dry Areas",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 2005.0,
+    "median_nc9619_ns": 17.0,
+    "median_h19_ns": 2.0,
+    "median_c_ns": 0.96,
+    "flow_count": 2,
+    "active_authors": 82,
+    "median_first_flow_year": 2013.5,
+    "year_range": [
+      1964,
+      2024
+    ]
+  },
+  {
+    "code": "pan",
+    "name": "Panama",
+    "scopus_total": 2,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.0,
+    "is_greece": false,
+    "institution_count": 2,
+    "top_institutions": [
+      {
+        "name": "Complejo Hospitalario",
+        "count": 1
+      },
+      {
+        "name": "Universidad Tecnologica de Panama",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 2006.5,
+    "median_nc9619_ns": 325.0,
+    "median_h19_ns": 9.0,
+    "median_c_ns": 1.62,
+    "flow_count": 12,
+    "active_authors": 52,
+    "median_first_flow_year": 2006.0,
+    "year_range": [
+      1982,
+      2024
+    ]
+  },
+  {
+    "code": "tto",
+    "name": "Trinidad and Tobago",
+    "scopus_total": 2,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.0,
+    "is_greece": false,
+    "institution_count": 2,
+    "top_institutions": [
+      {
+        "name": "The University of the West Indies, St. Augustine Campus",
+        "count": 1
+      },
+      {
+        "name": "Cayman Islands Health Service Authority",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 1998.5,
+    "median_nc9619_ns": 166.0,
+    "median_h19_ns": 5.5,
+    "median_c_ns": 1.23,
+    "flow_count": 0,
+    "active_authors": 5,
+    "median_first_flow_year": null,
+    "year_range": [
+      1984,
+      2023
+    ]
+  },
+  {
+    "code": "vir",
+    "name": "U.S. Virgin Islands",
+    "scopus_total": 2,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.0,
+    "is_greece": false,
+    "institution_count": 2,
+    "top_institutions": [
+      {
+        "name": "University of the Virgin Islands",
+        "count": 1
+      },
+      {
+        "name": "Institute for Postdoctoral Studies",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 1993.5,
+    "median_nc9619_ns": 123.0,
+    "median_h19_ns": 5.5,
+    "median_c_ns": 1.73,
+    "flow_count": 0,
+    "active_authors": 0,
+    "median_first_flow_year": null,
+    "year_range": [
+      null,
+      null
+    ]
+  },
+  {
+    "code": "vnm",
+    "name": "Vietnam",
+    "scopus_total": 2,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.0,
+    "is_greece": false,
+    "institution_count": 2,
+    "top_institutions": [
+      {
+        "name": "Ton-Duc-Thang University",
+        "count": 1
+      },
+      {
+        "name": "Hoa Sen University",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 2007.0,
+    "median_nc9619_ns": 54.0,
+    "median_h19_ns": 3.5,
+    "median_c_ns": 1.53,
+    "flow_count": 14,
+    "active_authors": 49,
+    "median_first_flow_year": 2008.0,
+    "year_range": [
+      1979,
+      2024
+    ]
+  },
+  {
+    "code": "wsm",
+    "name": "Samoa",
+    "scopus_total": 2,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.0,
+    "is_greece": false,
+    "institution_count": 2,
+    "top_institutions": [
+      {
+        "name": "UN Environment in Samoa",
+        "count": 1
+      },
+      {
+        "name": "Ministry of Health Samoa",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 2010.0,
+    "median_nc9619_ns": 89.5,
+    "median_h19_ns": 4.5,
+    "median_c_ns": 1.11,
+    "flow_count": 0,
+    "active_authors": 2,
+    "median_first_flow_year": null,
+    "year_range": [
+      2016,
+      2019
+    ]
+  },
+  {
+    "code": "arm",
+    "name": "Armenia",
+    "scopus_total": 1,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.0,
+    "is_greece": false,
+    "institution_count": 1,
+    "top_institutions": [
+      {
+        "name": "Stevens Institute of Technology",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 2003.0,
+    "median_nc9619_ns": 1364.0,
+    "median_h19_ns": 20.0,
+    "median_c_ns": 2.11,
+    "flow_count": 13,
+    "active_authors": 159,
+    "median_first_flow_year": 2010.0,
+    "year_range": [
+      1985,
+      2024
+    ]
+  },
+  {
+    "code": "aze",
+    "name": "Azerbaijan",
+    "scopus_total": 1,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.0,
+    "is_greece": false,
+    "institution_count": 1,
+    "top_institutions": [
+      {
+        "name": "Azerbaijan National Academy of Sciences",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 2012.0,
+    "median_nc9619_ns": 113.0,
+    "median_h19_ns": 7.0,
+    "median_c_ns": 1.41,
+    "flow_count": 2,
+    "active_authors": 18,
+    "median_first_flow_year": 2010.5,
+    "year_range": [
+      1985,
+      2024
+    ]
+  },
+  {
+    "code": "brb",
+    "name": "Barbados",
+    "scopus_total": 1,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.0,
+    "is_greece": false,
+    "institution_count": 1,
+    "top_institutions": [
+      {
+        "name": "The University of the West Indies",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 2002.0,
+    "median_nc9619_ns": 62.0,
+    "median_h19_ns": 5.0,
+    "median_c_ns": 1.56,
+    "flow_count": 1,
+    "active_authors": 5,
+    "median_first_flow_year": 2003.0,
+    "year_range": [
+      1993,
+      2023
+    ]
+  },
+  {
+    "code": "brn",
+    "name": "Brunei",
+    "scopus_total": 1,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.0,
+    "is_greece": false,
+    "institution_count": 1,
+    "top_institutions": [
+      {
+        "name": "UNIVERSITI BRUNEI DARUSSALAM",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 1996.0,
+    "median_nc9619_ns": 650.0,
+    "median_h19_ns": 16.0,
+    "median_c_ns": 2.31,
+    "flow_count": 5,
+    "active_authors": 18,
+    "median_first_flow_year": 2003.0,
+    "year_range": [
+      1985,
+      2024
+    ]
+  },
+  {
+    "code": "bwa",
+    "name": "Botswana",
+    "scopus_total": 1,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.0,
+    "is_greece": false,
+    "institution_count": 1,
+    "top_institutions": [
+      {
+        "name": "Botswana International University of Science and Technology",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 2001.0,
+    "median_nc9619_ns": 103.0,
+    "median_h19_ns": 3.0,
+    "median_c_ns": 1.31,
+    "flow_count": 2,
+    "active_authors": 3,
+    "median_first_flow_year": 1997.0,
+    "year_range": [
+      1974,
+      2022
+    ]
+  },
+  {
+    "code": "civ",
+    "name": "Côte d'Ivoire",
+    "scopus_total": 1,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.0,
+    "is_greece": false,
+    "institution_count": 1,
+    "top_institutions": [
+      {
+        "name": "Centre Hospitalier Universitaire de Yopougon",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 2007.0,
+    "median_nc9619_ns": 14.0,
+    "median_h19_ns": 3.0,
+    "median_c_ns": 0.71,
+    "flow_count": 0,
+    "active_authors": 5,
+    "median_first_flow_year": null,
+    "year_range": [
+      1998,
+      2021
+    ]
+  },
+  {
+    "code": "cmr",
+    "name": "Cameroon",
+    "scopus_total": 1,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.0,
+    "is_greece": false,
+    "institution_count": 1,
+    "top_institutions": [
+      {
+        "name": "St. Elizabeth Hospital",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 2005.0,
+    "median_nc9619_ns": 196.0,
+    "median_h19_ns": 5.0,
+    "median_c_ns": 1.98,
+    "flow_count": 4,
+    "active_authors": 36,
+    "median_first_flow_year": 2020.5,
+    "year_range": [
+      1983,
+      2025
+    ]
+  },
+  {
+    "code": "col",
+    "name": "Colombia",
+    "scopus_total": 1,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.0,
+    "is_greece": false,
+    "institution_count": 1,
+    "top_institutions": [
+      {
+        "name": "Universidad Nacional de Colombia",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 2001.0,
+    "median_nc9619_ns": 4.0,
+    "median_h19_ns": 1.0,
+    "median_c_ns": 0.62,
+    "flow_count": 4,
+    "active_authors": 38,
+    "median_first_flow_year": 2017.5,
+    "year_range": [
+      1984,
+      2025
+    ]
+  },
+  {
+    "code": "dza",
+    "name": "Algeria",
+    "scopus_total": 1,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.0,
+    "is_greece": false,
+    "institution_count": 1,
+    "top_institutions": [
+      {
+        "name": "Institut Algérien du Pétrole (IAP)",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 1981.0,
+    "median_nc9619_ns": 124.0,
+    "median_h19_ns": 3.0,
+    "median_c_ns": 1.46,
+    "flow_count": 7,
+    "active_authors": 28,
+    "median_first_flow_year": 2006.0,
+    "year_range": [
+      1977,
+      2024
+    ]
+  },
+  {
+    "code": "geo",
+    "name": "Georgia",
+    "scopus_total": 1,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.0,
+    "is_greece": false,
+    "institution_count": 1,
+    "top_institutions": [
+      {
+        "name": "Institute of Stable Isotopes Tbilisi",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 1984.0,
+    "median_nc9619_ns": 0.0,
+    "median_h19_ns": 0.0,
+    "median_c_ns": 0.0,
+    "flow_count": 2,
+    "active_authors": 9,
+    "median_first_flow_year": 2014.0,
+    "year_range": [
+      2005,
+      2023
+    ]
+  },
+  {
+    "code": "grd",
+    "name": "Grenada",
+    "scopus_total": 1,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.0,
+    "is_greece": false,
+    "institution_count": 1,
+    "top_institutions": [
+      {
+        "name": "St. George's University Grenada",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 2001.0,
+    "median_nc9619_ns": 7374.0,
+    "median_h19_ns": 38.0,
+    "median_c_ns": 3.29,
+    "flow_count": 2,
+    "active_authors": 12,
+    "median_first_flow_year": 2022.5,
+    "year_range": [
+      2005,
+      2025
+    ]
+  },
+  {
+    "code": "irn",
+    "name": "Iran",
+    "scopus_total": 1,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.0,
+    "is_greece": false,
+    "institution_count": 1,
+    "top_institutions": [
+      {
+        "name": "Petroleum University of Technology",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 2008.0,
+    "median_nc9619_ns": 564.0,
+    "median_h19_ns": 14.0,
+    "median_c_ns": 2.22,
+    "flow_count": 24,
+    "active_authors": 116,
+    "median_first_flow_year": 2012.0,
+    "year_range": [
+      1997,
+      2025
+    ]
+  },
+  {
+    "code": "khm",
+    "name": "Cambodia",
+    "scopus_total": 1,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.0,
+    "is_greece": false,
+    "institution_count": 1,
+    "top_institutions": [
+      {
+        "name": "Angkor Hospital for Children",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 2012.0,
+    "median_nc9619_ns": 44.0,
+    "median_h19_ns": 4.0,
+    "median_c_ns": 0.7,
+    "flow_count": 16,
+    "active_authors": 31,
+    "median_first_flow_year": 2006.0,
+    "year_range": [
+      1992,
+      2024
+    ]
+  },
+  {
+    "code": "kna",
+    "name": "Saint Kitts and Nevis",
+    "scopus_total": 1,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.0,
+    "is_greece": false,
+    "institution_count": 1,
+    "top_institutions": [
+      {
+        "name": "Ross University School of Veterinary Medicine Saint Kitts and Nevis",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 2013.0,
+    "median_nc9619_ns": 41.0,
+    "median_h19_ns": 5.0,
+    "median_c_ns": 1.36,
+    "flow_count": 0,
+    "active_authors": 3,
+    "median_first_flow_year": null,
+    "year_range": [
+      2014,
+      2024
+    ]
+  },
+  {
+    "code": "lie",
+    "name": "Liechtenstein",
+    "scopus_total": 1,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.0,
+    "is_greece": false,
+    "institution_count": 1,
+    "top_institutions": [
+      {
+        "name": "Unaxis Balzers Aktiengesellschaft",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 1999.0,
+    "median_nc9619_ns": 102.0,
+    "median_h19_ns": 3.0,
+    "median_c_ns": 0.8,
+    "flow_count": 0,
+    "active_authors": 47,
+    "median_first_flow_year": null,
+    "year_range": [
+      2003,
+      2024
+    ]
+  },
+  {
+    "code": "lso",
+    "name": "Lesotho",
+    "scopus_total": 1,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.0,
+    "is_greece": false,
+    "institution_count": 1,
+    "top_institutions": [
+      {
+        "name": "Medecins Sans Frontieres",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 2009.0,
+    "median_nc9619_ns": 207.0,
+    "median_h19_ns": 6.0,
+    "median_c_ns": 0.86,
+    "flow_count": 0,
+    "active_authors": 0,
+    "median_first_flow_year": null,
+    "year_range": [
+      null,
+      null
+    ]
+  },
+  {
+    "code": "lva",
+    "name": "Latvia",
+    "scopus_total": 1,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.0,
+    "is_greece": false,
+    "institution_count": 1,
+    "top_institutions": [
+      {
+        "name": "Daugavpils University",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 2008.0,
+    "median_nc9619_ns": 8.0,
+    "median_h19_ns": 2.0,
+    "median_c_ns": 0.76,
+    "flow_count": 3,
+    "active_authors": 37,
+    "median_first_flow_year": 2006.0,
+    "year_range": [
+      1980,
+      2024
+    ]
+  },
+  {
+    "code": "mac",
+    "name": "Macau",
+    "scopus_total": 1,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.0,
+    "is_greece": false,
+    "institution_count": 1,
+    "top_institutions": [
+      {
+        "name": "United Nations University International Institute for Software Technology",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 2006.0,
+    "median_nc9619_ns": 50.0,
+    "median_h19_ns": 4.0,
+    "median_c_ns": 1.46,
+    "flow_count": 0,
+    "active_authors": 6,
+    "median_first_flow_year": null,
+    "year_range": [
+      2004,
+      2021
+    ]
+  },
+  {
+    "code": "mco",
+    "name": "Monaco",
+    "scopus_total": 1,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.0,
+    "is_greece": false,
+    "institution_count": 1,
+    "top_institutions": [
+      {
+        "name": "International University of Monaco",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 2016.0,
+    "median_nc9619_ns": 112.0,
+    "median_h19_ns": 5.0,
+    "median_c_ns": 1.68,
+    "flow_count": 0,
+    "active_authors": 7,
+    "median_first_flow_year": null,
+    "year_range": [
+      1972,
+      2024
+    ]
+  },
+  {
+    "code": "moz",
+    "name": "Mozambique",
+    "scopus_total": 1,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.0,
+    "is_greece": false,
+    "institution_count": 1,
+    "top_institutions": [
+      {
+        "name": "Sofala Provincial Health Directorate",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 2010.0,
+    "median_nc9619_ns": 170.0,
+    "median_h19_ns": 5.0,
+    "median_c_ns": 0.83,
+    "flow_count": 0,
+    "active_authors": 3,
+    "median_first_flow_year": null,
+    "year_range": [
+      2005,
+      2019
+    ]
+  },
+  {
+    "code": "mys",
+    "name": "Malaysia",
+    "scopus_total": 1,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.0,
+    "is_greece": false,
+    "institution_count": 1,
+    "top_institutions": [
+      {
+        "name": "University of Malaya",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 2014.0,
+    "median_nc9619_ns": 3.0,
+    "median_h19_ns": 1.0,
+    "median_c_ns": 0.49,
+    "flow_count": 9,
+    "active_authors": 95,
+    "median_first_flow_year": 2009.0,
+    "year_range": [
+      1952,
+      2025
+    ]
+  },
+  {
+    "code": "nga",
+    "name": "Nigeria",
+    "scopus_total": 1,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.0,
+    "is_greece": false,
+    "institution_count": 1,
+    "top_institutions": [
+      {
+        "name": "Murtala Muhammed Specialist Hospital",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 1972.0,
+    "median_nc9619_ns": 79.0,
+    "median_h19_ns": 5.0,
+    "median_c_ns": 1.19,
+    "flow_count": 23,
+    "active_authors": 92,
+    "median_first_flow_year": 2007.0,
+    "year_range": [
+      1958,
+      2025
+    ]
+  },
+  {
+    "code": "per",
+    "name": "Peru",
+    "scopus_total": 1,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.0,
+    "is_greece": false,
+    "institution_count": 1,
+    "top_institutions": [
+      {
+        "name": "Centro Internacional de la Papa, Peru",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 2012.0,
+    "median_nc9619_ns": 101.0,
+    "median_h19_ns": 5.0,
+    "median_c_ns": 1.5,
+    "flow_count": 1,
+    "active_authors": 17,
+    "median_first_flow_year": 1999.0,
+    "year_range": [
+      1963,
+      2025
+    ]
+  },
+  {
+    "code": "png",
+    "name": "Papua New Guinea",
+    "scopus_total": 1,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.0,
+    "is_greece": false,
+    "institution_count": 1,
+    "top_institutions": [
+      {
+        "name": "Macro Planning Division, Department of National Planning and Monitoring",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 1997.0,
+    "median_nc9619_ns": 131.0,
+    "median_h19_ns": 6.0,
+    "median_c_ns": 2.18,
+    "flow_count": 0,
+    "active_authors": 1,
+    "median_first_flow_year": null,
+    "year_range": [
+      2011,
+      2019
+    ]
+  },
+  {
+    "code": "rom",
+    "name": "Romania",
+    "scopus_total": 1,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.0,
+    "is_greece": false,
+    "institution_count": 1,
+    "top_institutions": [
+      {
+        "name": "Secţia oftalmologie a spitalului judeţean Bacǎu",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 1985.0,
+    "median_nc9619_ns": 1.0,
+    "median_h19_ns": 1.0,
+    "median_c_ns": 0.24,
+    "flow_count": 0,
+    "active_authors": 0,
+    "median_first_flow_year": null,
+    "year_range": [
+      null,
+      null
+    ]
+  },
+  {
+    "code": "sen",
+    "name": "Senegal",
+    "scopus_total": 1,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.0,
+    "is_greece": false,
+    "institution_count": 1,
+    "top_institutions": [
+      {
+        "name": "Universite Cheikh Anta Diop",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 1965.0,
+    "median_nc9619_ns": 113.0,
+    "median_h19_ns": 6.0,
+    "median_c_ns": 2.0,
+    "flow_count": 1,
+    "active_authors": 2,
+    "median_first_flow_year": 1992.0,
+    "year_range": [
+      1992,
+      1993
+    ]
+  },
+  {
+    "code": "sle",
+    "name": "Sierra Leone",
+    "scopus_total": 1,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.0,
+    "is_greece": false,
+    "institution_count": 1,
+    "top_institutions": [
+      {
+        "name": "Medecins Sans Frontieres",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 2009.0,
+    "median_nc9619_ns": 239.0,
+    "median_h19_ns": 6.0,
+    "median_c_ns": 1.21,
+    "flow_count": 0,
+    "active_authors": 2,
+    "median_first_flow_year": null,
+    "year_range": [
+      1986,
+      2015
+    ]
+  },
+  {
+    "code": "syc",
+    "name": "Seychelles",
+    "scopus_total": 1,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.0,
+    "is_greece": false,
+    "institution_count": 1,
+    "top_institutions": [
+      {
+        "name": "Washington University School of Medicine in St. Louis, Mallinckrodt Institute of Radiology",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 2005.0,
+    "median_nc9619_ns": 349.0,
+    "median_h19_ns": 10.0,
+    "median_c_ns": 1.94,
+    "flow_count": 0,
+    "active_authors": 0,
+    "median_first_flow_year": null,
+    "year_range": [
+      null,
+      null
+    ]
+  },
+  {
+    "code": "uga",
+    "name": "Uganda",
+    "scopus_total": 1,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.0,
+    "is_greece": false,
+    "institution_count": 1,
+    "top_institutions": [
+      {
+        "name": "Hubert Kairuki Memorial University",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 1989.0,
+    "median_nc9619_ns": 242.0,
+    "median_h19_ns": 6.0,
+    "median_c_ns": 1.58,
+    "flow_count": 3,
+    "active_authors": 31,
+    "median_first_flow_year": 2019.0,
+    "year_range": [
+      1978,
+      2024
+    ]
+  },
+  {
+    "code": "ury",
+    "name": "Uruguay",
+    "scopus_total": 1,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.0,
+    "is_greece": false,
+    "institution_count": 1,
+    "top_institutions": [
+      {
+        "name": "Universidad de la Republica",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 2005.0,
+    "median_nc9619_ns": 79.0,
+    "median_h19_ns": 4.0,
+    "median_c_ns": 1.22,
+    "flow_count": 1,
+    "active_authors": 17,
+    "median_first_flow_year": 2022.0,
+    "year_range": [
+      2005,
+      2023
+    ]
+  },
+  {
+    "code": "ven",
+    "name": "Venezuela",
+    "scopus_total": 1,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.0,
+    "is_greece": false,
+    "institution_count": 1,
+    "top_institutions": [
+      {
+        "name": "Programa de Ciencias Del Agro y El Mar",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 1996.0,
+    "median_nc9619_ns": 95.0,
+    "median_h19_ns": 2.0,
+    "median_c_ns": 1.08,
+    "flow_count": 6,
+    "active_authors": 19,
+    "median_first_flow_year": 1999.5,
+    "year_range": [
+      1982,
+      2025
+    ]
+  },
+  {
+    "code": "yug",
+    "name": "Yugoslavia",
+    "scopus_total": 1,
+    "scopus_pct_total": 0.0,
+    "scopus_pct_overseas": 0.0,
+    "is_greece": false,
+    "institution_count": 1,
+    "top_institutions": [
+      {
+        "name": "Belgrade University School of Medicine",
+        "count": 1
+      }
+    ],
+    "median_firstyr": 1973.0,
+    "median_nc9619_ns": 44.0,
+    "median_h19_ns": 4.0,
+    "median_c_ns": 1.35,
+    "flow_count": 0,
+    "active_authors": 0,
+    "median_first_flow_year": null,
+    "year_range": [
+      null,
+      null
+    ]
+  }
+]

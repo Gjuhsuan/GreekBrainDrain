@@ -7,10 +7,10 @@
   "use strict";
 
   var METRIC_META = {
-    "c_ns":  { title: "综合引用得分",   log: false },
-    "nc_ns": { title: "总引用次数",     log: true  },
-    "np":    { title: "论文发表数",     log: true  },
-    "h19_ns":{ title: "h-index",       log: false }
+    "c_ns":  { title: "综合引用得分",   log: true },
+    "nc_ns": { title: "总被引次数",     log: true },
+    "np":    { title: "发表论文数",     log: true },
+    "h19_ns":{ title: "h 指数",        log: true }
   };
 
   var METRIC_ORDER = ["c_ns", "nc_ns", "np", "h19_ns"];
@@ -191,28 +191,29 @@
           .attr("stroke", "#fff")
           .attr("stroke-width", 2.5);
 
-        // Median markers
+        // Median markers (prominent on all four)
         [ { val: grcMedian, col: COL_G, dir: -1 },
           { val: abrMedian, col: COL_A, dir: 1 } ]
           .forEach(function (m) {
             var my = yScale(isLog ? Math.log10(m.val) : m.val);
+            if (isNaN(my)) return;
             chart.append("line")
-              .attr("x1", bandCenterX + m.dir * 4)
-              .attr("x2", bandCenterX + m.dir * (V_W + 12))
+              .attr("x1", bandCenterX + m.dir * 3)
+              .attr("x2", bandCenterX + m.dir * (V_W + 10))
               .attr("y1", my).attr("y2", my)
               .attr("stroke", m.col)
-              .attr("stroke-width", 2)
+              .attr("stroke-width", 2.4)
               .attr("stroke-dasharray", "5 3")
-              .attr("opacity", 0.7);
+              .attr("opacity", 0.8);
             chart.append("text")
-              .attr("x", bandCenterX + m.dir * (V_W + 16))
-              .attr("y", my + 4)
+              .attr("x", bandCenterX + m.dir * (V_W + 14))
+              .attr("y", my + 5)
               .attr("text-anchor", m.dir > 0 ? "start" : "end")
               .attr("fill", m.col)
-              .attr("font-size", "11px")
               .attr("font-family", "Inter, sans-serif")
+              .attr("font-size", "12px")
               .attr("font-weight", "700")
-              .text(isLog ? fmtNum(m.val) : m.val.toFixed(2));
+              .text(isLog ? fmtNum(m.val) : (m.val >= 10 ? m.val.toFixed(1) : m.val.toFixed(2)));
           });
 
         // Title

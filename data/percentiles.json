@@ -1,1 +1,176 @@
-[{"tier":"前 50%","tier_value":50,"greece":18467,"abroad":16843,"total":35310},{"tier":"前 20%","tier_value":20,"greece":7807,"abroad":7859,"total":15666},{"tier":"前 10%","tier_value":10,"greece":3807,"abroad":4314,"total":8121},{"tier":"前 5%","tier_value":5,"greece":1724,"abroad":2439,"total":4163},{"tier":"前 2%","tier_value":2,"greece":593,"abroad":1157,"total":1750},{"tier":"前 1%","tier_value":1,"greece":250,"abroad":648,"total":898},{"tier":"前 0.5%","tier_value":0.5,"greece":89,"abroad":348,"total":437},{"tier":"前 0.1%","tier_value":0.1,"greece":15,"abroad":96,"total":111}]
+{
+  "c_ns": [
+    {
+      "tier": "前 50%",
+      "tier_value": 50,
+      "greece": 16217,
+      "abroad": 15759,
+      "total": 31976
+    },
+    {
+      "tier": "前 20%",
+      "tier_value": 20,
+      "greece": 6200,
+      "abroad": 6590,
+      "total": 12790
+    },
+    {
+      "tier": "前 10%",
+      "tier_value": 10,
+      "greece": 2838,
+      "abroad": 3557,
+      "total": 6395
+    },
+    {
+      "tier": "前 5%",
+      "tier_value": 5,
+      "greece": 1215,
+      "abroad": 1983,
+      "total": 3198
+    },
+    {
+      "tier": "前 2%",
+      "tier_value": 2,
+      "greece": 348,
+      "abroad": 931,
+      "total": 1279
+    },
+    {
+      "tier": "前 1%",
+      "tier_value": 1,
+      "greece": 144,
+      "abroad": 496,
+      "total": 640
+    },
+    {
+      "tier": "前 0.5%",
+      "tier_value": 0.5,
+      "greece": 52,
+      "abroad": 268,
+      "total": 320
+    },
+    {
+      "tier": "前 0.1%",
+      "tier_value": 0.1,
+      "greece": 5,
+      "abroad": 59,
+      "total": 64
+    }
+  ],
+  "cpp_ns": [
+    {
+      "tier": "前 50%",
+      "tier_value": 50,
+      "greece": 16531,
+      "abroad": 15445,
+      "total": 31976
+    },
+    {
+      "tier": "前 20%",
+      "tier_value": 20,
+      "greece": 5306,
+      "abroad": 7484,
+      "total": 12790
+    },
+    {
+      "tier": "前 10%",
+      "tier_value": 10,
+      "greece": 2260,
+      "abroad": 4135,
+      "total": 6395
+    },
+    {
+      "tier": "前 5%",
+      "tier_value": 5,
+      "greece": 972,
+      "abroad": 2226,
+      "total": 3198
+    },
+    {
+      "tier": "前 2%",
+      "tier_value": 2,
+      "greece": 341,
+      "abroad": 938,
+      "total": 1279
+    },
+    {
+      "tier": "前 1%",
+      "tier_value": 1,
+      "greece": 166,
+      "abroad": 474,
+      "total": 640
+    },
+    {
+      "tier": "前 0.5%",
+      "tier_value": 0.5,
+      "greece": 83,
+      "abroad": 237,
+      "total": 320
+    },
+    {
+      "tier": "前 0.1%",
+      "tier_value": 0.1,
+      "greece": 15,
+      "abroad": 49,
+      "total": 64
+    }
+  ],
+  "h19_ns": [
+    {
+      "tier": "前 50%",
+      "tier_value": 50,
+      "greece": 17114,
+      "abroad": 14862,
+      "total": 31976
+    },
+    {
+      "tier": "前 20%",
+      "tier_value": 20,
+      "greece": 6473,
+      "abroad": 6317,
+      "total": 12790
+    },
+    {
+      "tier": "前 10%",
+      "tier_value": 10,
+      "greece": 2979,
+      "abroad": 3416,
+      "total": 6395
+    },
+    {
+      "tier": "前 5%",
+      "tier_value": 5,
+      "greece": 1279,
+      "abroad": 1919,
+      "total": 3198
+    },
+    {
+      "tier": "前 2%",
+      "tier_value": 2,
+      "greece": 393,
+      "abroad": 886,
+      "total": 1279
+    },
+    {
+      "tier": "前 1%",
+      "tier_value": 1,
+      "greece": 175,
+      "abroad": 465,
+      "total": 640
+    },
+    {
+      "tier": "前 0.5%",
+      "tier_value": 0.5,
+      "greece": 77,
+      "abroad": 243,
+      "total": 320
+    },
+    {
+      "tier": "前 0.1%",
+      "tier_value": 0.1,
+      "greece": 8,
+      "abroad": 56,
+      "total": 64
+    }
+  ]
+}

@@ -27,7 +27,7 @@
   observeSection("departure-timeline", initDeparture);
 
   function createControls(data) {
-    var container = d3.select("#viz-departure");
+    var container = d3.select("#departure-timeline .viz-right");
     if (container.select(".departure-controls").node()) return;
 
     var years = data.map(function (d) { return d.year; });
