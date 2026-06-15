@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=20260612-v2">
+  <link rel="stylesheet" href="css/style.css?v=20260615-v1">
   <script src="https://d3js.org/d3.v7.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/d3-sankey@0.12.3/dist/d3-sankey.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
@@ -18,10 +18,10 @@
   <a class="logo-text" href="#opening">希腊人才流失</a>
   <div class="nav-links">
     <a href="#opening" data-nav-section="opening">开篇</a>
-    <a href="#global-map" data-nav-section="scale">去向</a>
+    <a href="#global-map" data-nav-section="scale">规模与时间</a>
     <a href="#disciplines" data-nav-section="disciplines">学科</a>
-    <a href="#elite-drain" data-nav-section="elite">顶尖人才</a>
-    <a href="#migration-flows" data-nav-section="network">流动网络</a>
+    <a href="#elite-drain" data-nav-section="elite">顶端影响力</a>
+    <a href="#institution-ranking" data-nav-section="network">流动路径</a>
     <a href="#conclusion" data-nav-section="conclusion">结论</a>
   </div>
 </nav>
@@ -38,7 +38,7 @@
         <h2>63,951 名科学家的迁移图谱</h2>
       </div>
 
-      <p>Yuret（2017）统计了美国排名前 48 所大学中 14,310 名正教授的本科教育来源。结果显示，希腊一国培养的正教授人数超过了整个南美洲或非洲的总和。一个人口规模很小的国家，在美国顶尖大学教授群体中却占据了远超预期的比例。</p>
+      <p>一个人口规模不大的国家，却在美国顶尖大学教授群体中占据了远超预期的位置。Yuret（2017）统计美国排名前 48 所大学中 14,310 名正教授的本科教育来源，发现希腊培养出的正教授人数超过整个南美洲或非洲的总和。</p>
     </div>
 
     <div class="comparison-block" id="comparison-block" style="display:none">
@@ -63,8 +63,8 @@
     </div>
 
     <div class="text-column">
-      <p>一个国家培养了远超其人口规模所预期的科学人才，这些人最终在哪里工作？</p>
-      <p>Ioannidis 等人（2021）从 Scopus 数据库中筛选出 <strong>63,951 名</strong>在 1960–2019 年间发表过至少 5 篇论文的希腊裔科学家，构建了首个覆盖本土与海外侨民的希腊科学人才数据库。这些科学家分布在 108 个国家，其中 <strong>45% 的人不在希腊工作</strong>。</p>
+      <p>这个事实既说明希腊有很强的人才培养能力，也引出一个更尖锐的问题：这些被培养出来的科学人才，最后在哪里完成他们的学术事业？</p>
+      <p>Ioannidis 等人（2021）从 Scopus 数据库中筛选出 <strong>63,951 名</strong>在 1960–2019 年间发表过至少 5 篇论文的希腊裔科学家，构建了首个同时覆盖本土与海外侨民的希腊科学人才数据库。我们的叙事从这个悖论出发：希腊培养了大量科学人才，但其中 <strong>45% 的人不在希腊工作</strong>。</p>
     </div>
 
     <div class="viz-hero" id="viz-hero">
@@ -85,18 +85,19 @@
   </section>
 
   <!-- ══════════════════════════════════════════
-       一、人才流失的规模
+       一、人才流失的规模、去向与时间
        ══════════════════════════════════════════ -->
   <div class="chapter-header">
     <span class="chapter-num">一</span>
-    <h2 class="chapter-title">希腊的科学人才去了哪里？</h2>
+    <h2 class="chapter-title">流失不是零散发生，而是集中流向少数科研中心</h2>
   </div>
 
   <!-- 全球分布 -->
   <section id="global-map" class="story-section alt-bg">
     <div class="text-column">
-      <h3>全球分布</h3>
-      <p>63,174 名有归属国信息的科学家中，35,116 人（55.6%）留在希腊，其余 28,058 人散布于 107 个国家。但这种散布并不均匀：仅美国一国就吸纳了 <strong>9,339 人</strong>，占全部海外希腊科学家的 33.3%。排名前八的目的国合计容纳了海外群体的 <strong>82.1%</strong>，呈现高度集中的迁移格局。</p>
+      <h3>不是流向全世界，而是流向少数中心</h3>
+      <p>63,174 名有归属国信息的科学家中，35,116 人（55.6%）留在希腊，其余 28,058 人分布于 107 个国家。表面上看，这是全球性的迁移；但地图揭示的真正结构是集中：仅美国一国就吸纳了 <strong>9,339 人</strong>，占全部海外希腊科学家的 33.3%。排名前八的目的国合计容纳了海外群体的 <strong>82.1%</strong>。</p>
+      <p>因此，希腊人才流失不是平均撒向世界，而是被少数英语世界和欧洲科研中心持续吸纳。</p>
       <p class="note">另有 777 名科学家（1.2%）在 Scopus 中无归属国信息。</p>
     </div>
     <div class="viz-wide map-layout" id="viz-map">
@@ -150,9 +151,9 @@
   <section id="timeline" class="story-section">
     <div class="side-by-side section-panel">
       <div class="text-column-left" id="timeline-text">
-        <h3>半个世纪的外流轨迹</h3>
-        <p>数据库中的「首次发表年份」（firstyr）记录了每位科学家发表第一篇 Scopus 论文的时间，间接标记了其进入学术劳动力市场的年份。右侧图表按年份排列 1960–2019 年间首次发表论文的科学家群体，<span class="n-greece">蓝色</span>为留在希腊的人，<span class="n-abroad">橙色</span>为在海外工作的人。</p>
-        <p>这条时间线并不是简单的单向上升。1960 年代样本规模较小，海外工作者占比反而很高：当时首次发表论文的 1,322 人中，801 人最终在海外工作，海外比例为 <strong>60.6%</strong>。到 1970 年代，本土科研体系扩张，海外比例降至 <strong>48.3%</strong>；1980s–1990s 进一步稳定在约 <strong>39.3%</strong>。真正的转折出现在 2008 年前后：经济危机后，2009–2015 年首次发表论文群体的海外比例升至 <strong>52.9%</strong>，2016–2019 年仍维持在 <strong>52.6%</strong>。</p>
+        <h3>危机之后，新一代更难留下</h3>
+        <p>空间上的集中之外，时间上也有清晰的转折。数据库中的「首次发表年份」（firstyr）记录了每位科学家发表第一篇 Scopus 论文的时间，间接标记其进入学术劳动力市场的年份。右侧图表按年份排列 1960–2019 年间首次发表论文的科学家群体，<span class="n-greece">蓝色</span>为留在希腊的人，<span class="n-abroad">橙色</span>为在海外工作的人。</p>
+        <p>这条时间线并不是单向上升。1960 年代样本规模较小，海外工作者占比反而很高；到 1980s–1990s，本土科研体系扩张，海外比例稳定在约 <strong>39.3%</strong>。真正的转折出现在 2008 年前后：债务危机后，2009–2015 年首次发表论文群体的海外比例升至 <strong>52.9%</strong>，2016–2019 年仍维持在 <strong>52.6%</strong>。</p>
         <div class="timeline-links">
           <p>时间节点：</p>
           <ul>
@@ -171,12 +172,26 @@
     </div>
   </section>
 
+  <!-- 年度活跃轨迹 -->
+  <section id="departure-timeline" class="story-section">
+    <div class="side-by-side section-panel">
+      <div class="text-column-left">
+        <h3>从进入学术界，到每年的真实活跃位置</h3>
+        <p>上一张图按「首次发表年份」观察不同世代最终在哪里工作；这里换一个角度，按自然年份统计科学家在希腊机构和海外机构发表论文的活跃人数。下方<span class="n-greece">蓝色区域</span>为每年在希腊机构发表论文的科学家数量，上方<span class="n-abroad">橙色区域</span>为海外机构的活跃人数。</p>
+        <p>两张时间图互相补充：前者显示一代人进入学术界时面对的环境，后者显示整个科研劳动力在每一年如何分布。2008–2015 年经济危机期间，新流出人数显著增加；2016 年之后新流出下降，部分原因是新进入数据库的科学家总数本身在减少。</p>
+      </div>
+      <div class="viz-right">
+        <svg id="departure-svg" viewBox="0 0 960 420" role="img" aria-label="1960-2019年科学家流出时间线"></svg>
+      </div>
+    </div>
+  </section>
+
   <!-- ══════════════════════════════════════════
        二、学科间的不对称流失
        ══════════════════════════════════════════ -->
   <div class="chapter-header">
     <span class="chapter-num">二</span>
-    <h2 class="chapter-title">哪些学科流失更严重？</h2>
+    <h2 class="chapter-title">本土体系留得住哪些学科，留不住哪些学科？</h2>
   </div>
 
   <!-- 学科鸿沟 -->
@@ -185,10 +200,10 @@
       <!-- Row 1: Text + Dumbbell side by side -->
       <div class="discipline-top-row side-by-side">
         <div class="text-column-left">
-          <h3>学科间的不对称流失</h3>
-        <p>默认展示 20 个学科大类的对比。每条哑铃线连接一个学科大类的<span class="n-greece">希腊本土</span>和<span class="n-abroad">海外</span>科学家数量。<strong>线越长、两端差距越大</strong>，代表该学科人才分布越失衡。按科学家总人数从多到少排列。</p>
-        <p>使用下拉菜单选择具体学科大类，可下钻查看该学科下各子领域的对比；在搜索框中输入名称可查找特定学科或子领域。</p>
-        <p>在 Public Health & Health Services、Psychology &amp; Cognitive Sciences 等领域，海外科学家人数超过本土；而在 Clinical Medicine、Earth & Environmental Sciences 等领域，本土科学家占据多数。外流强度与本国相关领域的研究岗位供给直接相关。</p>
+          <h3>流失并不是所有学科平均发生</h3>
+        <p>如果人才外流只是一个总量问题，各学科的本土与海外分布应该大体相似。但哑铃图显示，学科之间的差异非常明显。每条线连接一个学科大类的<span class="n-greece">希腊本土</span>和<span class="n-abroad">海外</span>科学家数量，<strong>线越长、两端差距越大</strong>，代表该学科的人才分布越不均衡。</p>
+        <p>默认展示 20 个学科大类，并按科学家总人数从多到少排列。使用下拉菜单可下钻查看该学科下各子领域的对比；在搜索框中输入名称可查找特定学科或子领域。</p>
+        <p>Clinical Medicine、Earth & Environmental Sciences 等领域本土科学家占据多数，说明希腊本土科研体系仍有吸纳能力；但 Public Health & Health Services、Psychology &amp; Cognitive Sciences 等领域，海外科学家人数已经超过本土，外流更像是结构性的岗位与机会错配。</p>
       </div>
       <div class="viz-right" id="viz-butterfly">
         <div class="viz-controls">
@@ -209,34 +224,35 @@
     </div>
   </section>
 
-  <!-- 学科流失 Marimekko -->
+  <!-- 学科规模与流失率散点图 -->
   <section id="marimekko-chart" class="story-section">
     <div class="side-by-side section-panel">
       <div class="text-column-left">
-        <h3>学科规模 × 流失率</h3>
-        <p>每个柱子的宽度代表该学科大类在全部希腊科学家中的占比，高度代表该学科流向海外的比例。颜色越深，流失越严重。</p>
-        <p>临床医学是规模最大的学科，但流失率低于 50%；而心理学、经济学等规模较小的领域，海外科学家比例远超 50%。</p>
+        <h3>规模越大，不一定流失越严重</h3>
+        <p>哑铃图强调人数差距，这张散点图进一步把「规模」和「流失率」拆开看。横轴表示学科大类规模，纵轴表示海外科学家占比；气泡越大，代表该学科流向海外的人数越多。</p>
+        <p>临床医学是规模最大的学科，但流失率低于 50%；心理学、哲学神学等规模较小的领域，海外科学家比例明显更高。也就是说，希腊人才流失不是简单的“大领域流失更多”，而是与各学科本土机会结构密切相关。</p>
       </div>
       <div class="viz-right">
-        <svg id="marimekko-svg" viewBox="0 0 960 480" role="img" aria-label="各学科大类的规模与海外占比马赛克图"></svg>
+        <svg id="marimekko-svg" viewBox="0 0 960 480" role="img" aria-label="各学科大类规模与海外占比散点图"></svg>
       </div>
     </div>
   </section>
 
   <!-- ══════════════════════════════════════════
-       二、顶端流失更为严峻
+       三、顶端流失更为严峻
        ══════════════════════════════════════════ -->
   <div class="chapter-header">
     <span class="chapter-num">三</span>
-    <h2 class="chapter-title">越往顶端，流失越重</h2>
+    <h2 class="chapter-title">越靠近学术顶端，越容易被全球体系吸走</h2>
   </div>
 
   <!-- 顶尖人才的去向（toggle：金字塔 / 前15名案例） -->
   <section id="elite-drain" class="story-section">
     <div class="side-by-side section-panel">
       <div class="text-column-left">
-        <h3>不同人才群体流失比例与顶尖个案</h3>
-        <p>不同能力层级的人才的流失比例不同，越顶尖的人才流失的比例越高。按排除自引的综合引用得分将科学家划分为百分位层级，并计算不同层级科学家流失的比例。结果显示，前 50% 层级中本土保有 53%，两组接近持平。但越顶尖的人才中流失的比例越高：前 1% 中 72% 在海外，前 0.1% 的 111 位科学家中，<strong>96 人（86%）在海外</strong>。</p>
+        <h3>流失在顶端变得最尖锐</h3>
+        <p>学科差异回答了“哪些领域更容易外流”，但还没有回答“哪些层级的人更容易外流”。按排除自引的综合引用得分将科学家划分为百分位层级后，趋势非常清楚：越顶尖的人才，海外比例越高。</p>
+        <p>前 50% 层级中，本土保有 53%，两组接近持平；但到前 1%，72% 在海外；前 0.1% 的 111 位科学家中，<strong>96 人（86%）在海外</strong>。这说明希腊并非没有培养出顶尖人才，而是越接近国际学术前沿，本土越难把他们留下。</p>
       </div>
       <div class="viz-right">
         <div class="toggle-module" id="elite-toggle">
@@ -272,9 +288,9 @@
   <section id="distributions" class="story-section">
     <div class="side-by-side section-panel">
       <div class="text-column-left">
-        <h3>四个指标的分布对比</h3>
-        <p>四组小提琴图展示两组科学家在论文数、总被引次数、h 指数和综合引用得分上的完整分布。每组左侧为希腊本土科学家的指标分布，右侧为海外科学家的指标分布，并使用虚线标注中位数。</p>
-        <p>发表论文数和 h 指数的分布形态在两组间无明显差异，表明<strong>本土和海外科学家在产出数量上相近</strong>。但在总被引次数和综合引用得分上，海外组的分布整体上移，高分段明显更厚，意味着<strong>在产出量相近的情况下，海外科学家具有更高的学术影响力</strong>。</p>
+        <h3>差距不是平均拉开，而是出现在高影响力尾部</h3>
+        <p>顶尖人才的海外比例更高，并不意味着所有海外科学家都比本土科学家产出更多。四组小提琴图展示两组科学家在论文数、总被引次数、h 指数和综合引用得分上的完整分布。每组左侧为希腊本土科学家的指标分布，右侧为海外科学家的指标分布，虚线标注中位数。</p>
+        <p>发表论文数和 h 指数的分布形态在两组间并没有显著分离，说明<strong>本土和海外科学家在产出数量上相近</strong>。真正拉开差距的是总被引次数和综合引用得分：海外组的高分段更厚，意味着影响力差距主要集中在分布的上端。</p>
       </div>
       <div class="viz-right">
         <svg id="violins-svg" viewBox="0 0 1060 480" role="img" aria-label="四个指标的竖版小提琴图"></svg>
@@ -286,10 +302,10 @@
   <section id="productivity" class="story-section">
     <div class="side-by-side section-panel">
       <div class="text-column-left">
-        <h3>产出量相近，影响力分化</h3>
+        <h3>不是更勤奋，而是更容易进入高影响力位置</h3>
         <p>小提琴图显示海外科学家的引用量更高，一个自然的疑问是：他们是否只是因为发表了更多论文？散点图提供了更精确的回答。</p>
         <p>图中每个点代表一位科学家，横轴为论文总数，纵轴为排除自引后的总被引次数，两轴均取对数。<span class="n-greece">蓝色</span>为留在希腊的科学家，<span class="n-abroad">橙色</span>为海外科学家。</p>
-        <p>两组的回归线几乎完全重叠（相关系数分别为 0.756 和 0.750），说明在相同产出水平下，平均引用量十分接近。但<strong>右上角的超高引用区域</strong>几乎被<span class="n-abroad">橙色点</span>占据。这意味着两组科学家在「每篇论文能获得多少引用」这件事上没有结构性差异，但海外环境为少数人提供了达到极端高引用的条件。</p>
+        <p>两组的回归线几乎完全重叠（相关系数分别为 0.756 和 0.750），说明在相同产出水平下，平均引用量十分接近。但<strong>右上角的超高引用区域</strong>几乎被<span class="n-abroad">橙色点</span>占据。这意味着差距不主要来自“海外科学家发得更多”，而是海外科研环境更容易把少数人推到极端高影响力位置。</p>
         <p>使用下方按钮在全部科学家和不同世代之间切换。2000 年后首次发表论文的世代中，海外组的引用优势比 2000 年前世代更大（复合得分中位数比值从 1.13 扩大至 1.32），提示年轻一代面临的环境分化更为明显。</p>
         <div class="scatter-controls">
           <button class="btn-toggle active" data-cohort="all">全部</button>
@@ -308,25 +324,39 @@
     </div>
   </section>
 
+  <!-- 目的国科研生态 -->
+  <section id="bubble-chart" class="story-section">
+    <div class="side-by-side section-panel">
+      <div class="text-column-left">
+        <h3>目的国不只是接收人才，也改变影响力上限</h3>
+        <p>如果海外环境更容易产生高影响力，那么不同目的国之间也应存在差异。横轴为各国吸收的希腊科学家数量（对数尺度），纵轴为篇均引用次数，气泡大小代表论文总产出。</p>
+        <p>美国不仅吸收了最多的科学家（9,339 人），篇均引用也最高（32.6 次）。瑞士、澳大利亚和英国同样突出。人才流失因此不只是地理位置变化，也意味着科学家进入了不同资源密度、合作网络和引用可见度的科研生态。</p>
+      </div>
+      <div class="viz-right">
+        <svg id="bubble-svg" viewBox="0 0 900 500" role="img" aria-label="各国希腊科学家数量与篇均引用的气泡图"></svg>
+      </div>
+    </div>
+  </section>
+
   <!-- ══════════════════════════════════════════
-       三、追踪人才流动：从职业轨迹到合作网络
+       四、离开之后的职业路径与科研角色
        ══════════════════════════════════════════ -->
   <div class="chapter-header">
     <span class="chapter-num">四</span>
-    <h2 class="chapter-title">追踪人才流动：从职业轨迹到合作网络</h2>
+    <h2 class="chapter-title">离开之后：职业路径、回流与科研角色</h2>
   </div>
 
-  <!-- 移民流向桑基图 -->
-  <section id="migration-flows" class="story-section">
+  <!-- 机构流失排行榜 -->
+  <section id="institution-ranking" class="story-section">
     <div class="side-by-side section-panel">
       <div class="text-column-left">
-        <h3>人才流向何方</h3>
-        <p>将原始数据集与 OpenAlex 匹配，获得每位科学家每年发表的论文及机构信息，从而追踪职业流动轨迹。</p>
-        <p>下图展示 <strong>21,208 名</strong>科学家从希腊首次流向海外机构的分布。美国和英国合计吸纳了超过半数流出科学家。</p>
-        <p class="note">仅统计有明确机构记录的流动，不含未匹配到 OpenAlex 的约 6,000 人。</p>
+        <h3>流失从哪些本土机构出发？</h3>
+        <p>在讨论离开之后的路径前，先回到人才的本土起点。这里追溯每位科学家首次发表论文所在的希腊机构，观察他们之后是否曾在海外机构发表论文。下方展示流失率最高的前 20 所机构（至少 20 名科学家相关）。</p>
+        <p>排名靠前的多是希腊顶尖研究中心。这不应被理解为教育质量有问题，恰恰相反：越能培养高水平人才的机构，其毕业生越容易进入全球竞争，也越容易被海外科研体系吸纳。</p>
+        <p class="note">「流失」定义：从该机构起步后，曾在海外机构发表过论文。机构名称因数据匹配限制暂用编号代替。</p>
       </div>
       <div class="viz-right">
-        <svg id="sankey-svg" viewBox="0 0 960 720" role="img" aria-label="希腊科学家移民流向桑基图"></svg>
+        <svg id="institution-svg" viewBox="0 0 900 660" role="img" aria-label="希腊机构人才流失排名"></svg>
       </div>
     </div>
   </section>
@@ -335,8 +365,8 @@
   <section id="migration-flows-copy" class="story-section">
     <div class="side-by-side section-panel">
       <div class="text-column-left">
-        <h3>多阶段职业流动</h3>
-        <p>追踪每位科学家机构变动的国家轨迹，将其第 1→2→3→4 个机构按国别串联，构造四列桑基图。<strong>14,697 名</strong>首个机构在希腊、且至少有两个不同机构的科学家被纳入分析。每阶段只显示人数最多的 10 个国家，其余归入"其他"；不再有下一机构的科学家流入"不再流动"。</p>
+        <h3>离开不是终点，而是一段多阶段路径</h3>
+        <p>人才流失也不是一次性、单向的迁移。追踪每位科学家机构变动的国家轨迹，将其第 1→2→3→4 个机构按国别串联，可以看到离开、停留、回流和再次流出的过程。<strong>14,697 名</strong>首个机构在希腊、且至少有两个不同机构的科学家被纳入分析。每阶段只显示人数最多的 10 个国家，其余归入"其他"；不再有下一机构的科学家流入"不再流动"。</p>
         <p><strong>第一阶段</strong>（第 1→2 机构）：美国（4,260 人）和英国（2,747 人）是最主要的目的地，合计占流出总量的 <strong>48%</strong>。德国、法国、塞浦路斯紧随其后。但流向"其他"的 3,449 人说明流出目的国相当分散。</p>
         <p><strong>第二阶段</strong>（第 2→3 机构）：出现显著回流——<strong>5,551 人（39%）回到希腊</strong>。美国→希腊 1,916 人、英国→希腊 1,050 人。同时 4,017 人（28%）不再流动，其中美国 1,125 人、英国 755 人选择留在当前机构。</p>
         <p><strong>第三阶段</strong>（第 3→4 机构）：回到希腊的科学家中，<strong>2,666 人不再流动</strong>，但 760 人再次前往美国、544 人前往英国，呈现"二次流出"。</p>
@@ -348,27 +378,13 @@
     </div>
   </section>
 
-  <!-- 流出时间线 -->
-  <section id="departure-timeline" class="story-section">
-    <div class="side-by-side section-panel">
-      <div class="text-column-left">
-        <h3>流失的逐年轨迹</h3>
-        <p>下方<span class="n-greece">蓝色区域</span>为每年在希腊机构发表论文的科学家数量，上方<span class="n-abroad">橙色区域</span>为海外机构的活跃人数。这张图与前面的首次发表年份时间线互为补充——前者按"进入学术领域的年份"分组，这里按自然年份展开。</p>
-        <p><strong>2008–2015 年经济危机期间，新流出人数显著增加</strong>。2016 年之后新流出下降，部分原因是新进入数据库的科学家总数本身在减少。</p>
-      </div>
-      <div class="viz-right">
-        <svg id="departure-svg" viewBox="0 0 960 420" role="img" aria-label="1960-2019年科学家流出时间线"></svg>
-      </div>
-    </div>
-  </section>
-
   <!-- 作者角色对比 -->
   <section id="author-roles" class="story-section">
     <div class="side-by-side section-panel">
       <div class="text-column-left">
-        <h3>当主角还是当配角？</h3>
-        <p>第一作者通常贡献最大，末位作者为项目负责人，通讯作者为研究总负责人。我们统计了两组科学家在这些角色上的分布。</p>
-        <p><span class="n-greece">希腊本土科学家</span>有 23.9% 的参与是第一作者，11.0% 是通讯作者；而<span class="n-abroad">海外参与</span>中仅 6.0% 是第一作者，2.8% 为通讯作者。这可能反映<strong>海外希腊科学家更多处于大型合作团队中</strong>，角色分布更为分散。</p>
+        <h3>进入全球团队后，角色也发生变化</h3>
+        <p>迁移改变的不只是工作地点，也改变科学家所在的合作结构。第一作者通常贡献最大，末位作者为项目负责人，通讯作者为研究总负责人。我们统计了两组科学家在这些角色上的分布。</p>
+        <p><span class="n-greece">希腊本土科学家</span>有 23.9% 的参与是第一作者，11.0% 是通讯作者；而<span class="n-abroad">海外参与</span>中仅 6.0% 是第一作者，2.8% 为通讯作者。这可能反映<strong>海外希腊科学家更多处于大型合作团队中</strong>，角色分布更分散，也说明“在海外”并不等于每一次合作都处在主导位置。</p>
       </div>
       <div class="viz-right">
         <svg id="role-svg" viewBox="0 0 700 380" role="img" aria-label="希腊vs海外作者角色对比"></svg>
@@ -376,37 +392,8 @@
     </div>
   </section>
 
-  <!-- Gapminder 气泡 -->
-  <section id="bubble-chart" class="story-section">
-    <div class="side-by-side section-panel">
-      <div class="text-column-left">
-        <h3>数量 vs 质量</h3>
-        <p>流到不同国家的科学家，其研究影响力有差异吗？横轴为各国吸收的希腊科学家数量（对数尺度），纵轴为篇均引用次数，气泡大小代表论文总产出。</p>
-        <p>美国不仅吸收了最多的科学家（9,339 人），篇均引用也最高（32.6 次）。瑞士、澳大利亚和英国同样突出——<strong>流入国的科研生态可能对个人产出有显著影响</strong>。</p>
-      </div>
-      <div class="viz-right">
-        <svg id="bubble-svg" viewBox="0 0 900 500" role="img" aria-label="各国希腊科学家数量与篇均引用的气泡图"></svg>
-      </div>
-    </div>
-  </section>
-
-  <!-- 机构流失排行榜 -->
-  <section id="institution-ranking" class="story-section">
-    <div class="side-by-side section-panel">
-      <div class="text-column-left">
-        <h3>哪些机构的毕业生离开了？</h3>
-        <p>追溯每位科学家首次发表论文所在的希腊机构，观察他们之后是否在海外发表过论文。下方展示流失率最高的前 20 所机构（至少 20 名科学家相关）。</p>
-        <p>排名靠前的多是希腊顶尖研究中心——它们培养的人才被全球竞争，而非教育质量有问题。</p>
-        <p class="note">「流失」定义：从该机构起步后，曾在海外机构发表过论文。</p>
-      </div>
-      <div class="viz-right">
-        <svg id="institution-svg" viewBox="0 0 900 660" role="img" aria-label="希腊机构人才流失排名"></svg>
-      </div>
-    </div>
-  </section>
-
   <!-- ══════════════════════════════════════════
-       四、结论
+       五、结论
        ══════════════════════════════════════════ -->
   <div class="chapter-header">
     <span class="chapter-num">五</span>
@@ -418,16 +405,17 @@
        ══════════════════════════════════════════ -->
   <section id="conclusion" class="story-section alt-bg">
     <div class="text-column">
-      <h3>数据揭示的图景</h3>
-      <p>Ioannidis 等人（2021）构建的这份数据库，是首个针对单一国家、同时覆盖本土与海外科学家的族裔科学人才数据库。对它的可视化分析勾画出一个持续数十年的人才外流过程，以下是其中几个值得注意的事实。</p>
+      <h3>这不是人才没有被培养出来，而是培养出来之后留不住</h3>
+      <p>开篇的问题是：希腊为什么能在海外顶尖学术机构中占据远超人口规模的位置？数据给出的答案并不简单。它不是一个单纯的失败故事，因为希腊确实培养出了大量科学人才；但它也不是一个单纯的成功故事，因为这些人才中相当一部分，尤其是最顶尖的一部分，最终在海外完成了自己的科学事业。</p>
       <div class="key-points">
-        <div class="key-point"><span class="kp-num">45%</span> 的希腊裔科学家在海外工作，分布于 107 个国家，但 92% 集中在前八个目的国。美国和英国合计容纳了超过一半的海外群体。</div>
+        <div class="key-point"><span class="kp-num">45%</span> 的希腊裔科学家在海外工作，分布于 107 个国家，但前八个目的国容纳了海外群体的 82.1%。流失并不是平均扩散，而是集中流向少数科研中心。</div>
+        <div class="key-point"><span class="kp-num">52.9%</span>：2009–2015 年首次发表论文群体的海外比例在债务危机后明显升高，说明新一代科学家的外流压力重新加重。</div>
+        <div class="key-point"><span class="kp-num">学科差异</span>：临床医学等大领域仍有较强本土吸纳能力，而心理学、公共卫生等领域海外比例更高。流失不是平均发生，而是嵌入不同学科的机会结构。</div>
         <div class="key-point"><span class="kp-num">86%</span> 的前 0.1% 顶尖科学家在海外。流失比例随能力层级升高而递增，从前 50% 层的 47% 升至前 0.1% 层的 86%。</div>
-        <div class="key-point"><span class="kp-num">60.6% → 39.3% → 52.9%</span>：首次发表论文群体的海外比例先从 1960 年代的高位回落，在 1980s–1990s 稳定于约 39.3%；2009 年后又升至 52.9%，显示经济危机后外流压力重新加重。</div>
-        <div class="key-point"><span class="kp-num">30/32</span> 的各子领域前 15 名科学家在海外，但其中多数出生于希腊并在希腊完成本科教育。希腊的基础教育培养了他们，但未能留住他们。</div>
-        <div class="key-point"><span class="kp-num">r ≈ 0.75</span>：本土与海外科学家的论文数–引用数相关系数几乎相同，说明两组在相同产出水平下的平均引用表现没有结构性差异。差距集中在分布的极端右尾。</div>
+        <div class="key-point"><span class="kp-num">r ≈ 0.75</span>：本土与海外科学家的论文数–引用数相关系数几乎相同，说明两组在相同产出水平下的平均引用表现没有结构性差异。真正的差距集中在分布的极端右尾。</div>
       </div>
-      <p>这份数据库也有其局限。它依赖希腊姓名的族裔特异性进行筛选，对二代以上移民的覆盖率偏低（敏感性约 40%）。仅收录发表 5 篇以上论文的科学家，遗漏了约四分之三的低产出作者。Scopus 对人文社科的覆盖不足，也可能导致部分学科的比较存在偏倚。尽管如此，这是目前对希腊科学人才流失最完整的定量刻画。</p>
+      <p>因此，希腊人才流失的核心不是“有没有培养出人才”，而是“培养出来之后，在哪里获得继续向上发展的空间”。本土体系仍能支撑相当数量的科学家和部分学科，但全球科研中心为顶尖人才提供了更大的网络、资源和可见度。人才流失最终表现为人数、学科结构、影响力上限和职业路径的同时重组。</p>
+      <p>这份数据库也有其局限。它依赖希腊姓名的族裔特异性进行筛选，对二代以上移民的覆盖率偏低（敏感性约 40%）。仅收录发表 5 篇以上论文的科学家，遗漏了约四分之三的低产出作者。Scopus 对人文社科的覆盖不足，也可能导致部分学科的比较存在偏倚。尽管如此，它仍是目前对希腊科学人才流失最完整的定量刻画之一。</p>
     </div>
   </section>
 
@@ -478,8 +466,8 @@
 <script src="js/role.js?v=20260602-1"></script>
 <script src="js/institutions.js"></script>
 <script src="js/bubbles.js?v=20260602-1"></script>
-<script src="js/marimekko.js"></script>
-<script src="js/main.js?v=20260602-sidebar"></script>
+<script src="js/marimekko.js?v=20260615-v1"></script>
+  <script src="js/main.js?v=20260615-story"></script>
 
 </body>
 </html>

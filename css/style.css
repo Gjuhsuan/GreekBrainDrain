@@ -1573,11 +1573,42 @@ svg {
   cursor: pointer;
 }
 
-/* Marimekko chart */
+/* Field scale × drain scatter */
 #marimekko-svg {
   display: block;
   margin: 0 auto;
 }
-.mekko-bar {
+
+.field-bubble {
   cursor: pointer;
+  transition: fill-opacity 0.15s ease, stroke 0.15s ease, stroke-width 0.15s ease;
+}
+
+.field-grid line {
+  stroke: var(--color-grid);
+  stroke-width: 0.7;
+}
+
+.field-grid .tick:first-of-type line {
+  display: none;
+}
+
+.field-axis path,
+.field-axis line {
+  stroke: var(--text-light);
+}
+
+.field-axis text,
+.field-scatter-legend text {
+  fill: var(--text-secondary);
+  font-family: var(--font-sans);
+  font-size: 11px;
+}
+
+.field-label {
+  fill: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  pointer-events: none;
 }
