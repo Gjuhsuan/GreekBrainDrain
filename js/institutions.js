@@ -6,12 +6,17 @@
 (function () {
   "use strict";
 
-  var MARGIN = { top: 30, right: 120, bottom: 20, left: 60 };
-  var ROW_HEIGHT = 28;
-  var SVG_W = 900;
+  var MARGIN = { top: 30, right: 120, bottom: 24, left: 300 };
+  var ROW_HEIGHT = 30;
+  var SVG_W = 980;
 
   function initInstitutions() {
-    loadData("new/institution_ranking.json").then(function (data) {
+    fetch("data/new/institution_ranking_named.json?v=20260615-v1")
+      .then(function (resp) {
+        if (!resp.ok) throw new Error("Failed to load institution_ranking_named.json: " + resp.status);
+        return resp.json();
+      })
+      .then(function (data) {
       renderInstitutions(data);
     }).catch(function (err) {
       console.warn("institutions.js: data load failed —", err.message);
@@ -66,7 +71,21 @@
       .data(sorted)
       .join("g")
       .attr("class", "inst-lolli")
-      .attr("transform", function (d, i) { return "translate(0," + i * ROW_HEIGHT + ")"; });
+      .attr("transform", function (d, i) { return "translate(0," + i * ROW_HEIGHT + ")"; })
+      .on("mouseenter", function (event, d) {
+        showInstitutionFocus(d3.select(this), d);
+        showTooltip(
+          "<strong>" + d.institution + "</strong><br>" +
+          "流失率: <strong>" + d.drain_rate + "%</strong><br>" +
+          "总科学家: " + fmtNum(d.total_authors) + "<br>" +
+          "留下: " + fmtNum(d.stayed_authors) + " / 离开: " + fmtNum(d.left_authors)
+        );
+      })
+      .on("mousemove", moveTooltip)
+      .on("mouseleave", function () {
+        hideInstitutionFocus(d3.select(this));
+        hideTooltip();
+      });
 
     // Background stripe
     rows.append("rect")
@@ -97,19 +116,7 @@
       .attr("fill", COLORS.abroad)
       .attr("stroke", "#fff")
       .attr("stroke-width", 1.5)
-      .on("mouseenter", function (event, d) {
-        d3.select(this).attr("r", 12).attr("opacity", 0.8);
-        showTooltip(
-          "<strong>流失率: " + d.drain_rate + "%</strong><br>" +
-          "总科学家: " + fmtNum(d.total_authors) + "<br>" +
-          "留下: " + fmtNum(d.stayed_authors) + " / 离开: " + fmtNum(d.left_authors)
-        );
-      })
-      .on("mousemove", moveTooltip)
-      .on("mouseleave", function () {
-        d3.select(this).attr("r", 9).attr("opacity", 1);
-        hideTooltip();
-      });
+      .style("pointer-events", "none");
 
     // Drain rate label
     rows.append("text")
@@ -133,17 +140,18 @@
       .attr("font-family", "Inter, sans-serif")
       .text(function (d) { return d.left_authors + "/" + d.total_authors + " 人"; });
 
-    // Index number (left)
+    // Institution name (left)
     rows.append("text")
+      .attr("class", "inst-name")
       .attr("x", -10)
       .attr("y", ROW_HEIGHT / 2)
       .attr("text-anchor", "end")
       .attr("dominant-baseline", "central")
-      .attr("fill", COLORS.textLight)
+      .attr("fill", COLORS.textSecondary)
       .attr("font-size", "11px")
       .attr("font-family", "Inter, sans-serif")
       .attr("font-weight", "600")
-      .text(function (d, i) { return "#" + (i + 1); });
+      .text(function (d, i) { return (i + 1) + ". " + truncateName(d.institution, 32); });
 
     // X axis
     var xAxis = d3.axisTop(xScale).ticks(5).tickFormat(function (d) { return d + "%"; });
@@ -159,6 +167,48 @@
       .attr("fill", COLORS.textLight)
       .attr("font-size", "10px")
       .attr("font-family", "Inter, sans-serif")
-      .text("流失率 = 从该机构起步后曾在海外发表的科学家占比。机构名称因数据匹配限制暂用编号代替。");
+      .text("流失率 = 以该机构为首个希腊机构、之后曾在海外机构发表的科学家占比。仅显示样本量 ≥ 20 的机构。");
+  }
+
+  function truncateName(name, maxLen) {
+    if (!name) return "未知机构";
+    return name.length > maxLen ? name.slice(0, maxLen - 1) + "…" : name;
+  }
+
+  function showInstitutionFocus(row, d) {
+    row.raise();
+    row.select(".inst-circle").attr("r", 12).attr("opacity", 0.85);
+    row.select(".inst-name").attr("opacity", 0.15);
+
+    var label = row.append("g")
+      .attr("class", "inst-focus-label")
+      .attr("transform", "translate(" + (-MARGIN.left + 8) + "," + (ROW_HEIGHT / 2) + ")");
+
+    var text = label.append("text")
+      .attr("x", 10)
+      .attr("y", 0)
+      .attr("dominant-baseline", "central")
+      .attr("fill", COLORS.text)
+      .attr("font-size", "13px")
+      .attr("font-family", "Inter, sans-serif")
+      .attr("font-weight", "800")
+      .text(d.institution);
+
+    var bbox = text.node().getBBox();
+    label.insert("rect", "text")
+      .attr("x", bbox.x - 8)
+      .attr("y", bbox.y - 5)
+      .attr("width", Math.min(bbox.width + 16, SVG_W - 18))
+      .attr("height", bbox.height + 10)
+      .attr("fill", "#fff")
+      .attr("stroke", COLORS.abroadLight)
+      .attr("stroke-width", 1)
+      .attr("rx", 4);
+  }
+
+  function hideInstitutionFocus(row) {
+    row.select(".inst-circle").attr("r", 9).attr("opacity", 1);
+    row.select(".inst-name").attr("opacity", 1);
+    row.selectAll(".inst-focus-label").remove();
   }
 })();
